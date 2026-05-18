@@ -43,13 +43,44 @@ Desarrollar una plataforma digital empresarial para el control operativo de equi
 
 ## 3.1 Incluye
 
-[PENDIENTE]
+- Aplicativo móvil Android para operación en campo.
+- Plataforma web para visualización y gestión administrativa.
+- Gestión de usuarios y autenticación mediante cuenta Microsoft corporativa.
+- Gestión de roles y permisos.
+- Gestión multi-sede operativa.
+- Registro manual de PSR y OSR.
+- Gestión de campañas operativas.
+- Registro de equipos alquilados.
+- Gestión de múltiples tipos de equipos.
+- Registro de accesorios y componentes asociados.
+- Registro y gestión de averías.
+- Control de estados operativos de equipos.
+- Registro de evidencias fotográficas.
+- Generación de reportes PDF.
+- Dashboard web con indicadores operativos.
+- Gestión de proveedores.
+- Gestión de marcas y catálogos.
+- Historial operativo de equipos.
+- Auditoría y trazabilidad de operaciones mediante autenticación y registros de actividad.
+- Validaciones operativas en tiempo real.
+- Mensajes visuales de confirmación, validación y error durante las operaciones ejecutadas por el usuario.
 
 ---
 
 ## 3.2 No Incluye
 
-[PENDIENTE]
+- Integración con NISIRA.
+- Operación offline.
+- Geolocalización.
+- Telemetría en tiempo real.
+- Integración ERP.
+- Facturación electrónica.
+- Workflow de aprobaciones.
+- Notificaciones push.
+- Integraciones con WhatsApp.
+- Integraciones con correo automático.
+- Gestión financiera.
+- Módulo de mantenimiento predictivo.
 
 ---
 
@@ -57,7 +88,21 @@ Desarrollar una plataforma digital empresarial para el control operativo de equi
 
 ## 4.1 Situación Actual
 
-[PENDIENTE]
+Actualmente el control operativo de equipos de apilamiento alquilados se realiza mediante procesos manuales y registros dispersos en archivos Excel, lo que genera limitaciones en la trazabilidad, control operativo y validación de información relacionada con el uso de equipos.
+
+No existe una plataforma centralizada que permita gestionar el ciclo completo de los equipos, desde la generación de solicitudes PSR/OSR hasta la entrega, operación, averías y devolución final.
+
+La gestión actual presenta dificultades para controlar:
+
+- tiempos reales de uso,
+- tiempos de inactividad,
+- evidencias fotográficas,
+- historial de averías,
+- validación de responsabilidades,
+- control documental,
+- indicadores operativos.
+
+Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de auditoría y baja capacidad de análisis para la toma de decisiones.
 
 ---
 
@@ -65,9 +110,14 @@ Desarrollar una plataforma digital empresarial para el control operativo de equi
 
 | Código | Problema |
 |---|---|
-| PRB-001 | |
-| PRB-002 | |
-| PRB-003 | |
+| PRB-001 | No existe trazabilidad centralizada de equipos alquilados |
+| PRB-002 | No existe control estructurado de averías |
+| PRB-003 | No existe validación visual documentada mediante evidencias |
+| PRB-004 | Existen riesgos de pagos indebidos por tiempos inactivos |
+| PRB-005 | El proceso depende de archivos Excel manuales |
+| PRB-006 | No existen indicadores operativos centralizados |
+| PRB-007 | No existe historial operacional consolidado por equipo |
+| PRB-008 | No existe control estructurado de responsabilidades operativas |
 
 ---
 
