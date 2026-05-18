@@ -201,6 +201,40 @@ Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de
 | RF-022 | Autenticación | Restricción de navegación por rol | El sistema deberá mostrar únicamente las funcionalidades autorizadas según el rol asignado al usuario autenticado | Usuario, Administrador | Alta |
 | RF-023 | Autenticación | Revocación inmediata de acceso | El sistema deberá invalidar sesiones activas cuando un usuario sea deshabilitado por un administrador | Administrador | Alta |
 
+# MOD-02 — USUARIOS
+
+| Código | Módulo | Nombre | Descripción | Actor | Prioridad |
+|---|---|---|---|---|---|
+| RF-024 | Usuarios | Registro de usuarios | El sistema deberá permitir al administrador registrar usuarios autorizados para el acceso al sistema | Administrador | Alta |
+| RF-025 | Usuarios | Actualización de usuarios | El sistema deberá permitir al administrador actualizar información asociada a usuarios registrados | Administrador | Alta |
+| RF-026 | Usuarios | Desactivación de usuarios | El sistema deberá permitir desactivar usuarios sin eliminar físicamente su información histórica | Administrador | Alta |
+| RF-027 | Usuarios | Reactivación de usuarios | El sistema deberá permitir reactivar usuarios previamente deshabilitados | Administrador | Media |
+| RF-028 | Usuarios | Asignación de roles | El sistema deberá permitir asignar roles operativos a usuarios registrados | Administrador | Alta |
+| RF-029 | Usuarios | Modificación de roles | El sistema deberá permitir modificar roles asignados a usuarios existentes | Administrador | Alta |
+| RF-030 | Usuarios | Asignación de sede | El sistema deberá permitir asignar una sede operativa a cada usuario registrado | Administrador | Alta |
+| RF-031 | Usuarios | Cambio de sede operativa | El sistema deberá permitir modificar la sede asignada a un usuario registrado | Administrador | Media |
+| RF-032 | Usuarios | Visualización de información corporativa | El sistema deberá mostrar información corporativa sincronizada desde Microsoft incluyendo nombre, correo, puesto, área, empresa, departamento y ubicación de trabajo | Administrador | Alta |
+| RF-033 | Usuarios | Sincronización de información Microsoft | El sistema deberá sincronizar información corporativa del usuario desde Microsoft corporativo | Administrador | Alta |
+| RF-034 | Usuarios | Edición de información local | El sistema deberá permitir editar información administrativa local asociada al usuario | Administrador | Media |
+| RF-035 | Usuarios | Consulta de usuarios | El sistema deberá permitir visualizar el listado de usuarios registrados | Administrador | Alta |
+| RF-036 | Usuarios | Búsqueda de usuarios | El sistema deberá permitir realizar búsquedas de usuarios mediante filtros de texto | Administrador | Alta |
+| RF-037 | Usuarios | Filtro por sede | El sistema deberá permitir filtrar usuarios por sede operativa | Administrador | Media |
+| RF-038 | Usuarios | Filtro por rol | El sistema deberá permitir filtrar usuarios según el rol asignado | Administrador | Media |
+| RF-039 | Usuarios | Visualización de último acceso | El sistema deberá mostrar la fecha y hora del último acceso realizado por cada usuario | Administrador | Media |
+| RF-040 | Usuarios | Registro de fecha de creación | El sistema deberá almacenar la fecha y hora de creación de cada usuario registrado | Administrador | Alta |
+| RF-041 | Usuarios | Historial de cambios de usuario | El sistema deberá registrar cambios realizados sobre información de usuarios para fines de auditoría | Administrador | Alta |
+| RF-042 | Usuarios | Visualización de estado de usuario | El sistema deberá mostrar el estado actual del usuario como activo o inactivo | Administrador | Media |
+| RF-043 | Usuarios | Validación de usuarios duplicados | El sistema deberá impedir el registro de usuarios con el mismo correo corporativo ya existente en el sistema | Administrador | Alta |
+| RF-044 | Usuarios | Validación de rol asignado | El sistema deberá requerir que todo usuario tenga un rol asignado antes de habilitar su acceso | Administrador | Alta |
+| RF-045 | Usuarios | Validación de sede asignada | El sistema deberá requerir que todo usuario tenga una sede operativa asignada antes de habilitar su acceso | Administrador | Alta |
+| RF-046 | Usuarios | Validación de existencia corporativa | El sistema deberá validar que el usuario registrado exista dentro del entorno corporativo Microsoft antes de habilitar su acceso | Administrador | Alta |
+| RF-047 | Usuarios | Consulta de detalle de usuario | El sistema deberá permitir visualizar el detalle completo de información asociada a un usuario registrado | Administrador | Media |
+| RF-048 | Usuarios | Ordenamiento de usuarios | El sistema deberá permitir ordenar el listado de usuarios por nombre, sede, rol o estado | Administrador | Baja |
+| RF-049 | Usuarios | Restricción de acceso por estado | El sistema deberá impedir el acceso de usuarios que se encuentren en estado inactivo | Administrador | Alta |
+| RF-050 | Usuarios | Visualización de rol asignado | El sistema deberá mostrar el rol operativo asignado a cada usuario dentro del módulo de administración | Administrador | Media |
+| RF-051 | Usuarios | Visualización de sede asignada | El sistema deberá mostrar la sede operativa asociada a cada usuario registrado | Administrador | Media |
+| RF-052 | Usuarios | Mensajes de validación administrativa | El sistema deberá mostrar mensajes visuales de confirmación y error durante las operaciones administrativas de usuarios | Administrador | Media |
+
 # 9. REGLAS DE NEGOCIO
 
 [PENDIENTE]
