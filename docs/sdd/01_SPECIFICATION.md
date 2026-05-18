@@ -395,6 +395,33 @@ Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de
 | RF-186 | Tipos de Equipos | Configuración de cargador obligatorio | El sistema deberá permitir definir obligatoriedad de información de cargadores según el tipo de equipo | Administrador | Media |
 | RF-187 | Tipos de Equipos | Configuración de transformador obligatorio | El sistema deberá permitir definir obligatoriedad de transformadores según el tipo de equipo | Administrador | Baja |
 
+# MOD-08 — PROVEEDORES
+
+| Código | Módulo | Nombre | Descripción | Actor | Prioridad |
+|---|---|---|---|---|---|
+| RF-188 | Proveedores | Registro de proveedores | El sistema deberá permitir registrar proveedores operativos | Administrador | Alta |
+| RF-189 | Proveedores | Actualización de proveedores | El sistema deberá permitir actualizar información de proveedores | Administrador | Alta |
+| RF-190 | Proveedores | Visualización de proveedores | El sistema deberá permitir visualizar proveedores registrados | Usuario, Administrador | Alta |
+| RF-191 | Proveedores | Búsqueda de proveedores | El sistema deberá permitir realizar búsquedas por nombre o RUC | Usuario, Administrador | Media |
+| RF-192 | Proveedores | Registro de datos comerciales | El sistema deberá permitir registrar información comercial y de contacto | Administrador | Alta |
+| RF-193 | Proveedores | Estado de proveedor | El sistema deberá permitir activar o desactivar proveedores | Administrador | Media |
+| RF-194 | Proveedores | Asociación de equipos | El sistema deberá permitir visualizar equipos asociados por proveedor | Usuario, Administrador | Alta |
+| RF-195 | Proveedores | Indicadores de averías | El sistema deberá visualizar indicadores de averías por proveedor | Usuario, Administrador | Alta |
+| RF-196 | Proveedores | Restricción de eliminación | El sistema no deberá permitir eliminar proveedores con historial operativo | Administrador | Alta |
+| RF-197 | Proveedores | Historial de operaciones | El sistema deberá permitir visualizar historial operativo por proveedor | Usuario, Administrador | Media |
+| RF-198 | Proveedores | Auditoría de proveedores | El sistema deberá registrar cambios administrativos sobre proveedores | Administrador | Alta |
+| RF-199 | Proveedores | Mensajes operativos | El sistema deberá mostrar mensajes de confirmación y error | Administrador | Media |
+| RF-200 | Proveedores | Validación de proveedor único | El sistema deberá validar unicidad de proveedores mediante RUC o razón social | Sistema | Alta |
+| RF-201 | Proveedores | Registro de RUC | El sistema deberá permitir registrar identificación tributaria del proveedor | Administrador | Alta |
+| RF-202 | Proveedores | Registro de contacto operativo | El sistema deberá permitir registrar información de contacto operativo del proveedor | Administrador | Alta |
+| RF-203 | Proveedores | Asociación de marcas autorizadas | El sistema deberá permitir relacionar proveedores con marcas de equipos soportadas | Administrador | Media |
+| RF-204 | Proveedores | Asociación de tipos de equipos | El sistema deberá permitir relacionar proveedores con tipos de equipos operativos | Administrador | Alta |
+| RF-205 | Proveedores | Indicadores de disponibilidad operativa | El sistema deberá visualizar indicadores de disponibilidad operativa asociados al proveedor | Usuario, Administrador | Alta |
+| RF-206 | Proveedores | Historial de incidencias | El sistema deberá permitir visualizar historial de averías e incidencias por proveedor | Usuario, Administrador | Alta |
+| RF-207 | Proveedores | Restricción de operaciones con proveedor inactivo | El sistema no deberá permitir registrar operaciones usando proveedores inactivos | Sistema | Alta |
+| RF-208 | Proveedores | Asociación automática en averías | El sistema deberá asociar automáticamente el proveedor relacionado al registrar averías desde un equipo | Sistema | Alta |
+| RF-209 | Proveedores | Inclusión en reportes PDF | El sistema deberá incluir información del proveedor en reportes operativos PDF | Usuario, Administrador | Media |
+
 # 9. REGLAS DE NEGOCIO
 
 [PENDIENTE]
