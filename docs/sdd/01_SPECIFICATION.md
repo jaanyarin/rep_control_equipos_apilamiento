@@ -422,6 +422,44 @@ Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de
 | RF-208 | Proveedores | Asociación automática en averías | El sistema deberá asociar automáticamente el proveedor relacionado al registrar averías desde un equipo | Sistema | Alta |
 | RF-209 | Proveedores | Inclusión en reportes PDF | El sistema deberá incluir información del proveedor en reportes operativos PDF | Usuario, Administrador | Media |
 
+# MOD-09 — AVERÍAS
+
+| Código | Módulo | Nombre | Descripción | Actor | Prioridad |
+|---|---|---|---|---|---|
+| RF-210 | Averías | Registro de avería | El sistema deberá permitir registrar averías operativas asociadas a un equipo | Usuario, Administrador | Alta |
+| RF-211 | Averías | Registro de descripción de falla | El sistema deberá permitir registrar descripción detallada de la falla | Usuario, Administrador | Alta |
+| RF-212 | Averías | Registro automático de fecha de reporte | El sistema deberá registrar automáticamente fecha y hora del reporte | Sistema | Alta |
+| RF-213 | Averías | Registro de atención de avería | El sistema deberá permitir registrar la atención y solución de una avería | Usuario, Administrador | Alta |
+| RF-214 | Averías | Registro de acción correctiva | El sistema deberá permitir registrar acciones correctivas ejecutadas | Usuario, Administrador | Alta |
+| RF-215 | Averías | Cálculo de tiempo inactivo | El sistema deberá calcular automáticamente el tiempo de inactividad del equipo | Sistema | Alta |
+| RF-216 | Averías | Cambio automático de estado | El sistema deberá cambiar automáticamente el estado del equipo a averiado al registrar una avería | Sistema | Alta |
+| RF-217 | Averías | Recuperación de estado operativo | El sistema deberá retornar el estado del equipo a operativo al finalizar la avería | Sistema | Alta |
+| RF-218 | Averías | Registro de fotografías | El sistema deberá permitir registrar fotografías asociadas a averías | Usuario, Administrador | Alta |
+| RF-219 | Averías | Registro múltiple de evidencias | El sistema deberá permitir registrar múltiples fotografías de evidencia | Usuario, Administrador | Media |
+| RF-220 | Averías | Visualización de averías activas | El sistema deberá visualizar averías pendientes de atención | Usuario, Administrador | Alta |
+| RF-221 | Averías | Visualización de averías históricas | El sistema deberá visualizar averías atendidas históricamente | Usuario, Administrador | Media |
+| RF-222 | Averías | Búsqueda de averías | El sistema deberá permitir búsquedas mediante filtros operativos | Usuario, Administrador | Alta |
+| RF-223 | Averías | Filtrado por estado | El sistema deberá permitir filtrar averías por estado operativo | Usuario, Administrador | Alta |
+| RF-224 | Averías | Filtrado por proveedor | El sistema deberá permitir filtrar averías por proveedor | Usuario, Administrador | Media |
+| RF-225 | Averías | Filtrado por rango de fechas | El sistema deberá permitir filtrar averías por rango de fechas | Usuario, Administrador | Media |
+| RF-226 | Averías | Historial por equipo | El sistema deberá visualizar historial de averías por equipo | Usuario, Administrador | Alta |
+| RF-227 | Averías | Indicadores de averías | El sistema deberá visualizar indicadores operativos asociados a averías | Usuario, Administrador | Alta |
+| RF-228 | Averías | Inclusión en reportes PDF | El sistema deberá incluir averías dentro de reportes operativos PDF | Usuario, Administrador | Media |
+| RF-229 | Averías | Auditoría de averías | El sistema deberá registrar eventos asociados a averías | Usuario, Administrador | Alta |
+| RF-230 | Averías | Mensajes operativos | El sistema deberá mostrar mensajes visuales durante operaciones de averías | Usuario, Administrador | Media |
+| RF-231 | Averías | Validación de equipo operativo | El sistema deberá validar que el equipo exista y se encuentre operativo antes de registrar una avería | Sistema | Alta |
+| RF-232 | Averías | Restricción de avería duplicada | El sistema no deberá permitir registrar múltiples averías activas para un mismo equipo | Sistema | Alta |
+| RF-233 | Averías | Registro de usuario responsable | El sistema deberá registrar automáticamente el usuario responsable del reporte de avería | Sistema | Alta |
+| RF-234 | Averías | Registro de estado de avería | El sistema deberá manejar estados operativos de avería como Pendiente, En Atención y Cerrada | Sistema | Alta |
+| RF-235 | Averías | Validación de cierre de avería | El sistema deberá validar el registro de solución antes de permitir cerrar una avería | Sistema | Alta |
+| RF-236 | Averías | Asociación automática de proveedor | El sistema deberá asociar automáticamente el proveedor relacionado al equipo averiado | Sistema | Alta |
+| RF-237 | Averías | Registro de fecha de cierre | El sistema deberá registrar automáticamente la fecha y hora de cierre de averías | Sistema | Alta |
+| RF-238 | Averías | Cálculo de duración de avería | El sistema deberá calcular automáticamente la duración total de la avería | Sistema | Alta |
+| RF-239 | Averías | Visualización de equipos averiados | El sistema deberá permitir visualizar equipos que se encuentren actualmente averiados | Usuario, Administrador | Alta |
+| RF-240 | Averías | Restricción de operaciones sobre equipos averiados | El sistema no deberá permitir operaciones incompatibles sobre equipos con averías activas | Sistema | Alta |
+| RF-241 | Averías | Evidencia obligatoria de avería | El sistema deberá validar el registro de evidencias fotográficas para averías críticas | Sistema | Alta |
+| RF-242 | Averías | Trazabilidad de cambios de estado | El sistema deberá registrar cambios de estado realizados durante el ciclo de vida de la avería | Sistema | Alta |
+
 # 9. REGLAS DE NEGOCIO
 
 [PENDIENTE]
