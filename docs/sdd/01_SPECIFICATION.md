@@ -151,20 +151,25 @@ Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de
 | ADMIN | Acceso total a configuración, reportes, dashboard, catálogos, campañas, auditoría y monitoreo operativo |
 | USER | Acceso operativo para registro de equipos, averías, evidencias fotográficas y actualización de estados |
 
-# 7. MÓDULOS DEL SISTEMA
+# 7. Módulos del Sistema
 
 | Código | Módulo | Descripción |
-||||
-| MOD-01 | Autenticación | |
-| MOD-02 | Usuarios | |
-| MOD-03 | PSR/OSR | |
-| MOD-04 | Equipos | |
-| MOD-05 | Averías | |
-| MOD-06 | Evidencias Fotográficas | |
-| MOD-07 | Reportes | |
-| MOD-08 | Dashboard | |
-
-
+|---|---|---|
+| MOD-01 | Autenticación | Gestión de autenticación mediante cuenta Microsoft corporativa y control de sesiones |
+| MOD-02 | Usuarios | Administración de usuarios, roles y accesos al sistema |
+| MOD-03 | Sedes | Gestión de sedes operativas como Packing Uva y Packing Arándano |
+| MOD-04 | Campañas | Gestión de campañas operativas |
+| MOD-05 | PSR / OSR | Registro y control documental de solicitudes operativas |
+| MOD-06 | Equipos | Gestión operativa de equipos alquilados |
+| MOD-07 | Tipos de Equipos | Administración de categorías y tipos de equipos |
+| MOD-08 | Proveedores | Gestión de proveedores asociados a equipos |
+| MOD-09 | Averías | Registro, seguimiento y control de averías operativas |
+| MOD-10 | Evidencias Fotográficas | Gestión de fotografías asociadas a operaciones y averías |
+| MOD-11 | Dashboard KPI | Visualización de indicadores y métricas operativas |
+| MOD-12 | Reportes PDF | Generación y exportación de reportes operativos en PDF |
+| MOD-13 | Auditoría | Registro de trazabilidad y actividad operacional del sistema |
+| MOD-14 | Catálogos | Administración de datos maestros y configuraciones auxiliares |
+| MOD-15 | Configuración | Configuración general del sistema |
 
 # 8. REQUERIMIENTOS FUNCIONALES
 
