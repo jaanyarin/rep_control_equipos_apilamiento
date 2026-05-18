@@ -362,6 +362,39 @@ Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de
 | RF-158 | Equipos | Auditoría de equipos | El sistema deberá registrar eventos de creación, actualización y desactivación de equipos | Usuario, Administrador | Alta |
 | RF-159 | Equipos | Mensajes de validación operativa | El sistema deberá mostrar mensajes visuales de confirmación y error durante operaciones relacionadas a equipos | Usuario, Administrador | Media |
 
+# MOD-07 — TIPOS DE EQUIPOS
+
+| Código | Módulo | Nombre | Descripción | Actor | Prioridad |
+|---|---|---|---|---|---|
+| RF-160 | Tipos de Equipos | Registro de tipos de equipo | El sistema deberá permitir registrar tipos de equipos operativos | Administrador | Alta |
+| RF-161 | Tipos de Equipos | Actualización de tipos | El sistema deberá permitir actualizar información de tipos de equipos | Administrador | Alta |
+| RF-162 | Tipos de Equipos | Visualización de tipos | El sistema deberá permitir visualizar tipos de equipos registrados | Usuario, Administrador | Alta |
+| RF-163 | Tipos de Equipos | Búsqueda de tipos | El sistema deberá permitir realizar búsquedas por nombre o código | Usuario, Administrador | Media |
+| RF-164 | Tipos de Equipos | Código único | El sistema deberá validar códigos únicos por tipo de equipo | Administrador | Alta |
+| RF-165 | Tipos de Equipos | Estado operativo | El sistema deberá permitir activar o desactivar tipos de equipos | Administrador | Media |
+| RF-166 | Tipos de Equipos | Asociación a equipos | El sistema deberá permitir asociar tipos a equipos registrados | Administrador | Alta |
+| RF-167 | Tipos de Equipos | Restricción de eliminación | El sistema no deberá permitir eliminar tipos asociados a equipos | Administrador | Alta |
+| RF-168 | Tipos de Equipos | Auditoría de tipos | El sistema deberá registrar cambios realizados sobre tipos de equipos | Administrador | Alta |
+| RF-169 | Tipos de Equipos | Mensajes operativos | El sistema deberá mostrar mensajes visuales durante operaciones administrativas | Administrador | Media |
+| RF-170 | Tipos de Equipos | Clasificación por tecnología de batería | El sistema deberá permitir clasificar tipos de equipos según tecnología de batería como Litio o Plomo | Administrador | Alta |
+| RF-171 | Tipos de Equipos | Clasificación por categoría operacional | El sistema deberá permitir clasificar equipos como Transpaleta, Apilador o Montacargas | Administrador | Alta |
+| RF-172 | Tipos de Equipos | Asociación automática desde motivos PSR | El sistema deberá permitir relacionar automáticamente el tipo de equipo según el motivo PSR seleccionado | Sistema | Alta |
+| RF-173 | Tipos de Equipos | Visualización de compatibilidad operacional | El sistema deberá mostrar los tipos de equipos permitidos según el servicio registrado en PSR | Usuario, Administrador | Media |
+| RF-174 | Tipos de Equipos | Configuración de accesorios requeridos | El sistema deberá permitir definir accesorios obligatorios por tipo de equipo | Administrador | Alta |
+| RF-175 | Tipos de Equipos | Configuración de evidencias obligatorias | El sistema deberá permitir definir fotografías obligatorias según el tipo de equipo | Administrador | Alta |
+| RF-176 | Tipos de Equipos | Configuración de componentes asociados | El sistema deberá permitir parametrizar componentes asociados por tipo de equipo | Administrador | Media |
+| RF-177 | Tipos de Equipos | Validación de accesorios obligatorios | El sistema deberá validar que los accesorios requeridos sean registrados durante la recepción del equipo | Sistema | Alta |
+| RF-178 | Tipos de Equipos | Validación de evidencias obligatorias | El sistema deberá validar que las fotografías obligatorias sean registradas antes de finalizar la recepción o devolución | Sistema | Alta |
+| RF-179 | Tipos de Equipos | Configuración de checklist operativo | El sistema deberá permitir configurar checklist operativos específicos por tipo de equipo | Administrador | Media |
+| RF-180 | Tipos de Equipos | Configuración de campos dinámicos | El sistema deberá permitir habilitar o deshabilitar campos operativos según el tipo de equipo | Administrador | Media |
+| RF-181 | Tipos de Equipos | Visualización de estadísticas por tipo | El sistema deberá visualizar indicadores operativos agrupados por tipo de equipo | Usuario, Administrador | Media |
+| RF-182 | Tipos de Equipos | Historial operacional por tipo | El sistema deberá permitir consultar historial operativo consolidado por tipo de equipo | Usuario, Administrador | Media |
+| RF-183 | Tipos de Equipos | Restricción de incompatibilidad operacional | El sistema deberá impedir asignar tipos de equipos incompatibles con el servicio PSR registrado | Sistema | Alta |
+| RF-184 | Tipos de Equipos | Configuración de horómetro obligatorio | El sistema deberá permitir definir si el registro de horómetro es obligatorio según el tipo de equipo | Administrador | Media |
+| RF-185 | Tipos de Equipos | Configuración de batería obligatoria | El sistema deberá permitir definir obligatoriedad de información de baterías según el tipo de equipo | Administrador | Media |
+| RF-186 | Tipos de Equipos | Configuración de cargador obligatorio | El sistema deberá permitir definir obligatoriedad de información de cargadores según el tipo de equipo | Administrador | Media |
+| RF-187 | Tipos de Equipos | Configuración de transformador obligatorio | El sistema deberá permitir definir obligatoriedad de transformadores según el tipo de equipo | Administrador | Baja |
+
 # 9. REGLAS DE NEGOCIO
 
 [PENDIENTE]
