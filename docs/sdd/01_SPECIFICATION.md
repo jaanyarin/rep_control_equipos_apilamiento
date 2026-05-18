@@ -137,24 +137,19 @@ Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de
 | PRB-007 | No existe historial operacional consolidado por equipo |
 | PRB-008 | No existe control estructurado de responsabilidades operativas |
 
-
-
-# 5. ACTORES DEL SISTEMA
+# 5. Actores del Sistema
 
 | Actor | Descripción |
-|||
-| Administrador | |
-| Supervisor | |
-| Usuario Operativo | |
-| Proveedor | |
+|---|---|
+| Administrador | Responsable de la administración general del sistema, configuración, monitoreo operativo, reportes e indicadores |
+| Usuario | Responsable del registro operativo de equipos, averías, actualización de estados y evidencias fotográficas desde el aplicativo móvil |
 
+# 6. Roles y Permisos
 
-
-# 6. ROLES Y PERMISOS
-
-[PENDIENTE]
-
-
+| Rol | Descripción |
+|---|---|
+| ADMIN | Acceso total a configuración, reportes, dashboard, catálogos, campañas, auditoría y monitoreo operativo |
+| USER | Acceso operativo para registro de equipos, averías, evidencias fotográficas y actualización de estados |
 
 # 7. MÓDULOS DEL SISTEMA
 
