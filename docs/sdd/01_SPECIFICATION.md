@@ -1,12 +1,31 @@
 # SOFTWARE SPECIFICATION DOCUMENT
 # Sistema de Control de Equipos de Apilamiento
 
----
+# Tabla de Contenido
 
-# 1. INFORMACIÓN GENERAL
+- [1. Información General](#1-información-general)
+- [2. Objetivo del Sistema](#2-objetivo-del-sistema)
+- [3. Alcance del Sistema](#3-alcance-del-sistema)
+- [4. Problemática Actual](#4-problemática-actual)
+- [5. Actores del Sistema](#5-actores-del-sistema)
+- [6. Roles y Permisos](#6-roles-y-permisos)
+- [7. Módulos del Sistema](#7-módulos-del-sistema)
+- [8. Requerimientos Funcionales](#8-requerimientos-funcionales)
+- [9. Reglas de Negocio](#9-reglas-de-negocio)
+- [10. Requerimientos No Funcionales](#10-requerimientos-no-funcionales)
+- [11. Entidades Principales](#11-entidades-principales)
+- [12. Flujos Operativos](#12-flujos-operativos)
+- [13. Reportes](#13-reportes)
+- [14. Consideraciones Técnicas](#14-consideraciones-técnicas)
+- [15. Pendientes Funcionales](#15-pendientes-funcionales)
+- [16. Anexos](#16-anexos)
+
+
+
+# 1. Información General
 
 | Campo | Detalle |
-|---|---|
+|||
 | Proyecto | Sistema de Control de Equipos de Apilamiento |
 | Tipo de Sistema | Plataforma Full Stack Empresarial |
 | Plataforma | Android + Web |
@@ -15,7 +34,7 @@
 | Fecha | 2026-05-18 |
 | Responsable | Jose Anyarin |
 
----
+
 
 # 2. OBJETIVO DEL SISTEMA
 
@@ -23,7 +42,7 @@
 
 Desarrollar una plataforma digital empresarial para el control operativo de equipos de apilamiento alquilados, permitiendo gestionar el ciclo completo de solicitud, asignación, operación, averías, devoluciones y evidencias fotográficas, garantizando trazabilidad, control de tiempos de inactividad y soporte documental para la validación operacional y financiera del servicio.
 
----
+
 
 ## 2.2 Objetivos Específicos
 
@@ -37,7 +56,7 @@ Desarrollar una plataforma digital empresarial para el control operativo de equi
 - Facilitar la supervisión y auditoría de equipos alquilados.
 - Digitalizar procesos manuales actualmente gestionados en Excel.
 
----
+
 
 # 3. ALCANCE DEL SISTEMA
 
@@ -65,7 +84,7 @@ Desarrollar una plataforma digital empresarial para el control operativo de equi
 - Validaciones operativas en tiempo real.
 - Mensajes visuales de confirmación, validación y error durante las operaciones ejecutadas por el usuario.
 
----
+
 
 ## 3.2 No Incluye
 
@@ -82,7 +101,7 @@ Desarrollar una plataforma digital empresarial para el control operativo de equi
 - Gestión financiera.
 - Módulo de mantenimiento predictivo.
 
----
+
 
 # 4. PROBLEMÁTICA ACTUAL
 
@@ -104,12 +123,12 @@ La gestión actual presenta dificultades para controlar:
 
 Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de auditoría y baja capacidad de análisis para la toma de decisiones.
 
----
+
 
 ## 4.2 Problemas Identificados
 
 | Código | Problema |
-|---|---|
+|||
 | PRB-001 | No existe trazabilidad centralizada de equipos alquilados |
 | PRB-002 | No existe control estructurado de averías |
 | PRB-003 | No existe validación visual documentada mediante evidencias |
@@ -119,29 +138,29 @@ Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de
 | PRB-007 | No existe historial operacional consolidado por equipo |
 | PRB-008 | No existe control estructurado de responsabilidades operativas |
 
----
+
 
 # 5. ACTORES DEL SISTEMA
 
 | Actor | Descripción |
-|---|---|
+|||
 | Administrador | |
 | Supervisor | |
 | Usuario Operativo | |
 | Proveedor | |
 
----
+
 
 # 6. ROLES Y PERMISOS
 
 [PENDIENTE]
 
----
+
 
 # 7. MÓDULOS DEL SISTEMA
 
 | Código | Módulo | Descripción |
-|---|---|---|
+||||
 | MOD-01 | Autenticación | |
 | MOD-02 | Usuarios | |
 | MOD-03 | PSR/OSR | |
@@ -151,55 +170,55 @@ Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de
 | MOD-07 | Reportes | |
 | MOD-08 | Dashboard | |
 
----
+
 
 # 8. REQUERIMIENTOS FUNCIONALES
 
 [PENDIENTE]
 
----
+
 
 # 9. REGLAS DE NEGOCIO
 
 [PENDIENTE]
 
----
+
 
 # 10. REQUERIMIENTOS NO FUNCIONALES
 
 [PENDIENTE]
 
----
+
 
 # 11. ENTIDADES PRINCIPALES
 
 [PENDIENTE]
 
----
+
 
 # 12. FLUJOS OPERATIVOS
 
 [PENDIENTE]
 
----
+
 
 # 13. REPORTES
 
 [PENDIENTE]
 
----
+
 
 # 14. CONSIDERACIONES TÉCNICAS
 
 [PENDIENTE]
 
----
+
 
 # 15. PENDIENTES FUNCIONALES
 
 [PENDIENTE]
 
----
+
 
 # 16. ANEXOS
 
