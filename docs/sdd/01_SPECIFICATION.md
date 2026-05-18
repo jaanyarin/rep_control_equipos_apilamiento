@@ -25,7 +25,6 @@
 # 1. Información General
 
 | Campo | Detalle |
-|||
 | Proyecto | Sistema de Control de Equipos de Apilamiento |
 | Tipo de Sistema | Plataforma Full Stack Empresarial |
 | Plataforma | Android + Web |
