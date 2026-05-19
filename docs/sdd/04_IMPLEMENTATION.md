@@ -1,4 +1,4 @@
-# SOFTWARE DEVELOPMENT DOCUMENT (SDD)
+﻿# SOFTWARE DEVELOPMENT DOCUMENT (SDD)
 # 04_IMPLEMENTATION.md
 
 ---
@@ -534,7 +534,7 @@ Gestionar fotografías operativas de manera controlada.
 - Prevención duplicados.
 - Solo usuarios Administrador podrán eliminar fotografías.
 - Toda eliminación de fotografías deberá quedar registrada en auditoría.
-- Las fotografías podrán eliminarse históricamente para control de almacenamiento.
+- Las fotografias no deben eliminarse fisicamente; solo se permite baja logica con trazabilidad de auditoria.
 - El sistema deberá aplicar compresión automática server-side.
 
 ---
@@ -876,3 +876,5 @@ El presente documento servirá como referencia oficial para:
 | Responsable Técnico | Pendiente | Pendiente |
 | Responsable Proyecto | Pendiente | Pendiente |
 | Aprobación Final | Pendiente | Pendiente |
+
+

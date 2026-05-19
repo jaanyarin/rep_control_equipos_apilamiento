@@ -1,4 +1,4 @@
-# SOFTWARE DEVELOPMENT DOCUMENT (SDD)
+﻿# SOFTWARE DEVELOPMENT DOCUMENT (SDD)
 # 07_API_CONTRACTS.md
 
 ---
@@ -126,7 +126,8 @@ POST /api/v1/auth/login
 **Request:**
 ```json
 {
-  "email": "usuario@dominioempresa.com"
+  "authorizationCode": "0.AQABAAAAA...",
+  "redirectUri": "com.repcontrol://auth/callback"
 }
 ```
 
@@ -606,7 +607,7 @@ GET /api/v1/equipment
 **Parámetros:**
 | Parámetro | Descripción |
 |-----------|-------------|
-| campaña_id | Filtrar por campaña |
+| campana_id | Filtrar por campaña |
 | proveedor_id | Filtrar por proveedor |
 | tipo_equipo_id | Filtrar por tipo |
 | estado | DISPONIBLE, OPERATIVO, AVERIADO, MANTENIMIENTO, DEVUELTO |
@@ -627,7 +628,7 @@ POST /api/v1/equipment
   "numeroSerie": "SN-2026-001",
   "marca": "Toyota",
   "modelo": "8FBE15",
-  "campañaId": 1,
+  "campanaId": 1,
   "proveedorId": 1,
   "tipoEquipoId": 1,
   "marcaId": 1,
@@ -719,7 +720,7 @@ GET /api/v1/psr
 **Parámetros:**
 | Parámetro | Descripción |
 |-----------|-------------|
-| campaña_id | Filtrar por campaña |
+| campana_id | Filtrar por campaña |
 | sitio_id | Filtrar por sitio |
 | estado | ACTIVO, CERRADO |
 | filtro | Buscar por número |
@@ -736,7 +737,7 @@ POST /api/v1/psr
 ```json
 {
   "numero": "PSR-2026-0001",
-  "campañaId": 1,
+  "campanaId": 1,
   "sitioId": 1,
   "motivoId": 1,
   "descripcion": "Se requiere equipo para carga",
@@ -1004,7 +1005,7 @@ GET /api/v1/evidences
 DELETE /api/v1/evidences/{id}
 ```
 
-**Nota:** Solo administradores pueden eliminar evidencias.
+**Nota:** Solo administradores pueden eliminar evidencias de forma logica (`estado_activo = 0`, `fecha_baja`), sin borrado fisico del archivo ni del registro historico.
 
 ---
 
@@ -1019,7 +1020,7 @@ GET /api/v1/dashboard/kpis
 **Parámetros:**
 | Parámetro | Descripción |
 |-----------|-------------|
-| campañaId | Filtrar por campaña (opcional) |
+| campanaId | Filtrar por campaña (opcional) |
 | sitioId | Filtrar por sitio (opcional) |
 | proveedorId | Filtrar por proveedor (opcional) |
 | fechaDesde | Fecha inicio (opcional) |
@@ -1289,3 +1290,6 @@ La documentación completa de las APIs está disponible en:
 | Versión | Fecha | Descripción | Autor |
 |---------|-------|--------------|-------|
 | 1.0 | 2026-05-19 | Versión inicial contratos API | Jose Anyarin |
+
+
+

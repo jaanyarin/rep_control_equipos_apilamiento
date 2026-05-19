@@ -1,4 +1,4 @@
-SET NAMES utf8mb4;
+﻿SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 CREATE DATABASE IF NOT EXISTS rep_equipos_apilamiento
@@ -29,7 +29,7 @@ CREATE TABLE sitios (
     fecha_creacion      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
     fecha_actualizacion DATETIME        NULL,
     fecha_baja          DATETIME        NULL,
-    usuario_creacion    BIGINT          NOT NULL,
+    usuario_creacion    BIGINT          NULL,
     version             INT             NOT NULL DEFAULT 0,
     PRIMARY KEY (id),
     UNIQUE INDEX idx_sitio_codigo (codigo),
@@ -66,7 +66,7 @@ CREATE TABLE usuarios (
     CONSTRAINT fk_usuario_creacion FOREIGN KEY (usuario_creacion) REFERENCES usuarios(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE campañas (
+CREATE TABLE campanas (
     id                  BIGINT          NOT NULL AUTO_INCREMENT,
     codigo              VARCHAR(50)     NOT NULL,
     nombre              VARCHAR(255)    NOT NULL,
@@ -84,12 +84,12 @@ CREATE TABLE campañas (
     usuario_creacion    BIGINT          NOT NULL,
     version             INT             NOT NULL DEFAULT 0,
     PRIMARY KEY (id),
-    UNIQUE INDEX idx_campaña_codigo (codigo),
-    INDEX idx_campaña_sitio (sitio_id),
-    INDEX idx_campaña_estado (estado),
-    INDEX idx_campaña_activa (es_activa),
-    CONSTRAINT fk_campaña_sitio FOREIGN KEY (sitio_id) REFERENCES sitios(id),
-    CONSTRAINT fk_campaña_usuario_creacion FOREIGN KEY (usuario_creacion) REFERENCES usuarios(id)
+    UNIQUE INDEX idx_campana_codigo (codigo),
+    INDEX idx_campana_sitio (sitio_id),
+    INDEX idx_campana_estado (estado),
+    INDEX idx_campana_activa (es_activa),
+    CONSTRAINT fk_campana_sitio FOREIGN KEY (sitio_id) REFERENCES sitios(id),
+    CONSTRAINT fk_campana_usuario_creacion FOREIGN KEY (usuario_creacion) REFERENCES usuarios(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE tipos_equipos (
@@ -183,7 +183,7 @@ CREATE TABLE estados_averias (
 CREATE TABLE psr (
     id                  BIGINT          NOT NULL AUTO_INCREMENT,
     numero              VARCHAR(50)     NOT NULL,
-    campaña_id          BIGINT          NOT NULL,
+    campana_id          BIGINT          NOT NULL,
     sitio_id            BIGINT          NOT NULL,
     motivo_id           BIGINT          NOT NULL,
     descripcion         TEXT            NULL,
@@ -197,10 +197,10 @@ CREATE TABLE psr (
     version             INT             NOT NULL DEFAULT 0,
     PRIMARY KEY (id),
     UNIQUE INDEX idx_psr_numero (numero),
-    INDEX idx_psr_campaña (campaña_id),
+    INDEX idx_psr_campana (campana_id),
     INDEX idx_psr_sitio (sitio_id),
     INDEX idx_psr_estado (estado),
-    CONSTRAINT fk_psr_campaña FOREIGN KEY (campaña_id) REFERENCES campañas(id),
+    CONSTRAINT fk_psr_campana FOREIGN KEY (campana_id) REFERENCES campanas(id),
     CONSTRAINT fk_psr_sitio FOREIGN KEY (sitio_id) REFERENCES sitios(id),
     CONSTRAINT fk_psr_motivo FOREIGN KEY (motivo_id) REFERENCES motivos_psr(id),
     CONSTRAINT fk_psr_usuario_creacion FOREIGN KEY (usuario_creacion) REFERENCES usuarios(id)
@@ -237,7 +237,7 @@ CREATE TABLE equipos (
     numero_serie        VARCHAR(100)    NOT NULL,
     marca               VARCHAR(100)    NULL,
     modelo              VARCHAR(100)    NULL,
-    campaña_id          BIGINT          NULL,
+    campana_id          BIGINT          NULL,
     osr_id              BIGINT          NULL,
     proveedor_id        BIGINT          NOT NULL,
     tipo_equipo_id      BIGINT          NOT NULL,
@@ -261,12 +261,12 @@ CREATE TABLE equipos (
     PRIMARY KEY (id),
     UNIQUE INDEX idx_equipo_codigo (codigo),
     INDEX idx_equipo_serie (numero_serie),
-    INDEX idx_equipo_campaña (campaña_id),
+    INDEX idx_equipo_campana (campana_id),
     INDEX idx_equipo_proveedor (proveedor_id),
     INDEX idx_equipo_tipo (tipo_equipo_id),
     INDEX idx_equipo_estado (estado),
     INDEX idx_equipo_osr (osr_id),
-    CONSTRAINT fk_equipo_campaña FOREIGN KEY (campaña_id) REFERENCES campañas(id),
+    CONSTRAINT fk_equipo_campana FOREIGN KEY (campana_id) REFERENCES campanas(id),
     CONSTRAINT fk_equipo_osr FOREIGN KEY (osr_id) REFERENCES osr(id),
     CONSTRAINT fk_equipo_proveedor FOREIGN KEY (proveedor_id) REFERENCES proveedores(id),
     CONSTRAINT fk_equipo_tipo_equipo FOREIGN KEY (tipo_equipo_id) REFERENCES tipos_equipos(id),
@@ -275,6 +275,24 @@ CREATE TABLE equipos (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ALTER TABLE osr ADD CONSTRAINT fk_osr_equipo FOREIGN KEY (equipo_id) REFERENCES equipos(id);
+
+CREATE TABLE equipos_campanias_historial (
+    id                  BIGINT          NOT NULL AUTO_INCREMENT,
+    equipo_id           BIGINT          NOT NULL,
+    campana_id          BIGINT          NOT NULL,
+    fecha_inicio        DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    fecha_fin           DATETIME        NULL,
+    motivo              VARCHAR(255)    NULL,
+    usuario_creacion    BIGINT          NOT NULL,
+    version             INT             NOT NULL DEFAULT 0,
+    PRIMARY KEY (id),
+    INDEX idx_equipo_campana_hist_equipo (equipo_id),
+    INDEX idx_equipo_campana_hist_campana (campana_id),
+    INDEX idx_equipo_campana_hist_fecha_inicio (fecha_inicio),
+    CONSTRAINT fk_equipo_campana_hist_equipo FOREIGN KEY (equipo_id) REFERENCES equipos(id),
+    CONSTRAINT fk_equipo_campana_hist_campana FOREIGN KEY (campana_id) REFERENCES campanas(id),
+    CONSTRAINT fk_equipo_campana_hist_usuario_creacion FOREIGN KEY (usuario_creacion) REFERENCES usuarios(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE averias (
     id                  BIGINT          NOT NULL AUTO_INCREMENT,
@@ -402,3 +420,5 @@ INSERT INTO configuraciones (clave, valor, descripcion, tipo, categoria) VALUES
 ('DATE_FORMAT', 'yyyy-MM-dd', 'Formato de fecha', 'STRING', 'GENERAL');
 
 SELECT 'Base de datos creada exitosamente' AS mensaje;
+
+

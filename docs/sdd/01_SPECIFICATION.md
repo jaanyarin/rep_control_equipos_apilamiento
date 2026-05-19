@@ -1,4 +1,4 @@
-# SOFTWARE SPECIFICATION DOCUMENT
+﻿# SOFTWARE SPECIFICATION DOCUMENT
 # Sistema de Control de Equipos de Apilamiento
 
 # Tabla de Contenido

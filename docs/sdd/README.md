@@ -1,4 +1,4 @@
-# REP Control Equipos Apilamiento
+﻿# REP Control Equipos Apilamiento
 
 Sistema empresarial para la gestión operativa, control documental y seguimiento de equipos alquilados utilizados en procesos de apilamiento agrícola.
 
@@ -335,3 +335,4 @@ Proyecto desarrollado para control operacional agrícola empresarial.
 # Licencia
 
 Pendiente definición.
+

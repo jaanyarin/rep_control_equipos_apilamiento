@@ -1,4 +1,4 @@
-# SOFTWARE DEVELOPMENT DOCUMENT (SDD)
+﻿# SOFTWARE DEVELOPMENT DOCUMENT (SDD)
 # 05_TECHNICAL_ARCHITECTURE.md
 
 ---
@@ -545,11 +545,11 @@ src/
 |----------|------------|---------|
 | Tablas | snake_case plural | `users`, `equipment_types` |
 | Primary Key | `id` | `id` BIGINT AUTO_INCREMENT |
-| Foreign Key | `tabla_id` | `user_id`, `campaign_id` |
+| Foreign Key | `tabla_id` | `user_id`, `campana_id` |
 | Timestamps | `fecha_creacion`, `fecha_actualizacion` | DATETIME |
 | Booleanos | `estado_activo` | TINYINT(1) |
 | Soft Delete | `estado_activo` + `fecha_baja` | - |
-| Índices | idx_tabla_campos | `idx_equipment_campaign` |
+| Índices | idx_tabla_campos | `idx_equipment_campana` |
 
 ## 10.2 Campos Estándar (Todas las Tablas)
 
@@ -581,8 +581,8 @@ CREATE TABLE ejemplo (
 | campaigns | Campañas agrícolas | site_id |
 | equipment_types | Tipos equipos | - |
 | providers | Proveedores | - |
-| equipment | Equipos alquilados | provider_id, equipment_type_id, campaign_id, osr_id |
-| psr | Pedidos servicio requerimiento | campaign_id, site_id |
+| equipment | Equipos alquilados | provider_id, equipment_type_id, campana_id, osr_id |
+| psr | Pedidos servicio requerimiento | campana_id, site_id |
 | osr | Órdenes servicio requerimiento | psr_id, equipment_id |
 | damages | Averías equipos | equipment_id, user_id |
 | evidence | Evidencias fotográficas | damage_id, equipment_id |
@@ -610,11 +610,11 @@ equipment_types (1) ─ (N) equipment
 ## 10.4 Índices Críticos
 
 ```sql
-CREATE INDEX idx_equipment_campaign ON equipment(campaign_id);
+CREATE INDEX idx_equipment_campana ON equipment(campana_id);
 CREATE INDEX idx_equipment_provider ON equipment(provider_id);
 CREATE INDEX idx_damage_equipment ON damages(equipment_id);
 CREATE INDEX idx_damage_status ON damages(status);
-CREATE INDEX idx_psr_campaign ON psr(campaign_id);
+CREATE INDEX idx_psr_campana ON psr(campana_id);
 CREATE INDEX idx_osr_psr ON osr(psr_id);
 CREATE INDEX idx_audit_user ON audit_logs(user_id);
 CREATE INDEX idx_audit_timestamp ON audit_logs(timestamp);
@@ -904,7 +904,7 @@ CREATE TABLE audit_logs (
 | Servicio | Imagen | Puerto | Descripción |
 |----------|--------|--------|-------------|
 | backend | custom quarkus-app | 8080 | API REST |
-| frontend-web | custom react-app | 3000 | Dashboard |
+| dashboard | custom react-app | 3000 | Dashboard |
 | mysql | mysql:8 | 3306 | Base datos |
 | nginx | nginx:alpine | 80,443 | Proxy + SSL |
 
@@ -934,8 +934,8 @@ services:
     networks:
       - app-network
 
-  frontend-web:
-    build: ./frontend-web
+  dashboard:
+    build: ./dashboard
     ports:
       - "3000:3000"
     depends_on:
@@ -952,7 +952,7 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - backend
-      - frontend-web
+      - dashboard
     networks:
       - app-network
 
@@ -1000,7 +1000,7 @@ jobs:
         run: cd backend && ./mvnw clean package -DskipTests
         
       - name: Build Frontend Web
-        run: cd frontend-web && npm ci && npm run build
+        run: cd dashboard && npm ci && npm run build
         
       - name: Build Frontend Mobile
         run: cd mobile && npm ci
@@ -1115,3 +1115,5 @@ jobs:
 | Versión | Fecha | Descripción | Autor |
 |---------|-------|--------------|-------|
 | 1.0 | 2026-05-19 | Versión inicial arquitectura técnica | Jose Anyarin |
+
+

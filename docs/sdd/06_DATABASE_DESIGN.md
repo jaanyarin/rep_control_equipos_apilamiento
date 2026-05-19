@@ -1,4 +1,4 @@
-# SOFTWARE DEVELOPMENT DOCUMENT (SDD)
+﻿# SOFTWARE DEVELOPMENT DOCUMENT (SDD)
 # 06_DATABASE_DESIGN.md
 
 ---
@@ -44,13 +44,13 @@ El presente documento tiene como finalidad definir el diseño completo de la bas
 
 | Elemento | Convención | Ejemplo |
 |----------|------------|---------|
-| Tablas | snake_case plural | equipos, campañas, proveedores |
+| Tablas | snake_case plural | equipos, campanas, proveedores |
 | Primary Key | id (BIGINT AUTO_INCREMENT) | id |
-| Foreign Key | tabla_id | sitio_id, campaña_id |
+| Foreign Key | tabla_id | sitio_id, campana_id |
 | Timestamps | fecha_creacion, fecha_actualizacion | fecha_creacion DATETIME |
 | Booleanos | estado_activo | TINYINT(1) |
 | Soft Delete | estado_activo + fecha_baja | estado_activo + fecha_baja |
-| Índices | idx_tabla_campo | idx_equipo_campaña |
+| Índices | idx_tabla_campo | idx_equipo_campana |
 
 ## 4.2 Campos Comunes (Todas las Tablas)
 
@@ -76,7 +76,7 @@ El presente documento tiene como finalidad definir el diseño completo de la bas
 | 1 | roles | Roles operativos del sistema (ADMIN, USER) |
 | 2 | sitios | Sedes operativas |
 | 3 | usuarios | Usuarios del sistema |
-| 4 | campañas | Campañas agrícolas |
+| 4 | campanas | Campañas agrícolas |
 | 5 | tipos_equipos | Tipos de equipos |
 | 6 | marcas | Marcas de equipos |
 | 7 | proveedores | Proveedores de equipos |
@@ -165,7 +165,7 @@ El presente documento tiene como finalidad definir el diseño completo de la bas
 
 ## 5.2 Tablas de Organización
 
-### campañas
+### campanas
 
 | Campo | Tipo | Nulo | Default | Descripción |
 |-------|------|------|---------|-------------|
@@ -186,7 +186,7 @@ El presente documento tiene como finalidad definir el diseño completo de la bas
 | usuario_creacion | BIGINT | NO | - | FK → usuarios |
 | version | INT | NO | 0 | Optimistic locking |
 
-**Índices:** UNIQUE idx_campaña_codigo (codigo), INDEX idx_campaña_sitio (sitio_id), INDEX idx_campaña_estado (estado), INDEX idx_campaña_activa (es_activa)
+**Índices:** UNIQUE idx_campana_codigo (codigo), INDEX idx_campana_sitio (sitio_id), INDEX idx_campana_estado (estado), INDEX idx_campana_activa (es_activa)
 
 **FK:** sitio_id → sitios, usuario_creacion → usuarios
 
@@ -314,7 +314,7 @@ El presente documento tiene como finalidad definir el diseño completo de la bas
 |-------|------|------|---------|-------------|
 | id | BIGINT | NO | AUTO_INCREMENT | Primary Key |
 | numero | VARCHAR(50) | NO | - | PSR-2026-0001 |
-| campaña_id | BIGINT | NO | - | FK → campañas |
+| campana_id | BIGINT | NO | - | FK → campanas |
 | sitio_id | BIGINT | NO | - | FK → sitios |
 | motivo_id | BIGINT | NO | - | FK → motivos_psr |
 | descripcion | TEXT | YES | - | Descripción |
@@ -327,9 +327,9 @@ El presente documento tiene como finalidad definir el diseño completo de la bas
 | usuario_creacion | BIGINT | NO | - | FK → usuarios |
 | version | INT | NO | 0 | Optimistic locking |
 
-**Índices:** UNIQUE idx_psr_numero (numero), INDEX idx_psr_campaña (campaña_id), INDEX idx_psr_sitio (sitio_id), INDEX idx_psr_estado (estado)
+**Índices:** UNIQUE idx_psr_numero (numero), INDEX idx_psr_campana (campana_id), INDEX idx_psr_sitio (sitio_id), INDEX idx_psr_estado (estado)
 
-**FK:** campaña_id → campañas, sitio_id → sitios, motivo_id → motivos_psr, usuario_creacion → usuarios
+**FK:** campana_id → campanas, sitio_id → sitios, motivo_id → motivos_psr, usuario_creacion → usuarios
 
 ---
 
@@ -369,7 +369,7 @@ El presente documento tiene como finalidad definir el diseño completo de la bas
 | numero_serie | VARCHAR(100) | NO | - | Número serie único |
 | marca | VARCHAR(100) | YES | - | Marca equipo |
 | modelo | VARCHAR(100) | YES | - | Modelo equipo |
-| campaña_id | BIGINT | YES | - | FK → campañas |
+| campana_id | BIGINT | YES | - | FK → campanas |
 | osr_id | BIGINT | YES | - | FK → osr |
 | proveedor_id | BIGINT | NO | - | FK → proveedores |
 | tipo_equipo_id | BIGINT | NO | - | FK → tipos_equipos |
@@ -391,9 +391,9 @@ El presente documento tiene como finalidad definir el diseño completo de la bas
 | usuario_creacion | BIGINT | NO | - | FK → usuarios |
 | version | INT | NO | 0 | Optimistic locking |
 
-**Índices:** UNIQUE idx_equipo_codigo (codigo), INDEX idx_equipo_serie (numero_serie), INDEX idx_equipo_campaña (campaña_id), INDEX idx_equipo_proveedor (proveedor_id), INDEX idx_equipo_tipo (tipo_equipo_id), INDEX idx_equipo_estado (estado), INDEX idx_equipo_osr (osr_id)
+**Índices:** UNIQUE idx_equipo_codigo (codigo), INDEX idx_equipo_serie (numero_serie), INDEX idx_equipo_campana (campana_id), INDEX idx_equipo_proveedor (proveedor_id), INDEX idx_equipo_tipo (tipo_equipo_id), INDEX idx_equipo_estado (estado), INDEX idx_equipo_osr (osr_id)
 
-**FK:** campaña_id → campañas, osr_id → osr, proveedor_id → proveedores, tipo_equipo_id → tipos_equipos, marca_id → marcas, usuario_creacion → usuarios
+**FK:** campana_id → campanas, osr_id → osr, proveedor_id → proveedores, tipo_equipo_id → tipos_equipos, marca_id → marcas, usuario_creacion → usuarios
 
 ---
 
@@ -510,13 +510,13 @@ usuarios
 
 sitios
   ↓ (1:N)
-  ├── campañas
+  ├── campanas
   └── usuarios
 
 sitios ← (1:N) → psr
 
-campañas ← (1:N) → psr
-campañas ← (1:N) → equipos
+campanas ← (1:N) → psr
+campanas ← (1:N) → equipos
 
 tipos_equipos ← (1:N) → equipos
 tipos_equipos ← (1:N) → motivos_psr
@@ -625,3 +625,4 @@ scripts/01_create_tables.sql
 | Versión | Fecha | Descripción | Autor |
 |---------|-------|--------------|-------|
 | 1.0 | 2026-05-19 | Versión inicial diseño base de datos | Jose Anyarin |
+
