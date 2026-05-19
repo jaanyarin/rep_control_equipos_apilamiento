@@ -408,6 +408,44 @@ Garantizar APIs mantenibles, escalables y seguras.
 Las APIs deberán mantener compatibilidad backward compatible dentro de la misma versión principal.
 La plataforma deberá soportar exportación de información en formato Excel para módulos operativos y dashboards.
 
+## Estándar Respuesta APIs
+
+Todas las APIs deberán responder mediante estructura estándar para garantizar:
+- consistencia,
+- mantenibilidad,
+- trazabilidad,
+- integración frontend/backend,
+- control de errores.
+
+### Respuesta Exitosa
+
+```json
+{
+  "success": true,
+  "message": "Operación realizada correctamente",
+  "data": {},
+  "timestamp": "2026-05-18T10:00:00Z"
+}
+```
+
+### Respuesta Error
+
+```json
+{
+  "success": false,
+  "message": "Descripción error",
+  "errorCode": "ERR001",
+  "timestamp": "2026-05-18T10:00:00Z"
+}
+```
+
+### Lineamientos
+
+- Todas las respuestas deberán retornar códigos HTTP correctos.
+- Los errores deberán ser manejados centralizadamente.
+- Los mensajes deberán ser entendibles para frontend y auditoría.
+- La plataforma deberá mantener consistencia entre respuestas web y mobile.
+
 ## Métodos HTTP
 
 | Método | Uso |
