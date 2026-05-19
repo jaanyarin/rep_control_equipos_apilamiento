@@ -324,6 +324,7 @@ La plataforma implementará APIs REST empresariales bajo arquitectura versionada
   "data": {},
   "timestamp": "2026-05-18T10:00:00Z"
 }
+```
 
 ### Respuesta Error
 
