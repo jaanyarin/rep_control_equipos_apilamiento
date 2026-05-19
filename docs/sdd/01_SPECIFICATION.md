@@ -3578,4 +3578,430 @@ No se contemplan actualmente:
 
 # 16. ANEXOS
 
-[PENDIENTE]
+## 16.1 Objetivo
+
+El presente apartado documenta los anexos técnicos, operacionales y arquitectónicos complementarios al SDD, con el objetivo de proporcionar información adicional relevante para el desarrollo, despliegue, mantenimiento, soporte y evolución del sistema.
+
+Los anexos permitirán mantener trazabilidad documental y complementar la información funcional y técnica definida dentro del documento principal.
+
+## 16.2 Consideraciones Generales
+
+- Los anexos deberán mantenerse alineados con la arquitectura oficial del sistema.
+- Los anexos podrán actualizarse conforme evolucione la solución.
+- Los diagramas y estructuras técnicas deberán representar el comportamiento real del sistema.
+- Los anexos técnicos deberán utilizar nomenclatura consistente.
+- Los anexos deberán facilitar mantenimiento, soporte y escalabilidad.
+- Los anexos podrán mantenerse en documentos independientes complementarios al SDD.
+
+# 16.3 Anexos Técnicos
+
+## 16.3.1 Diagrama de Arquitectura General
+
+### Descripción
+
+Representa la arquitectura general de la solución y la interacción entre los principales componentes tecnológicos.
+
+### Objetivo
+
+Visualizar la estructura general del sistema y las relaciones entre frontend, backend, base de datos e infraestructura.
+
+### Componentes Incluidos
+
+- Frontend Web React
+- Frontend Mobile React Native APK
+- Backend Quarkus
+- API REST
+- JWT Authentication
+- Microsoft Authentication
+- MySQL
+- Docker
+- NGINX
+- Docker Volumes Persistentes
+
+### Estructura Base Referencial
+
+```text
+[React Web]
+        |
+        |
+[React Native APK]
+        |
+        |
+      [NGINX]
+        |
+        |
+   [Quarkus API]
+        |
+        |
+     [MySQL]
+
+[Microsoft Auth]
+        |
+        |
+      [JWT]
+
+[Docker Volumes]
+        |
+ [Evidencias Multimedia]
+```
+
+### Consideraciones
+
+- La arquitectura deberá mantener separación de responsabilidades.
+- Toda validación crítica deberá ejecutarse desde backend.
+- Las evidencias multimedia deberán mantenerse persistentes.
+
+## 16.3.2 Diagrama Entidad Relación (ERD)
+
+### Descripción
+
+Representa las entidades principales y relaciones del sistema.
+
+### Objetivo
+
+Visualizar integridad referencial y relaciones operacionales.
+
+### Entidades Principales Incluidas
+
+- Usuario
+- Rol
+- Sede
+- Campaña
+- PSR
+- OSR
+- Equipo
+- TipoEquipo
+- Marca
+- Proveedor
+- Avería
+- Evidencia
+- Auditoría
+- Configuración
+
+### Estructura Base Referencial
+
+```text
+Proveedor
+    |
+    | 1:N
+    |
+Equipo
+    |
+    | 1:N
+    |
+Avería
+    |
+    | 1:N
+    |
+Evidencia
+
+Usuario
+    |
+    | 1:N
+    |
+Auditoría
+```
+
+### Consideraciones
+
+- Toda entidad deberá mantener integridad referencial.
+- Las relaciones críticas deberán validarse server-side.
+- Las entidades históricas no deberán eliminarse físicamente.
+
+## 16.3.3 Diccionario de Datos
+
+### Descripción
+
+Documenta campos relevantes y estructura lógica de entidades principales.
+
+### Objetivo
+
+Mantener trazabilidad y comprensión estructural de datos.
+
+### Estructura Base Referencial
+
+| Campo | Tipo | Obligatorio | Descripción |
+|---|---|---|---|
+| id | Long | Sí | Identificador único |
+| codigo | String | Sí | Código operacional |
+| estado | Enum | Sí | Estado operacional |
+| fechaRegistro | DateTime | Sí | Fecha creación |
+
+### Consideraciones
+
+- Los nombres de campos deberán mantener consistencia técnica.
+- Los tipos de datos deberán alinearse con MySQL y JPA.
+- Los campos críticos deberán mantener restricciones obligatorias.
+
+## 16.3.4 Matriz de Roles y Permisos
+
+### Descripción
+
+Define accesos funcionales según roles operacionales.
+
+### Objetivo
+
+Garantizar control de acceso y seguridad funcional.
+
+### Roles Principales
+
+- Administrador
+- Usuario
+- Supervisor
+
+### Estructura Base Referencial
+
+| Módulo | Usuario | Administrador | Supervisor |
+|---|---|---|---|
+| Equipos | Lectura | Total | Lectura |
+| Averías | Registro | Total | Lectura |
+| Reportes | Lectura | Total | Lectura |
+| Auditoría | No | Total | Parcial |
+
+### Consideraciones
+
+- Toda autorización deberá validarse mediante JWT.
+- El backend será responsable del control de permisos.
+- Los endpoints deberán validar roles obligatoriamente.
+
+## 16.3.5 Catálogo de Estados Operacionales
+
+### Descripción
+
+Define estados válidos y transiciones operacionales permitidas.
+
+### Objetivo
+
+Garantizar consistencia operacional.
+
+### Estados Referenciales Equipos
+
+- OPERATIVO
+- AVERIADO
+- EN_MANTENIMIENTO
+- INACTIVO
+
+### Estados Referenciales Averías
+
+- ABIERTA
+- EN_PROCESO
+- CERRADA
+
+### Estructura Base Referencial
+
+```text
+OPERATIVO
+    |
+    v
+AVERIADO
+    |
+    v
+EN_MANTENIMIENTO
+    |
+    v
+OPERATIVO
+```
+
+### Consideraciones
+
+- Los estados deberán validarse desde backend.
+- No deberán existir transiciones inválidas.
+- Toda transición deberá registrar auditoría.
+
+## 16.3.6 Convenciones Técnicas API REST
+
+### Descripción
+
+Define estándares técnicos utilizados por las APIs REST.
+
+### Objetivo
+
+Mantener consistencia entre frontend y backend.
+
+### Estructura Base Referencial
+
+```text
+/api/v1/equipos
+/api/v1/averias
+/api/v1/proveedores
+```
+
+### Convenciones
+
+- Uso JSON.
+- Uso HTTP Status Codes.
+- Uso versionamiento API.
+- Uso JWT Bearer Token.
+
+### Respuesta Base Referencial
+
+```json
+{
+  "success": true,
+  "message": "Operación realizada correctamente",
+  "data": {}
+}
+```
+
+### Consideraciones
+
+- Las APIs deberán documentarse mediante OpenAPI.
+- Los errores deberán estandarizarse.
+- Toda validación crítica deberá ejecutarse server-side.
+
+## 16.3.7 Convenciones Multimedia
+
+### Descripción
+
+Define estándares técnicos para almacenamiento multimedia.
+
+### Objetivo
+
+Garantizar control y persistencia de evidencias.
+
+### Formatos Permitidos
+
+- JPG
+- JPEG
+- PNG
+
+### Restricciones Referenciales
+
+| Restricción | Valor |
+|---|---|
+| Tamaño máximo | Configurable |
+| Formatos válidos | JPG, JPEG, PNG |
+| Persistencia | Obligatoria |
+
+### Estructura Base Referencial
+
+```text
+/evidencias/
+    /equipos/
+    /averias/
+    /devoluciones/
+```
+
+### Consideraciones
+
+- Las evidencias deberán mantenerse persistentes.
+- No deberá permitirse eliminación física directa.
+- Los archivos deberán asociarse a operaciones válidas.
+
+## 16.3.8 Estructura Docker
+
+### Descripción
+
+Representa la organización contenerizada del sistema.
+
+### Objetivo
+
+Facilitar despliegue, mantenimiento y portabilidad.
+
+### Componentes Docker
+
+- Backend Container
+- Frontend Web Container
+- MySQL Container
+- NGINX Container
+- Docker Volumes
+
+### Estructura Base Referencial
+
+```text
+docker-compose.yml
+
+services:
+  backend
+  frontend
+  mysql
+  nginx
+
+volumes:
+  mysql_data
+  multimedia_data
+```
+
+### Consideraciones
+
+- Los volúmenes deberán ser persistentes.
+- Los servicios deberán comunicarse mediante red interna Docker.
+- La configuración deberá separarse por ambientes.
+
+## 16.3.9 Referencias Tecnológicas
+
+### Descripción
+
+Documenta tecnologías principales utilizadas por la solución.
+
+### Objetivo
+
+Mantener trazabilidad tecnológica y compatibilidad técnica.
+
+### Tecnologías Principales
+
+| Tecnología | Uso Principal |
+|---|---|
+| Quarkus | Backend |
+| React | Frontend Web |
+| React Native | APK Mobile |
+| MySQL | Base de Datos |
+| Docker | Infraestructura |
+| NGINX | Reverse Proxy |
+| JWT | Seguridad |
+| Microsoft OAuth2/OpenID | Autenticación |
+
+### Consideraciones
+
+- Las versiones deberán mantenerse estables.
+- Las dependencias deberán mantenerse compatibles.
+- Las tecnologías deberán soportar mantenibilidad empresarial.
+
+# 16.4 Anexos Operacionales
+
+## 16.4.1 Glosario Operacional
+
+### Descripción
+
+Define términos funcionales y técnicos utilizados dentro del sistema.
+
+### Objetivo
+
+Facilitar comprensión documental y operacional.
+
+### Términos Principales
+
+| Término | Descripción |
+|---|---|
+| PSR | Pedido de Servicio Requerido |
+| OSR | Orden de Servicio Relacionada |
+| KPI | Indicador Clave de Rendimiento |
+| JWT | JSON Web Token |
+| Avería | Incidencia operacional registrada |
+| Evidencia | Archivo multimedia asociado |
+| Campaña | Agrupación operacional activa |
+
+### Consideraciones
+
+- Los términos deberán utilizar nomenclatura consistente.
+- El glosario deberá mantenerse actualizado.
+- Los conceptos deberán alinearse con reglas operacionales.
+
+# 16.5 Referencias Documentales
+
+## Documentación Relacionada
+
+- Documento SDD principal.
+- Requerimientos funcionales.
+- Reglas de negocio.
+- Diagramas técnicos.
+- Modelo entidad relación.
+- Arquitectura infraestructura.
+- Documentación APIs REST.
+
+## Consideraciones Finales
+
+- Los anexos deberán mantenerse alineados con la evolución del sistema.
+- Los anexos técnicos deberán facilitar soporte y mantenimiento.
+- Toda modificación arquitectónica deberá reflejarse en anexos correspondientes.
+- La documentación deberá mantenerse consistente entre frontend, backend e infraestructura.
