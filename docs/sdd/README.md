@@ -33,11 +33,13 @@ Centralizar y digitalizar el control operativo de equipos alquilados utilizados 
 
 | Área | Estado |
 |---|---|
-| Análisis Funcional | ✅ Completo |
-| SDD | ✅ Completo |
-| Arquitectura Técnica | 🔄 En Proceso |
-| Diseño Base Datos | 🔄 Pendiente |
-| API Contracts | 🔄 Pendiente |
+| Análisis Funcional | ✅ Completado |
+| SDD | ✅ Completado |
+| Arquitectura Técnica | ✅ Completado |
+| Diseño Base Datos | ✅ Completado |
+| Script SQL BD | ✅ Completado |
+| API Contracts | ✅ Completado |
+| Fase 2: Infraestructura | 🔄 En Proceso |
 | Backend | ⏳ Pendiente |
 | Frontend Mobile | ⏳ Pendiente |
 | Frontend Web | ⏳ Pendiente |

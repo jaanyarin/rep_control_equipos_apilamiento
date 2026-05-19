@@ -243,11 +243,13 @@ Servicios REST empresariales.
 
 | Área | Estado |
 |---|---|
-| Análisis Funcional | ✅ Completo |
-| SDD | ✅ Completo |
-| Arquitectura Técnica | 🔄 En Proceso |
-| Diseño Base Datos | 🔄 Pendiente |
-| API Contracts | 🔄 Pendiente |
+| Análisis Funcional | ✅ Completado |
+| SDD | ✅ Completado |
+| Arquitectura Técnica | ✅ Completado |
+| Diseño Base Datos | ✅ Completado |
+| Script SQL BD | ✅ Completado |
+| API Contracts | ✅ Completado |
+| Fase 2: Infraestructura | 🔄 En Proceso |
 | Backend | ⏳ Pendiente |
 | Frontend Mobile | ⏳ Pendiente |
 | Frontend Web | ⏳ Pendiente |
@@ -482,27 +484,32 @@ GitHub Actions implementará:
 ```text
 rep_control_equipos_apilamiento/
 │
-├── backend/
+├── backend/                  # Backend Quarkus Java
 │
-├── frontend-mobile/
+├── mobile/                  # Frontend React Native
 │
-├── frontend-web/
+├── dashboard/               # Frontend Web React
 │
-├── docker/
+├── infrastructure/          # Configuración infraestructura
+│
+├── scripts/                 # Scripts SQL y utilidades
+│   └── 01_create_tables.sql
 │
 ├── docs/
 │   └── sdd/
-│       ├── 01_SPECIFICATION.md
-│       ├── 02_PLAN.md
-│       ├── 03_TASKS.md
-│       ├── 04_IMPLEMENTATION.md
-│       ├── 05_TECHNICAL_ARCHITECTURE.md
-│       ├── 06_DATABASE_DESIGN.md
-│       └── 07_API_CONTRACTS.md
+│       ├── 01_SPECIFICATION.md    # Especificación funcional
+│       ├── 02_PLAN.md             # Planificación proyecto
+│       ├── 03_TASKS.md           # Backlog tareas técnicas
+│       ├── 04_IMPLEMENTATION.md # Estrategia implementación
+│       ├── 05_TECHNICAL_ARCHITECTURE.md  # Arquitectura técnica
+│       ├── 06_DATABASE_DESIGN.md # Diseño base de datos
+│       └── 07_API_CONTRACTS.md   # Contratos APIs REST
 │
-├── .github/
+├── docs_usuario/            # Documentación usuario
 │
-├── docker-compose.yml
+├── .github/                 # GitHub Actions CI/CD
+│
+├── docker-compose.yml       # Orquestación contenedores
 │
 └── README.md
 ```
@@ -535,27 +542,33 @@ docs/sdd/
 
 ## Fases Desarrollo
 
-### Fase 1
-- Arquitectura técnica
-- Diseño BD
-- Contratos APIs
+### Fase 1 ✅ Completado
+- Arquitectura técnica (05_TECHNICAL_ARCHITECTURE.md)
+- Diseño BD (06_DATABASE_DESIGN.md)
+- Contratos APIs (07_API_CONTRACTS.md)
+- Script SQL (scripts/01_create_tables.sql)
 
-### Fase 2
-- Setup infraestructura
+### Fase 2 🔄 En Proceso
+- Docker Compose
+- Variables entorno
+- Configuración Docker
+- Ramas GitHub
+
+### Fase 3
 - Setup backend
 - Setup frontend
 
-### Fase 3
+### Fase 4
 - Desarrollo MVP
 - Integraciones
 - Seguridad
 
-### Fase 4
+### Fase 5
 - Testing
 - Hardening
 - Optimización
 
-### Fase 5
+### Fase 6
 - Despliegue
 - Validación campo
 - Producción
