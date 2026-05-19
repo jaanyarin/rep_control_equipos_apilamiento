@@ -1927,15 +1927,1235 @@ Integración mobile-backend ejecutada correctamente.´
 
 # 13. REPORTES
 
-[PENDIENTE]
+## 13.1 Objetivo de los Reportes
 
+El sistema deberá permitir la generación de reportes operativos, técnicos, gerenciales y de auditoría con el fin de garantizar trazabilidad, control operacional, seguimiento técnico y consolidación de indicadores KPI.
 
+Los reportes deberán permitir exportación en formato PDF y deberán utilizar información validada y consolidada desde el backend.
+
+## 13.2 Consideraciones Generales
+
+- Todos los reportes deberán validar permisos de acceso.
+- Los reportes deberán generarse utilizando información consolidada y validada.
+- Toda generación de reportes deberá registrarse en auditoría.
+- Los reportes deberán permitir filtros operacionales.
+- Los reportes deberán mantener trazabilidad histórica.
+- Los reportes deberán generarse desde backend.
+- El sistema deberá permitir exportación PDF.
+- Los reportes críticos deberán utilizar información transaccional consistente.
+
+# 13.3 Reportes Operativos
+
+## 13.3.1 Reporte General de Equipos
+
+### Objetivo
+
+Visualizar información consolidada de equipos operativos registrados.
+
+### Tipo de Reporte
+
+Operacional
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+
+### Información Incluida
+
+- Código equipo
+- Número serie
+- Tipo equipo
+- Marca
+- Proveedor
+- Estado operativo
+- Sede
+- OSR asociada
+- Campaña
+
+### Filtros Disponibles
+
+- Estado
+- Proveedor
+- Sede
+- Campaña
+- Tipo equipo
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación permisos
+- Validación información consolidada
+- Validación integridad operacional
+
+### Resultado Esperado
+
+Reporte generado correctamente con información operacional actualizada.
+
+## 13.3.2 Reporte de Equipos Averiados
+
+### Objetivo
+
+Visualizar equipos con incidencias operativas registradas.
+
+### Tipo de Reporte
+
+Operacional
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+
+### Información Incluida
+
+- Equipo
+- Estado avería
+- Fecha reporte
+- Tiempo inactividad
+- Responsable
+- Acción correctiva
+
+### Filtros Disponibles
+
+- Estado avería
+- Fecha
+- Proveedor
+- Campaña
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación averías activas
+- Validación integridad histórica
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte generado correctamente con incidencias operativas.
+
+## 13.3.3 Reporte Histórico de Averías
+
+### Objetivo
+
+Visualizar historial completo de averías registradas.
+
+### Tipo de Reporte
+
+Operacional
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+
+### Información Incluida
+
+- Equipo
+- Descripción avería
+- Fecha reporte
+- Fecha cierre
+- Acción correctiva
+- Tiempo atención
+- Evidencias
+
+### Filtros Disponibles
+
+- Fecha
+- Equipo
+- Proveedor
+- Estado
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación trazabilidad
+- Validación historial consistente
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte histórico generado correctamente.
+
+## 13.3.4 Reporte de Recepción de Equipos
+
+### Objetivo
+
+Visualizar operaciones de recepción de equipos.
+
+### Tipo de Reporte
+
+Operacional
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+
+### Información Incluida
+
+- Equipo
+- Fecha recepción
+- Responsable
+- Estado recepción
+- Evidencias
+- Observaciones
+
+### Filtros Disponibles
+
+- Fecha
+- Estado
+- Proveedor
+- Sede
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación evidencias
+- Validación operaciones registradas
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte de recepciones generado correctamente.
+
+## 13.3.5 Reporte de Devolución de Equipos
+
+### Objetivo
+
+Visualizar operaciones de devolución de equipos.
+
+### Tipo de Reporte
+
+Operacional
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+
+### Información Incluida
+
+- Equipo
+- Fecha devolución
+- Responsable
+- Estado final
+- Evidencias
+- Observaciones
+
+### Filtros Disponibles
+
+- Fecha
+- Proveedor
+- Estado
+- Campaña
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación evidencias obligatorias
+- Validación integridad operacional
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte de devoluciones generado correctamente.
+
+## 13.3.6 Reporte de Campañas
+
+### Objetivo
+
+Visualizar operaciones asociadas a campañas.
+
+### Tipo de Reporte
+
+Operacional
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+
+### Información Incluida
+
+- Campaña
+- Equipos asociados
+- Averías
+- KPI
+- Estado campaña
+
+### Filtros Disponibles
+
+- Campaña
+- Fecha
+- Estado
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación campaña existente
+- Validación integridad información
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte de campañas generado correctamente.
+
+## 13.3.7 Reporte de OSR y PSR
+
+### Objetivo
+
+Visualizar información documental operacional.
+
+### Tipo de Reporte
+
+Operacional
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+
+### Información Incluida
+
+- Código PSR
+- Código OSR
+- Equipos asociados
+- Estado operacional
+- Fechas registro
+
+### Filtros Disponibles
+
+- PSR
+- OSR
+- Estado
+- Fecha
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación relaciones documentales
+- Validación integridad operacional
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte documental generado correctamente.
+
+# 13.4 Reportes Gerenciales KPI
+
+## 13.4.1 Reporte KPI Operacional
+
+### Objetivo
+
+Visualizar indicadores operativos consolidados del sistema.
+
+### Tipo de Reporte
+
+Gerencial
+
+### Actores Involucrados
+
+- Administrador
+- Supervisor
+
+### Información Incluida
+
+- Disponibilidad equipos
+- Total averías
+- Tiempo inactividad
+- KPI proveedor
+- KPI campañas
+
+### Filtros Disponibles
+
+- Fecha
+- Campaña
+- Sede
+- Proveedor
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación cálculos KPI
+- Validación consolidación información
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte KPI generado correctamente.
+
+## 13.4.2 Reporte de Disponibilidad Operacional
+
+### Objetivo
+
+Visualizar disponibilidad operacional de equipos.
+
+### Tipo de Reporte
+
+Gerencial
+
+### Actores Involucrados
+
+- Administrador
+- Supervisor
+
+### Información Incluida
+
+- Equipos operativos
+- Equipos averiados
+- Porcentaje disponibilidad
+- Disponibilidad por proveedor
+- Disponibilidad por sede
+
+### Filtros Disponibles
+
+- Fecha
+- Proveedor
+- Sede
+- Campaña
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación estados operativos
+- Validación cálculos porcentuales
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte de disponibilidad generado correctamente.
+
+## 13.4.3 Reporte de Tiempos de Inactividad
+
+### Objetivo
+
+Visualizar tiempos de indisponibilidad operacional.
+
+### Tipo de Reporte
+
+Gerencial
+
+### Actores Involucrados
+
+- Administrador
+- Supervisor
+
+### Información Incluida
+
+- Tiempo fuera servicio
+- Tiempo atención
+- Tiempo recuperación
+- Promedio averías
+
+### Filtros Disponibles
+
+- Fecha
+- Equipo
+- Proveedor
+- Campaña
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación cálculos automáticos
+- Validación historial averías
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte de inactividad generado correctamente.
+
+## 13.4.4 Reporte por Proveedor
+
+### Objetivo
+
+Visualizar desempeño operacional de proveedores.
+
+### Tipo de Reporte
+
+Gerencial
+
+### Actores Involucrados
+
+- Administrador
+- Supervisor
+
+### Información Incluida
+
+- Equipos asociados
+- Total averías
+- Disponibilidad
+- Incidencias
+- Estado proveedor
+
+### Filtros Disponibles
+
+- Proveedor
+- Fecha
+- Campaña
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación proveedor válido
+- Validación KPI proveedor
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte por proveedor generado correctamente.
+
+# 13.5 Reportes de Auditoría
+
+## 13.5.1 Reporte de Auditoría
+
+### Objetivo
+
+Visualizar trazabilidad completa de operaciones críticas.
+
+### Tipo de Reporte
+
+Auditoría
+
+### Actores Involucrados
+
+- Administrador
+
+### Información Incluida
+
+- Usuario
+- Operación
+- Fecha
+- Hora
+- IP
+- Módulo
+- Resultado operación
+
+### Filtros Disponibles
+
+- Usuario
+- Fecha
+- Módulo
+- Operación
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación integridad auditoría
+- Validación historial persistente
+- Validación permisos administrativos
+
+### Resultado Esperado
+
+Reporte de auditoría generado correctamente.
+
+## 13.5.2 Reporte de Operaciones por Usuario
+
+### Objetivo
+
+Visualizar operaciones ejecutadas por usuario.
+
+### Tipo de Reporte
+
+Auditoría
+
+### Actores Involucrados
+
+- Administrador
+
+### Información Incluida
+
+- Usuario
+- Operaciones ejecutadas
+- Módulos utilizados
+- Fecha actividad
+- Cantidad operaciones
+
+### Filtros Disponibles
+
+- Usuario
+- Fecha
+- Módulo
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación trazabilidad
+- Validación permisos
+- Validación integridad operacional
+
+### Resultado Esperado
+
+Reporte de actividad por usuario generado correctamente.
+
+## 13.5.3 Reporte de Trazabilidad de Estados
+
+### Objetivo
+
+Visualizar historial de cambios de estado operativos.
+
+### Tipo de Reporte
+
+Auditoría
+
+### Actores Involucrados
+
+- Administrador
+- Supervisor
+
+### Información Incluida
+
+- Equipo
+- Estado anterior
+- Estado nuevo
+- Fecha cambio
+- Usuario responsable
+
+### Filtros Disponibles
+
+- Equipo
+- Fecha
+- Estado
+- Usuario
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación historial cambios
+- Validación integridad estados
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte de trazabilidad generado correctamente.
+
+# 13.6 Reportes Técnicos
+
+## 13.6.1 Reporte de Evidencias
+
+### Objetivo
+
+Visualizar evidencias multimedia asociadas a operaciones.
+
+### Tipo de Reporte
+
+Técnico
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+
+### Información Incluida
+
+- Evidencia
+- Operación asociada
+- Usuario
+- Fecha
+- Tipo archivo
+
+### Filtros Disponibles
+
+- Fecha
+- Tipo operación
+- Usuario
+- Equipo
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación archivos existentes
+- Validación asociaciones
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte de evidencias generado correctamente.
+
+## 13.6.2 Reporte de Incidencias Críticas
+
+### Objetivo
+
+Visualizar errores e incidencias operativas críticas.
+
+### Tipo de Reporte
+
+Técnico
+
+### Actores Involucrados
+
+- Administrador
+- Supervisor
+
+### Información Incluida
+
+- Error registrado
+- Operación afectada
+- Fecha incidente
+- Estado incidente
+- Equipo asociado
+
+### Filtros Disponibles
+
+- Fecha
+- Tipo incidente
+- Estado
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación incidencias registradas
+- Validación integridad operacional
+- Validación permisos
+
+### Resultado Esperado
+
+Reporte de incidencias generado correctamente.
+
+## 13.6.3 Reporte de Integridad Operacional
+
+### Objetivo
+
+Detectar inconsistencias operacionales y referenciales.
+
+### Tipo de Reporte
+
+Técnico
+
+### Actores Involucrados
+
+- Administrador
+
+### Información Incluida
+
+- Equipos sin proveedor
+- Equipos sin OSR
+- Averías inconsistentes
+- Evidencias faltantes
+- Registros inválidos
+
+### Filtros Disponibles
+
+- Tipo inconsistencia
+- Fecha
+- Módulo
+
+### Formato de Salida
+
+- PDF
+
+### Validaciones Críticas
+
+- Validación integridad referencial
+- Validación consistencia operacional
+- Validación permisos administrativos
+
+### Resultado Esperado
+
+Reporte de integridad generado correctamente.
 
 # 14. CONSIDERACIONES TÉCNICAS
 
-[PENDIENTE]
+## 14.1 Objetivo Técnico
 
+El sistema deberá implementar una arquitectura tecnológica moderna, segura, mantenible y escalable que permita gestionar operaciones logísticas, control de equipos, averías, evidencias multimedia y trazabilidad operacional mediante aplicaciones web y mobile integradas con servicios backend centralizados.
 
+La arquitectura deberá garantizar:
+
+- Seguridad transaccional.
+- Integridad operacional.
+- Trazabilidad completa.
+- Persistencia segura.
+- Escalabilidad controlada.
+- Mantenibilidad del sistema.
+- Separación de responsabilidades.
+- Integración multiplataforma.
+
+## 14.2 Arquitectura General del Sistema
+
+La solución estará compuesta por:
+
+- Backend API REST desarrollado en Quarkus.
+- Frontend web desarrollado en React.
+- Aplicación móvil APK desarrollada en React Native.
+- Base de datos relacional MySQL.
+- Infraestructura contenerizada mediante Docker.
+- Autenticación JWT integrada con Microsoft.
+- Persistencia de archivos multimedia mediante Docker Volumes Persistentes.
+- Comunicación mediante APIs REST JSON.
+
+## 14.3 Backend Quarkus
+
+### Descripción
+
+El backend será desarrollado utilizando Quarkus como framework principal para la exposición de APIs REST y lógica de negocio.
+
+### Responsabilidades
+
+- Gestión de lógica operacional.
+- Validaciones de negocio.
+- Seguridad JWT.
+- Persistencia de datos.
+- Auditoría.
+- Gestión transaccional.
+- Exposición de APIs REST.
+- Integración con frontend web y APK.
+
+### Consideraciones Técnicas
+
+- Uso de Quarkus REST.
+- Uso de Hibernate ORM con Panache.
+- Uso de transacciones JPA.
+- Validaciones Bean Validation.
+- Arquitectura basada en capas.
+- Separación dominio/aplicación/infraestructura.
+- Validaciones server-side obligatorias.
+
+## 14.4 Frontend Web React
+
+### Descripción
+
+El frontend web será desarrollado utilizando React para operaciones administrativas y visualización operacional.
+
+### Responsabilidades
+
+- Gestión administrativa.
+- Visualización KPI.
+- Gestión operacional.
+- Consumo APIs REST.
+- Gestión autenticación JWT.
+
+### Consideraciones Técnicas
+
+- Arquitectura SPA.
+- Consumo APIs REST JSON.
+- Gestión estado frontend.
+- Manejo seguro JWT.
+- Validaciones cliente complementarias.
+- Manejo controlado de errores.
+
+## 14.5 Frontend Mobile React Native APK
+
+### Descripción
+
+La aplicación móvil será desarrollada utilizando React Native para operaciones de campo y captura operacional.
+
+### Responsabilidades
+
+- Registro operativo.
+- Captura evidencias.
+- Registro averías.
+- Recepción y devolución equipos.
+- Consumo APIs REST.
+
+### Consideraciones Técnicas
+
+- Operación completamente online.
+- Consumo APIs REST.
+- Captura multimedia.
+- Validación JWT.
+- Manejo de cámara y archivos.
+- Manejo de errores de conectividad.
+
+### Restricciones Técnicas
+
+- La APK requerirá conexión permanente a internet.
+- No se contemplará funcionamiento offline.
+- No se implementará sincronización local.
+
+## 14.6 Base de Datos MySQL
+
+### Descripción
+
+El sistema utilizará MySQL como motor de base de datos relacional principal.
+
+### Responsabilidades
+
+- Persistencia operacional.
+- Relaciones transaccionales.
+- Integridad referencial.
+- Auditoría histórica.
+
+### Consideraciones Técnicas
+
+- Uso de claves primarias y foráneas.
+- Constraints relacionales.
+- Índices operacionales.
+- Integridad transaccional.
+- Optimización consultas críticas.
+
+## 14.7 Persistencia ORM
+
+### Descripción
+
+La persistencia será gestionada mediante Hibernate ORM y Panache sobre Quarkus.
+
+### Responsabilidades
+
+- Mapeo objeto-relacional.
+- Gestión transaccional.
+- Persistencia entidades.
+- Integridad relacional.
+
+### Consideraciones Técnicas
+
+- Uso JPA/Hibernate.
+- Relaciones OneToMany y ManyToOne.
+- Lazy Loading controlado.
+- Transacciones atómicas.
+- Validación persistencia.
+
+## 14.8 Infraestructura Docker
+
+### Descripción
+
+La solución será desplegada mediante contenedores Docker.
+
+### Responsabilidades
+
+- Aislamiento servicios.
+- Portabilidad despliegue.
+- Gestión entornos.
+- Persistencia controlada.
+
+### Consideraciones Técnicas
+
+- Contenedor backend.
+- Contenedor frontend web.
+- Contenedor MySQL.
+- Redes Docker internas.
+- Docker Volumes persistentes.
+- Variables entorno.
+
+## 14.9 Persistencia de Evidencias Multimedia
+
+### Descripción
+
+Las evidencias multimedia serán almacenadas persistentemente dentro del servidor mediante Docker Volumes Persistentes.
+
+### Justificación Técnica
+
+La utilización de Docker Volumes Persistentes permitirá:
+
+- Persistencia segura de archivos multimedia.
+- Integración directa con infraestructura Docker.
+- Menor complejidad operativa.
+- Reducción de costos de infraestructura.
+- Facilidad de despliegue y mantenimiento.
+- Administración centralizada dentro del servidor VPS.
+
+### Consideraciones Técnicas
+
+- Persistencia obligatoria.
+- Asociación relacional con operaciones.
+- Restricción eliminación física.
+- Validación formatos multimedia.
+- Validación tamaño máximo archivos.
+- Organización estructurada de directorios.
+- Acceso controlado desde backend.
+
+## 14.10 API REST
+
+### Descripción
+
+La comunicación entre frontend y backend se realizará mediante APIs REST.
+
+### Consideraciones Técnicas
+
+- Comunicación JSON.
+- Uso HTTP/HTTPS.
+- Versionamiento API.
+- Endpoints protegidos JWT.
+- Validaciones server-side.
+- Respuestas estandarizadas.
+
+### Estructura Recomendada
+
+```text
+/api/v1/
+```
+
+## 14.11 Seguridad JWT y Microsoft Authentication
+
+### Descripción
+
+La autenticación utilizará integración Microsoft OAuth2/OpenID y JWT para autorización interna.
+
+### Responsabilidades
+
+- Autenticación corporativa.
+- Validación sesiones.
+- Protección endpoints.
+- Gestión permisos.
+
+### Consideraciones Técnicas
+
+- Validación JWT por request.
+- Middleware autenticación.
+- Expiración sesiones.
+- Claims y roles.
+- Protección APIs REST.
+
+## 14.12 Reverse Proxy NGINX
+
+### Descripción
+
+NGINX será utilizado como reverse proxy principal.
+
+### Responsabilidades
+
+- Routing servicios.
+- Gestión HTTPS.
+- Balanceo futuro.
+- Protección frontend/backend.
+
+### Consideraciones Técnicas
+
+- Proxy frontend/backend.
+- Configuración HTTPS.
+- Manejo uploads.
+- Compresión respuestas.
+- Seguridad cabeceras.
+
+## 14.13 Gestión de Configuración
+
+### Descripción
+
+La configuración del sistema será gestionada mediante variables de entorno y propiedades Quarkus.
+
+### Consideraciones Técnicas
+
+- Variables ENV.
+- application.properties.
+- Configuración por ambiente.
+- Separación dev/qa/prod.
+- Configuración segura credenciales.
+
+## 14.14 Manejo de Logs
+
+### Descripción
+
+El sistema deberá generar logs técnicos y operacionales para monitoreo y soporte.
+
+### Consideraciones Técnicas
+
+- Logs backend Quarkus.
+- Logs errores críticos.
+- Logs autenticación.
+- Logs operaciones críticas.
+- Persistencia eventos importantes.
+
+## 14.15 Gestión Multimedia
+
+### Descripción
+
+El sistema permitirá gestión controlada de evidencias multimedia.
+
+### Consideraciones Técnicas
+
+- Validación formatos permitidos.
+- Validación tamaño máximo.
+- Compresión archivos.
+- Naming controlado.
+- Persistencia segura.
+
+### Formatos Permitidos
+
+- JPG
+- JPEG
+- PNG
+
+## 14.16 Seguridad CORS
+
+### Descripción
+
+El backend deberá implementar políticas CORS controladas.
+
+### Consideraciones Técnicas
+
+- Restricción orígenes permitidos.
+- Restricción métodos HTTP.
+- Restricción cabeceras.
+- Protección APIs.
+
+## 14.17 Swagger/OpenAPI
+
+### Descripción
+
+El backend expondrá documentación técnica de APIs mediante Swagger/OpenAPI.
+
+### Responsabilidades
+
+- Documentación APIs.
+- Testing endpoints.
+- Integración frontend.
+- Validación contratos API.
+
+### Consideraciones Técnicas
+
+- OpenAPI Quarkus.
+- Documentación automática.
+- Endpoints documentados.
+- Seguridad endpoints protegidos.
+
+## 14.18 Auditoría Técnica
+
+### Descripción
+
+Las operaciones críticas deberán registrar trazabilidad técnica automática.
+
+### Consideraciones Técnicas
+
+- Interceptores backend.
+- Registro operaciones críticas.
+- Registro errores críticos.
+- Persistencia auditoría.
+- Asociación usuario/IP.
+
+## 14.19 Estrategia de Backup
+
+### Descripción
+
+El sistema deberá implementar mecanismos de respaldo para información crítica.
+
+### Consideraciones Técnicas
+
+- Backup MySQL.
+- Backup evidencias multimedia.
+- Persistencia Docker Volumes.
+- Recuperación operacional.
+- Respaldo histórico.
+
+## 14.20 Estrategia de Despliegue
+
+### Descripción
+
+El sistema será desplegado sobre infraestructura on-premise VPS/Servidor.
+
+### Consideraciones Técnicas
+
+- Despliegue contenerizado.
+- Docker Compose.
+- Redes internas Docker.
+- Persistencia volúmenes.
+- Exposición controlada servicios.
+
+## 14.21 Gestión de Roles y Permisos
+
+### Descripción
+
+La seguridad funcional será gestionada mediante roles y permisos JWT.
+
+### Consideraciones Técnicas
+
+- Middleware autorización.
+- Protección endpoints.
+- Validación roles.
+- Claims JWT.
+- Restricción acceso módulos.
+
+## 14.22 Validaciones Backend
+
+### Descripción
+
+Las reglas críticas deberán validarse principalmente desde backend.
+
+### Consideraciones Técnicas
+
+- Bean Validation.
+- Validaciones negocio.
+- Validaciones transaccionales.
+- Validaciones integridad referencial.
+- Validaciones estados operativos.
+
+## 14.23 Gestión de Estados Operacionales
+
+### Descripción
+
+Los estados operativos serán controlados desde backend.
+
+### Consideraciones Técnicas
+
+- Uso ENUM controlados.
+- Restricción transiciones inválidas.
+- Integridad estados.
+- Consistencia operacional.
+
+## 14.24 Monitoreo y Health Checks
+
+### Descripción
+
+El sistema deberá implementar monitoreo técnico básico.
+
+### Consideraciones Técnicas
+
+- Quarkus Health Checks.
+- Estado servicios.
+- Validación conectividad DB.
+- Validación disponibilidad APIs.
+- Validación estado aplicación.
+
+## 14.25 Consideraciones Generales
+
+- Toda validación crítica deberá ejecutarse server-side.
+- El backend será la única fuente válida de reglas operativas.
+- Las operaciones críticas deberán ejecutarse mediante transacciones seguras.
+- Los endpoints deberán protegerse mediante JWT.
+- La información histórica no deberá eliminarse físicamente.
+- La arquitectura deberá mantener separación de responsabilidades.
+- La solución deberá permitir mantenibilidad y escalabilidad controlada.
+- Toda integración deberá realizarse mediante APIs REST.
+- El despliegue deberá soportar entornos dev, qa y producción.
+- Las evidencias multimedia deberán mantenerse persistentes y seguras.
 
 # 15. PENDIENTES FUNCIONALES
 
