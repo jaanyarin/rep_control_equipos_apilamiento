@@ -843,15 +843,1087 @@ Las validaciones críticas no deberán depender exclusivamente del frontend Reac
 
 # 11. ENTIDADES PRINCIPALES
 
-[PENDIENTE]
+## 11.1 Usuario
 
+### Descripción
 
+Representa a los usuarios autenticados del sistema que ejecutan operaciones según los permisos asignados.
+
+### Responsabilidades
+
+- Acceso al sistema.
+- Ejecución de operaciones.
+- Registro de actividades.
+- Gestión operacional.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_usuario | Identificador único |
+| nombres | Nombres del usuario |
+| apellidos | Apellidos del usuario |
+| correo | Correo corporativo |
+| username | Usuario de acceso |
+| password_hash | Contraseña cifrada o token |
+| estado | Estado operativo |
+| id_rol | Rol asociado |
+| fecha_registro | Fecha de creación |
+| ultimo_login | Último acceso |
+
+### Reglas Críticas
+
+- Todo usuario deberá pertenecer a un rol válido.
+- El correo corporativo deberá ser único.
+- Solo usuarios activos podrán acceder al sistema.
+- Toda operación deberá registrar usuario responsable.
+
+# 11.2 Rol
+
+### Descripción
+
+Representa perfiles de acceso y permisos funcionales del sistema.
+
+### Responsabilidades
+
+- Gestión de permisos.
+- Restricción de accesos.
+- Segmentación funcional.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_rol | Identificador único |
+| nombre | Nombre del rol |
+| descripcion | Descripción funcional |
+| estado | Estado operativo |
+
+### Reglas Críticas
+
+- Todo usuario deberá asociarse a un rol.
+- Los permisos deberán validarse server-side.
+- Solo administradores podrán gestionar roles críticos.
+
+# 11.3 Sede
+
+### Descripción
+
+Representa las ubicaciones operativas donde se distribuyen equipos y operaciones.
+
+### Responsabilidades
+
+- Segmentación geográfica.
+- Asociación operacional.
+- Distribución logística.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_sede | Identificador único |
+| nombre | Nombre sede |
+| direccion | Dirección |
+| estado | Estado operativo |
+
+### Reglas Críticas
+
+- Toda operación deberá asociarse a una sede válida.
+- No deberán utilizarse sedes inactivas.
+
+# 11.4 Campaña
+
+### Descripción
+
+Representa campañas operativas activas e históricas.
+
+### Responsabilidades
+
+- Agrupación operacional.
+- Consolidación de KPI.
+- Segmentación histórica.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_campana | Identificador único |
+| nombre | Nombre campaña |
+| fecha_inicio | Fecha inicio |
+| fecha_fin | Fecha fin |
+| estado | Estado operativo |
+
+### Reglas Críticas
+
+- Solo podrá existir una campaña activa.
+- Toda operación deberá asociarse a campaña activa.
+
+# 11.5 PSR
+
+### Descripción
+
+Representa pedidos de servicio requeridos asociados a operaciones.
+
+### Responsabilidades
+
+- Gestión documental.
+- Asociación contractual.
+- Relación operacional.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_psr | Identificador único |
+| codigo_psr | Código PSR |
+| descripcion | Descripción |
+| fecha_registro | Fecha registro |
+| estado | Estado operativo |
+
+### Reglas Críticas
+
+- El código PSR deberá ser único.
+- Toda OSR deberá pertenecer a un PSR válido.
+
+# 11.6 OSR
+
+### Descripción
+
+Representa órdenes de servicio relacionadas a operaciones y equipos.
+
+### Responsabilidades
+
+- Asociación de equipos.
+- Gestión operacional.
+- Relación documental.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_osr | Identificador único |
+| codigo_osr | Código OSR |
+| id_psr | PSR asociado |
+| fecha_registro | Fecha registro |
+| estado | Estado operativo |
+
+### Reglas Críticas
+
+- El código OSR deberá ser único.
+- Toda OSR deberá pertenecer a un PSR válido.
+- Todo equipo deberá asociarse a una OSR válida.
+
+# 11.7 Equipo
+
+### Descripción
+
+Representa equipos operativos alquilados utilizados en operación.
+
+### Responsabilidades
+
+- Gestión operacional.
+- Control de estados.
+- Asociación documental.
+- Registro de averías.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_equipo | Identificador único |
+| numero_serie | Número serie |
+| codigo_interno | Código interno |
+| id_tipo_equipo | Tipo equipo |
+| id_marca | Marca |
+| id_proveedor | Proveedor |
+| id_osr | OSR asociada |
+| id_sede | Sede asociada |
+| estado | Estado operativo |
+| fecha_registro | Fecha registro |
+
+### Reglas Críticas
+
+- El número de serie deberá ser único.
+- Todo equipo deberá pertenecer a proveedor válido.
+- Todo equipo deberá asociarse a una OSR válida.
+- No deberán existir equipos duplicados.
+- Todo equipo deberá mantener estado operativo válido.
+
+# 11.8 TipoEquipo
+
+### Descripción
+
+Representa categorías de equipos operativos.
+
+### Responsabilidades
+
+- Clasificación operacional.
+- Segmentación técnica.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_tipo_equipo | Identificador único |
+| nombre | Nombre categoría |
+| descripcion | Descripción |
+| estado | Estado operativo |
+
+### Reglas Críticas
+
+- Todo equipo deberá asociarse a un tipo válido.
+- No deberán utilizarse tipos inactivos.
+
+# 11.9 Proveedor
+
+### Descripción
+
+Representa empresas proveedoras de equipos operativos.
+
+### Responsabilidades
+
+- Gestión contractual.
+- Asociación de equipos.
+- Gestión operacional.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_proveedor | Identificador único |
+| razon_social | Razón social |
+| ruc | Número RUC |
+| telefono | Teléfono |
+| correo | Correo |
+| direccion | Dirección |
+| estado | Estado operativo |
+
+### Reglas Críticas
+
+- El RUC deberá ser único.
+- No deberán utilizarse proveedores inactivos.
+- Todo equipo deberá asociarse a proveedor válido.
+
+# 11.10 Marca
+
+### Descripción
+
+Representa marcas comerciales de equipos operativos.
+
+### Responsabilidades
+
+- Clasificación técnica.
+- Organización operacional.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_marca | Identificador único |
+| nombre | Nombre marca |
+| descripcion | Descripción |
+| estado | Estado operativo |
+
+### Reglas Críticas
+
+- Todo equipo deberá asociarse a marca válida.
+- No deberán utilizarse marcas inactivas.
+
+# 11.11 Avería
+
+### Descripción
+
+Representa incidencias operativas registradas sobre equipos.
+
+### Responsabilidades
+
+- Gestión de fallas.
+- Registro correctivo.
+- Control operacional.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_averia | Identificador único |
+| id_equipo | Equipo asociado |
+| descripcion | Descripción falla |
+| fecha_reporte | Fecha reporte |
+| fecha_cierre | Fecha cierre |
+| estado | Estado avería |
+| tiempo_inactivo | Tiempo inactividad |
+
+### Reglas Críticas
+
+- Toda avería deberá asociarse a un equipo válido.
+- No deberán existir averías activas duplicadas.
+- El sistema deberá cambiar automáticamente el estado del equipo.
+- Toda avería deberá mantener trazabilidad histórica.
+
+# 11.12 Evidencia
+
+### Descripción
+
+Representa fotografías y archivos multimedia asociados a operaciones.
+
+### Responsabilidades
+
+- Respaldo documental.
+- Evidencia operacional.
+- Soporte auditoría.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_evidencia | Identificador único |
+| nombre_archivo | Nombre archivo |
+| ruta_archivo | Ruta almacenamiento |
+| tipo_archivo | Tipo multimedia |
+| entidad_asociada | Entidad relacionada |
+| fecha_registro | Fecha registro |
+
+### Reglas Críticas
+
+- Toda evidencia deberá asociarse a entidad válida.
+- Las evidencias no deberán eliminarse físicamente.
+- Las evidencias deberán almacenarse persistentemente.
+
+# 11.13 Auditoría
+
+### Descripción
+
+Representa eventos de trazabilidad y control operacional.
+
+### Responsabilidades
+
+- Registro de operaciones.
+- Trazabilidad.
+- Seguimiento técnico.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_auditoria | Identificador único |
+| usuario | Usuario responsable |
+| operacion | Operación ejecutada |
+| modulo | Módulo afectado |
+| fecha | Fecha evento |
+| ip | Dirección IP |
+| detalle | Información adicional |
+
+### Reglas Críticas
+
+- Toda operación crítica deberá generar auditoría.
+- La auditoría deberá mantenerse históricamente.
+- Los registros auditados no deberán alterarse.
+
+# 11.14 Configuración
+
+### Descripción
+
+Representa parámetros globales y configuraciones del sistema.
+
+### Responsabilidades
+
+- Parametrización operacional.
+- Gestión técnica.
+- Configuración global.
+
+### Atributos Principales
+
+| Campo | Descripción |
+|---|---|
+| id_configuracion | Identificador único |
+| clave | Clave configuración |
+| valor | Valor configuración |
+| descripcion | Descripción |
+| estado | Estado operativo |
+
+### Reglas Críticas
+
+- Solo administradores podrán modificar configuraciones.
+- Toda modificación deberá generar auditoría.
+- Las configuraciones críticas deberán validarse server-side.
+
+# 11.15 Consideraciones Generales de Entidades
+
+- Todas las entidades deberán manejar identificadores únicos.
+- Las relaciones deberán garantizar integridad referencial.
+- Las entidades críticas deberán mantener auditoría histórica.
+- No deberá permitirse eliminación física de información histórica.
+- Las entidades deberán manejar estados operativos válidos.
+- Toda operación crítica deberá ejecutarse mediante transacciones seguras.
+- Toda validación crítica deberá ejecutarse en backend.
+- Las operaciones deberán registrar usuario, fecha y hora.
+- El backend será la única fuente válida de reglas operativas.
+- Las evidencias deberán mantenerse persistentes y seguras.
+
+# 11.16 Restricciones de Integridad
+
+| Código | Restricción |
+|---|---|
+| RI-001 | Todo equipo deberá pertenecer a un proveedor válido |
+| RI-002 | Todo equipo deberá pertenecer a un tipo de equipo válido |
+| RI-003 | Toda avería deberá asociarse a un equipo existente |
+| RI-004 | Toda evidencia deberá asociarse a una entidad válida |
+| RI-005 | Toda OSR deberá pertenecer a un PSR válido |
+| RI-006 | No deberá existir duplicidad de número de serie |
+| RI-007 | No deberá existir más de una campaña activa |
+| RI-008 | Toda operación crítica deberá registrar usuario responsable |
+| RI-009 | Toda operación crítica deberá registrar fecha y hora |
+| RI-010 | Los registros históricos no deberán eliminarse físicamente |
+| RI-011 | No deberán existir averías activas duplicadas por equipo |
+| RI-012 | No deberán permitirse operaciones sobre registros inactivos |
+| RI-013 | Las evidencias deberán mantener relación persistente con operaciones |
+| RI-014 | Los estados operativos deberán mantenerse consistentes |
+| RI-015 | Toda operación crítica deberá ejecutarse mediante transacciones atómicas |
 
 # 12. FLUJOS OPERATIVOS
 
-[PENDIENTE]
+# 12.1 Flujo de Autenticación Corporativa
 
+### Objetivo
 
+Permitir el acceso seguro de usuarios mediante autenticación corporativa Microsoft y generación de JWT.
+
+### Actores Involucrados
+
+- Usuario
+- Sistema
+- Microsoft OAuth2/OpenID
+
+### Descripción del Flujo
+
+1. El usuario inicia sesión.
+2. El sistema redirecciona autenticación Microsoft.
+3. Microsoft valida credenciales.
+4. El backend valida token recibido.
+5. El backend genera JWT interno.
+6. El usuario accede al sistema.
+
+### Validaciones Críticas
+
+- Validación JWT.
+- Validación cuenta activa.
+- Validación expiración token.
+- Validación permisos y roles.
+
+### Resultado Esperado
+
+Usuario autenticado correctamente con acceso según permisos asignados.
+
+# 12.2 Flujo de Gestión de Usuarios
+
+### Objetivo
+
+Gestionar usuarios operativos y administrativos del sistema.
+
+### Actores Involucrados
+
+- Administrador
+- Sistema
+
+### Descripción del Flujo
+
+1. El administrador registra usuario.
+2. El sistema valida unicidad.
+3. El sistema asigna rol.
+4. El sistema registra auditoría.
+5. El usuario queda habilitado.
+
+### Validaciones Críticas
+
+- Validación correo único.
+- Validación rol válido.
+- Validación permisos administrativos.
+
+### Resultado Esperado
+
+Usuario registrado y habilitado operativamente.
+
+# 12.3 Flujo de Gestión de Campañas
+
+### Objetivo
+
+Administrar campañas operativas activas e históricas.
+
+### Actores Involucrados
+
+- Administrador
+- Sistema
+
+### Descripción del Flujo
+
+1. El administrador registra campaña.
+2. El sistema valida existencia de campaña activa.
+3. El sistema registra campaña.
+4. El sistema actualiza estado operacional.
+
+### Validaciones Críticas
+
+- Solo una campaña activa.
+- Validación fechas operativas.
+- Validación permisos administrativos.
+
+### Resultado Esperado
+
+Campaña registrada y habilitada correctamente.
+
+# 12.4 Flujo de Gestión PSR
+
+### Objetivo
+
+Gestionar pedidos de servicio requeridos asociados a operaciones.
+
+### Actores Involucrados
+
+- Administrador
+- Usuario
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario registra PSR.
+2. El sistema valida unicidad.
+3. El sistema registra información.
+4. El sistema genera auditoría.
+
+### Validaciones Críticas
+
+- Validación código único.
+- Validación obligatoriedad campos.
+- Validación campaña activa.
+
+### Resultado Esperado
+
+PSR registrado correctamente.
+
+# 12.5 Flujo de Gestión OSR
+
+### Objetivo
+
+Gestionar órdenes de servicio relacionadas a operaciones.
+
+### Actores Involucrados
+
+- Administrador
+- Usuario
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario registra OSR.
+2. El sistema valida PSR asociado.
+3. El sistema registra OSR.
+4. El sistema habilita asociación de equipos.
+
+### Validaciones Críticas
+
+- Validación PSR existente.
+- Validación código único.
+- Validación permisos.
+
+### Resultado Esperado
+
+OSR registrada correctamente.
+
+# 12.6 Flujo de Registro de Equipos
+
+### Objetivo
+
+Registrar equipos operativos dentro del sistema.
+
+### Actores Involucrados
+
+- Administrador
+- Usuario
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario registra equipo.
+2. El sistema valida serie única.
+3. El sistema valida proveedor y OSR.
+4. El sistema registra equipo.
+5. El sistema genera auditoría.
+
+### Validaciones Críticas
+
+- Validación número de serie.
+- Validación proveedor activo.
+- Validación OSR válida.
+- Validación sede asociada.
+
+### Resultado Esperado
+
+Equipo registrado correctamente y disponible operativamente.
+
+# 12.7 Flujo de Recepción de Equipos
+
+### Objetivo
+
+Registrar la recepción física y operacional de equipos.
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario registra recepción.
+2. El sistema valida equipo.
+3. El usuario registra evidencias.
+4. El sistema actualiza estado.
+5. El sistema registra auditoría.
+
+### Validaciones Críticas
+
+- Validación equipo existente.
+- Validación evidencias obligatorias.
+- Validación estado operacional.
+
+### Resultado Esperado
+
+Recepción registrada correctamente con trazabilidad completa.
+
+# 12.8 Flujo de Entrega de Equipos
+
+### Objetivo
+
+Gestionar la entrega operacional de equipos.
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario registra entrega.
+2. El sistema valida disponibilidad.
+3. El sistema actualiza estado.
+4. El sistema registra responsable.
+5. El sistema genera auditoría.
+
+### Validaciones Críticas
+
+- Validación disponibilidad equipo.
+- Validación estado operativo.
+- Validación permisos.
+
+### Resultado Esperado
+
+Equipo entregado correctamente.
+
+# 12.9 Flujo de Devolución de Equipos
+
+### Objetivo
+
+Gestionar la devolución operativa de equipos.
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario registra devolución.
+2. El sistema valida entrega previa.
+3. El usuario registra evidencias.
+4. El sistema actualiza estado.
+5. El sistema registra auditoría.
+
+### Validaciones Críticas
+
+- Validación equipo entregado.
+- Validación evidencias obligatorias.
+- Validación estado final.
+
+### Resultado Esperado
+
+Devolución registrada correctamente.
+
+# 12.10 Flujo de Registro de Averías
+
+### Objetivo
+
+Registrar incidencias operativas asociadas a equipos.
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario registra avería.
+2. El sistema valida equipo.
+3. El usuario registra descripción y evidencias.
+4. El sistema cambia estado del equipo.
+5. El sistema registra auditoría.
+
+### Validaciones Críticas
+
+- Validación equipo existente.
+- Validación avería activa.
+- Validación evidencias requeridas.
+
+### Resultado Esperado
+
+Avería registrada correctamente.
+
+# 12.11 Flujo de Atención de Averías
+
+### Objetivo
+
+Gestionar la atención y solución de averías operativas.
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario registra atención.
+2. El sistema registra acción correctiva.
+3. El sistema calcula tiempo inactivo.
+4. El sistema actualiza estado operativo.
+5. El sistema registra auditoría.
+
+### Validaciones Críticas
+
+- Validación avería activa.
+- Validación solución registrada.
+- Validación integridad operacional.
+
+### Resultado Esperado
+
+Avería atendida y cerrada correctamente.
+
+# 12.12 Flujo de Gestión de Evidencias
+
+### Objetivo
+
+Gestionar almacenamiento y asociación de evidencias multimedia.
+
+### Actores Involucrados
+
+- Usuario
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario captura evidencia.
+2. El sistema valida formato.
+3. El sistema almacena archivo.
+4. El sistema asocia evidencia.
+5. El sistema registra auditoría.
+
+### Validaciones Críticas
+
+- Validación formato permitido.
+- Validación tamaño máximo.
+- Validación asociación válida.
+
+### Resultado Esperado
+
+Evidencia almacenada correctamente.
+
+# 12.13 Flujo de Gestión de Proveedores
+
+### Objetivo
+
+Gestionar proveedores operativos del sistema.
+
+### Actores Involucrados
+
+- Administrador
+- Sistema
+
+### Descripción del Flujo
+
+1. El administrador registra proveedor.
+2. El sistema valida RUC.
+3. El sistema registra proveedor.
+4. El sistema habilita asociación operacional.
+
+### Validaciones Críticas
+
+- Validación RUC único.
+- Validación datos obligatorios.
+- Validación estado operacional.
+
+### Resultado Esperado
+
+Proveedor registrado correctamente.
+
+# 12.14 Flujo de Dashboard KPI
+
+### Objetivo
+
+Visualizar indicadores operativos consolidados.
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario accede al dashboard.
+2. El sistema consolida información.
+3. El sistema calcula KPI.
+4. El sistema visualiza indicadores.
+
+### Validaciones Críticas
+
+- Validación información consolidada.
+- Validación campaña activa.
+- Validación permisos acceso.
+
+### Resultado Esperado
+
+Dashboard mostrado correctamente con métricas actualizadas.
+
+# 12.15 Flujo de Generación de Reportes PDF
+
+### Objetivo
+
+Generar reportes operativos en formato PDF.
+
+### Actores Involucrados
+
+- Usuario
+- Administrador
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario selecciona filtros.
+2. El sistema consolida información.
+3. El sistema genera PDF.
+4. El sistema registra auditoría.
+5. El usuario descarga reporte.
+
+### Validaciones Críticas
+
+- Validación filtros.
+- Validación información existente.
+- Validación permisos.
+
+### Resultado Esperado
+
+Reporte PDF generado correctamente.
+
+# 12.16 Flujo de Auditoría
+
+### Objetivo
+
+Registrar trazabilidad completa de operaciones críticas.
+
+### Actores Involucrados
+
+- Sistema
+- Administrador
+
+### Descripción del Flujo
+
+1. El sistema detecta operación crítica.
+2. El sistema registra evento.
+3. El sistema almacena trazabilidad.
+4. El administrador consulta historial.
+
+### Validaciones Críticas
+
+- Validación integridad registros.
+- Validación persistencia histórica.
+- Validación usuario asociado.
+
+### Resultado Esperado
+
+Operación auditada correctamente.
+
+# 12.17 Flujo de Configuración del Sistema
+
+### Objetivo
+
+Gestionar parámetros globales del sistema.
+
+### Actores Involucrados
+
+- Administrador
+- Sistema
+
+### Descripción del Flujo
+
+1. El administrador modifica configuración.
+2. El sistema valida permisos.
+3. El sistema actualiza parámetros.
+4. El sistema registra auditoría.
+
+### Validaciones Críticas
+
+- Validación permisos administrativos.
+- Validación parámetros válidos.
+- Validación integridad operacional.
+
+### Resultado Esperado
+
+Configuración actualizada correctamente.
+
+# 12.18 Flujo de Cambio de Estado de Equipos
+
+### Objetivo
+
+Gestionar cambios operativos de estado de equipos.
+
+### Actores Involucrados
+
+- Sistema
+- Usuario
+- Administrador
+
+### Descripción del Flujo
+
+1. Se ejecuta operación operacional.
+2. El sistema valida transición de estado.
+3. El sistema actualiza estado equipo.
+4. El sistema registra auditoría.
+
+### Validaciones Críticas
+
+- Validación estado actual.
+- Validación transición permitida.
+- Validación integridad operacional.
+
+### Resultado Esperado
+
+Estado del equipo actualizado consistentemente.
+
+# 12.19 Flujo de Validación de Evidencias Obligatorias
+
+### Objetivo
+
+Garantizar registro obligatorio de evidencias operativas.
+
+### Actores Involucrados
+
+- Usuario
+- Sistema
+
+### Descripción del Flujo
+
+1. El usuario ejecuta operación.
+2. El sistema valida obligatoriedad.
+3. El usuario adjunta evidencias.
+4. El sistema valida archivos.
+5. El sistema permite continuar operación.
+
+### Validaciones Críticas
+
+- Validación cantidad mínima.
+- Validación formatos permitidos.
+- Validación tamaño máximo.
+
+### Resultado Esperado
+
+Operación registrada con evidencias válidas.
+
+# 12.20 Flujo de Validaciones Transaccionales
+
+### Objetivo
+
+Garantizar integridad transaccional en operaciones críticas.
+
+### Actores Involucrados
+
+- Sistema
+
+### Descripción del Flujo
+
+1. El sistema inicia transacción.
+2. El sistema ejecuta operación.
+3. El sistema valida integridad.
+4. El sistema confirma o revierte cambios.
+
+### Validaciones Críticas
+
+- Validación atomicidad.
+- Validación integridad referencial.
+- Validación persistencia completa.
+
+### Resultado Esperado
+
+Operaciones ejecutadas consistentemente.
+
+# 12.21 Flujo de Manejo de Errores Operacionales
+
+### Objetivo
+
+Gestionar errores operativos y técnicos del sistema.
+
+### Actores Involucrados
+
+- Usuario
+- Sistema
+
+### Descripción del Flujo
+
+1. El sistema detecta error.
+2. El sistema registra incidente.
+3. El sistema muestra mensaje operacional.
+4. El sistema mantiene integridad transaccional.
+
+### Validaciones Críticas
+
+- Validación rollback.
+- Validación auditoría errores.
+- Validación mensajes controlados.
+
+### Resultado Esperado
+
+Errores gestionados sin afectar integridad del sistema.
+
+# 12.22 Flujo de Integración Mobile Backend
+
+### Objetivo
+
+Gestionar comunicación entre APK React Native y backend Quarkus.
+
+### Actores Involucrados
+
+- APK Mobile
+- Backend
+- Sistema
+
+### Descripción del Flujo
+
+1. La APK consume API REST.
+2. El backend valida JWT.
+3. El backend procesa operación.
+4. El backend responde información.
+5. La APK actualiza interfaz.
+
+### Validaciones Críticas
+
+- Validación JWT.
+- Validación conectividad.
+- Validación integridad request/response.
+
+### Resultado Esperado
+
+Integración mobile-backend ejecutada correctamente.´
 
 # 13. REPORTES
 
