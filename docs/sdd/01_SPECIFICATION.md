@@ -621,9 +621,85 @@ Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de
 
 # 9. REGLAS DE NEGOCIO
 
-[PENDIENTE]
+## Reglas de Negocio Críticas y No Negociables
 
+| Código | Regla de Negocio | Motivo Crítico |
+|---|---|---|
+| RN-001 | Todo usuario deberá autenticarse mediante cuenta Microsoft corporativa válida | Garantiza control de acceso corporativo y trazabilidad real de usuarios |
+| RN-002 | Solo usuarios activos podrán acceder al sistema | Evita accesos no autorizados o cuentas deshabilitadas |
+| RN-003 | Todo equipo deberá estar asociado obligatoriamente a un OSR | Garantiza trazabilidad contractual y operacional |
+| RN-004 | Un equipo no podrá estar asociado simultáneamente a múltiples OSR activos | Evita inconsistencias operativas y duplicidad logística |
+| RN-005 | Todo registro operativo deberá asociarse automáticamente a la campaña activa | Garantiza segmentación y consolidación correcta de información |
+| RN-006 | Solo podrá existir una campaña activa al mismo tiempo | Evita contaminación de métricas y operaciones cruzadas |
+| RN-007 | El estado del equipo cambiará automáticamente a AVERIADO al registrar una avería | Garantiza consistencia operativa en tiempo real |
+| RN-008 | El estado del equipo retornará automáticamente a OPERATIVO al finalizar una avería | Evita estados inconsistentes de disponibilidad |
+| RN-009 | No se permitirá eliminar información histórica operacional | Garantiza auditoría, trazabilidad y control histórico |
+| RN-010 | Toda operación relevante deberá generar trazabilidad de auditoría | Permite seguimiento y control de operaciones críticas |
+| RN-011 | El sistema deberá validar unicidad de PSR, OSR y número de serie | Evita duplicidad documental y conflictos operativos |
+| RN-012 | Las evidencias fotográficas deberán mantenerse vinculadas al registro operativo asociado | Garantiza respaldo documental y validación operativa |
+| RN-013 | Solo administradores podrán editar información crítica operacional | Protege integridad de la información |
+| RN-014 | Los tiempos de inactividad deberán calcularse automáticamente | Garantiza métricas KPI confiables |
+| RN-015 | Los reportes PDF deberán reflejar información consolidada y trazable | Garantiza confiabilidad documental |
+| RN-016 | No se permitirá registrar averías sobre equipos con averías activas abiertas | Evita duplicidad de incidencias y corrupción operativa |
+| RN-017 | Todo registro de avería deberá asociarse obligatoriamente a un equipo existente | Garantiza integridad referencial |
+| RN-018 | El sistema no deberá permitir operaciones sobre proveedores inactivos | Evita asignaciones inválidas y errores operacionales |
+| RN-019 | Todo equipo deberá tener un estado operativo válido y único | Garantiza control operacional consistente |
+| RN-020 | El sistema deberá validar obligatoriedad de evidencias según tipo de operación | Garantiza respaldo documental obligatorio |
+| RN-021 | Las operaciones críticas deberán registrar automáticamente usuario, fecha y hora | Garantiza trazabilidad completa |
+| RN-022 | El sistema no deberá permitir modificar registros cerrados históricamente | Evita alteración de información histórica |
+| RN-023 | Todo equipo deberá pertenecer a una sede operativa válida | Garantiza distribución operacional correcta |
+| RN-024 | El sistema deberá validar integridad referencial antes de eliminar o desactivar registros maestros | Evita corrupción de datos |
+| RN-025 | Los JWT deberán validarse en cada solicitud protegida | Garantiza seguridad transaccional |
+| RN-026 | El sistema no deberá permitir registrar números de serie duplicados | Evita duplicidad física de activos |
+| RN-027 | Toda devolución deberá registrar evidencias fotográficas obligatorias | Garantiza validación del estado del equipo |
+| RN-028 | El sistema deberá impedir cierre de averías sin registrar solución o acción correctiva | Garantiza consistencia operativa |
+| RN-029 | Todo registro operativo deberá mantener relación con su proveedor asociado | Garantiza trazabilidad contractual |
+| RN-030 | El sistema deberá restringir acceso a módulos según roles y permisos | Garantiza seguridad funcional |
+| RN-031 | Las evidencias multimedia deberán almacenarse de manera persistente y segura | Garantiza disponibilidad documental |
+| RN-032 | El sistema deberá validar formatos y tamaños permitidos de archivos multimedia | Evita corrupción y sobrecarga del sistema |
+| RN-033 | Los indicadores KPI deberán calcularse utilizando información validada y consolidada | Garantiza confiabilidad gerencial |
+| RN-034 | No se permitirá utilizar registros maestros inactivos en operaciones nuevas | Garantiza consistencia operacional |
+| RN-035 | Toda generación de reportes deberá registrarse en auditoría | Garantiza trazabilidad documental |
+| RN-036 | El sistema deberá impedir inconsistencias de estados entre equipos y averías | Garantiza integridad operacional |
+| RN-037 | Los cambios de configuración crítica deberán registrarse obligatoriamente en auditoría | Garantiza gobierno y control técnico |
+| RN-038 | Toda operación deberá validarse server-side independientemente del frontend | Garantiza seguridad y control transaccional |
+| RN-039 | El sistema deberá validar permisos por endpoint API | Garantiza seguridad backend |
+| RN-040 | El sistema deberá mantener integridad transaccional en operaciones críticas | Evita corrupción de datos ante errores parciales |
 
+| RN-041 | El sistema no deberá permitir registrar un equipo sin proveedor asociado | Todo equipo alquilado debe tener trazabilidad contractual |
+| RN-042 | El sistema deberá validar que las OSR pertenezcan al PSR correspondiente | Evita relaciones inválidas entre documentos |
+| RN-043 | El sistema deberá impedir registrar devoluciones de equipos no entregados | Garantiza consistencia logística |
+| RN-044 | Toda avería deberá mantener historial completo de atención | Necesario para trazabilidad técnica y auditoría |
+| RN-045 | El sistema deberá impedir registrar operaciones fuera de campañas activas | Evita contaminación histórica y KPI incorrectos |
+| RN-046 | Las fotografías asociadas a operaciones no deberán eliminarse físicamente | Necesario para respaldo legal y operativo |
+| RN-047 | El sistema deberá mantener trazabilidad completa de cambios de estado de equipos | Fundamental para control operacional |
+| RN-048 | El sistema deberá impedir duplicidad de equipos mediante número de serie | Garantiza unicidad de activos |
+| RN-049 | Los registros críticos deberán ejecutarse mediante transacciones atómicas | Evita inconsistencias en base de datos |
+| RN-050 | El backend deberá ser la única fuente válida de reglas operativas | Evita manipulación desde frontend o APK |
+| RN-051 | Toda operación crítica deberá validar sesión JWT vigente | Garantiza seguridad continua |
+| RN-052 | El sistema deberá impedir acceso a información fuera del alcance del rol asignado | Garantiza segregación funcional |
+| RN-053 | El sistema deberá mantener consistencia entre dashboard KPI y operaciones reales | Garantiza confiabilidad gerencial |
+| RN-054 | El sistema deberá impedir cierre manual inconsistente de estados operativos | Evita corrupción operacional |
+| RN-055 | Toda operación deberá registrar auditoría incluso ante errores críticos | Garantiza investigación y soporte técnico posterior |
+
+## Restricciones Técnicas de Implementación
+
+Estas reglas deberán implementarse principalmente en:
+
+- Backend Quarkus.
+- Servicios de dominio.
+- Validaciones transaccionales.
+- Middleware JWT.
+- Base de datos MySQL mediante constraints.
+- Auditoría transversal.
+
+Las validaciones críticas no deberán depender exclusivamente del frontend React o React Native.
+
+## Consideraciones Generales
+
+- Las reglas de negocio deberán validarse principalmente en backend.
+- Las operaciones críticas deberán ejecutarse mediante transacciones seguras.
+- Toda operación relevante deberá generar auditoría.
 
 # 10. REQUERIMIENTOS NO FUNCIONALES
 
