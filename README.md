@@ -1,35 +1,245 @@
 # REP Control Equipos Apilamiento
 
-Sistema empresarial para la gestión operativa, control documental y seguimiento de equipos alquilados utilizados en procesos de apilamiento agrícola.
+Sistema empresarial para la gestión operativa y control de equipos alquilados utilizados en procesos de apilamiento agrícola.
 
-La plataforma permitirá administrar:
+La plataforma centraliza:
+- control operacional,
+- trazabilidad de equipos,
 - campañas agrícolas,
-- equipos operativos,
-- PSR/OSR,
+- PSR / OSR,
 - averías,
 - evidencias fotográficas,
 - indicadores KPI,
-- trazabilidad operacional,
-- auditoría de acciones,
-- reportes PDF y Excel.
+- auditoría y trazabilidad.
 
-El proyecto está orientado a operación agrícola empresarial bajo arquitectura moderna, escalable y mantenible.
+---
+
+# Descripción General
+
+El proyecto busca digitalizar y estandarizar el control de equipos operativos utilizados durante campañas agrícolas, permitiendo una gestión centralizada, trazable y escalable.
+
+La solución contempla:
+- aplicación móvil para operación en campo,
+- plataforma web administrativa y analítica,
+- backend empresarial REST,
+- gestión documental y operacional,
+- dashboard KPI,
+- auditoría completa.
 
 ---
 
 # Objetivo del Proyecto
 
-Centralizar y digitalizar el control operativo de equipos alquilados utilizados en campañas agrícolas, permitiendo:
+Centralizar y digitalizar el control operativo de equipos alquilados utilizados durante campañas agrícolas, permitiendo:
+
 - trazabilidad completa,
 - control documental,
-- seguimiento de averías,
-- gestión de campañas,
-- visualización de indicadores,
-- control de usuarios y auditoría.
+- seguimiento operacional,
+- gestión de averías,
+- control de campañas,
+- monitoreo KPI,
+- auditoría de acciones,
+- generación reportes operativos.
 
 ---
 
-# Estado del Proyecto
+# Arquitectura General
+
+## Frontend Mobile
+
+Aplicación móvil para operación de campo y captura operacional.
+
+### Tecnologías
+
+- React Native
+- Redux Toolkit
+- Axios
+- Material Design 3
+
+### Responsabilidades
+
+- Registro operacional
+- Captura fotografías
+- Gestión averías
+- Consulta equipos
+- Consulta campañas
+- Operación campo
+
+---
+
+## Frontend Web
+
+Plataforma administrativa y analítica.
+
+### Tecnologías
+
+- React
+- Redux Toolkit
+- Material UI
+- Recharts
+- Axios
+
+### Responsabilidades
+
+- Dashboard KPI
+- Gestión administrativa
+- Gestión usuarios
+- Gestión campañas
+- Reportes
+- Auditoría
+
+---
+
+## Backend
+
+Servicios REST empresariales.
+
+### Tecnologías
+
+- Quarkus Java
+- JWT
+- Microsoft Identity
+- Flyway
+- OpenAPI
+- Swagger UI
+
+### Responsabilidades
+
+- APIs REST
+- Seguridad
+- Reglas negocio
+- Auditoría
+- Integración Microsoft
+- Gestión sesiones
+
+---
+
+## Base de Datos
+
+### Tecnología
+
+- MySQL
+
+### Responsabilidades
+
+- Persistencia operacional
+- Auditoría
+- Históricos
+- Integridad relacional
+
+---
+
+## Infraestructura
+
+### Tecnologías
+
+- Docker
+- Docker Compose
+- GitHub Actions
+- VPS Linux
+
+### Responsabilidades
+
+- Contenerización
+- Despliegue
+- Automatización
+- Integración continua
+
+---
+
+# Funcionalidades Principales
+
+## Autenticación Empresarial
+
+- Login Microsoft corporativo
+- JWT Authentication
+- Gestión sesiones
+- Expiración automática
+- Control roles
+- Trazabilidad accesos
+
+---
+
+## Gestión Usuarios
+
+- Gestión usuarios
+- Gestión roles
+- Activación/desactivación
+- Control accesos
+- Historial accesos
+
+---
+
+## Gestión Campañas
+
+- Campaña activa
+- Históricos campañas
+- Gestión operacional
+- Control campañas
+
+---
+
+## Gestión Equipos
+
+- Registro equipos
+- Historial operacional
+- Gestión proveedores
+- Historial averías
+- Control estado operativo
+
+---
+
+## Gestión PSR / OSR
+
+- Registro PSR
+- Registro OSR
+- Asociación equipos
+- Historial documental
+- Exportación PDF
+
+---
+
+## Gestión Averías
+
+- Registro averías
+- Seguimiento averías
+- Historial averías
+- Evidencias fotográficas
+- Control estados
+
+---
+
+## Evidencias Fotográficas
+
+- Captura móvil
+- Compresión automática
+- Resolución optimizada
+- Gestión almacenamiento
+- Eliminación auditada
+
+---
+
+## Dashboard KPI
+
+- Métricas operativas
+- Indicadores campaña
+- Filtros dinámicos
+- Indicadores averías
+- Indicadores equipos
+
+---
+
+## Auditoría
+
+- Logs operacionales
+- Historial cambios
+- Historial accesos
+- Trazabilidad acciones
+- Auditoría eliminación
+
+---
+
+# Estado Proyecto
 
 | Área | Estado |
 |---|---|
@@ -45,63 +255,24 @@ Centralizar y digitalizar el control operativo de equipos alquilados utilizados 
 
 ---
 
-# Arquitectura General
+# Stack Tecnológico
 
-## Frontend Mobile
-
-Aplicación móvil para operación en campo.
-
-### Stack
-- React Native
-- Redux Toolkit
-- Axios
-- Material Design 3
-
----
-
-## Frontend Web
-
-Plataforma web administrativa y analítica.
-
-### Stack
-- React
-- Redux Toolkit
-- Recharts
-- Material UI
-- Axios
+| Capa | Tecnología |
+|---|---|
+| Frontend Mobile | React Native |
+| Frontend Web | React |
+| Backend | Quarkus Java |
+| Base Datos | MySQL |
+| Seguridad | JWT |
+| Auth | Microsoft Identity |
+| APIs | REST |
+| Infraestructura | Docker |
+| CI/CD | GitHub Actions |
+| Observabilidad | Healthchecks + Logging |
 
 ---
 
-## Backend
-
-Servicios REST empresariales.
-
-### Stack
-- Quarkus Java
-- JWT Authentication
-- Microsoft Identity
-- Flyway
-- OpenAPI
-- Swagger UI
-
----
-
-## Base de Datos
-
-- MySQL
-
----
-
-## Infraestructura
-
-- Docker
-- Docker Compose
-- GitHub Actions CI/CD
-- VPS Linux
-
----
-
-# Módulos del Sistema
+# Módulos Sistema
 
 | Código | Módulo |
 |---|---|
@@ -111,7 +282,7 @@ Servicios REST empresariales.
 | MOD-04 | Campañas |
 | MOD-05 | PSR / OSR |
 | MOD-06 | Equipos |
-| MOD-07 | Tipos de Equipos |
+| MOD-07 | Tipos Equipos |
 | MOD-08 | Proveedores |
 | MOD-09 | Averías |
 | MOD-10 | Evidencias Fotográficas |
@@ -123,70 +294,22 @@ Servicios REST empresariales.
 
 ---
 
-# Funcionalidades Principales
-
-## Autenticación Empresarial
-- Login corporativo Microsoft
-- JWT Authentication
-- Control de sesiones
-- Gestión de roles
-
----
-
-## Gestión Operativa
-- Registro equipos
-- Gestión campañas
-- Control PSR/OSR
-- Gestión averías
-- Control proveedores
-
----
-
-## Evidencias
-- Captura fotografías
-- Compresión automática
-- Resolución máxima 1080x720
-- Eliminación controlada con auditoría
-
----
-
-## Dashboard KPI
-- Indicadores operativos
-- Métricas por campaña
-- Filtros dinámicos
-- Visualización web
-
----
-
-## Auditoría
-- Logs operacionales
-- Historial cambios
-- Historial accesos
-- Trazabilidad completa
-
----
-
-# Seguridad
-
-La plataforma implementará:
-- Microsoft Identity Authentication,
-- JWT,
-- control de roles,
-- auditoría completa,
-- expiración de sesión,
-- validación centralizada.
-
----
-
 # Estrategia APIs
 
-## REST APIs
+## Arquitectura APIs
+
+La plataforma implementará APIs REST empresariales bajo arquitectura versionada.
+
+### Características
+
 - Versionamiento `/api/v1`
+- JWT Authentication
 - OpenAPI
 - Swagger UI
 - Paginación server-side
 - Filtros dinámicos
 - Manejo centralizado errores
+- Respuestas estandarizadas
 
 ---
 
@@ -201,7 +324,6 @@ La plataforma implementará:
   "data": {},
   "timestamp": "2026-05-18T10:00:00Z"
 }
-```
 
 ### Respuesta Error
 
@@ -216,7 +338,26 @@ La plataforma implementará:
 
 ---
 
-# Estrategia Fotografías
+# Seguridad
+
+La plataforma implementará controles de seguridad empresariales.
+
+## Seguridad Implementada
+
+- Microsoft Identity Authentication
+- JWT Authentication
+- Expiración sesiones
+- Control roles
+- Auditoría completa
+- Trazabilidad acciones
+- Validación centralizada
+- Versionamiento APIs
+
+---
+
+# Gestión Fotografías
+
+## Configuración Fotografías
 
 | Configuración | Valor |
 |---|---|
@@ -229,46 +370,7 @@ La plataforma implementará:
 
 ---
 
-# Estructura Documentación SDD
-
-```text
-docs/
- └── sdd/
-      ├── 01_SPECIFICATION.md
-      ├── 02_PLAN.md
-      ├── 03_TASKS.md
-      ├── 04_IMPLEMENTATION.md
-      ├── 05_TECHNICAL_ARCHITECTURE.md
-      ├── 06_DATABASE_DESIGN.md
-      └── 07_API_CONTRACTS.md
-```
-
----
-
-# Estrategia Desarrollo
-
-## MVP Inicial
-
-### Incluye
-- autenticación,
-- usuarios,
-- campañas,
-- equipos,
-- PSR/OSR,
-- averías,
-- evidencias,
-- dashboard básico.
-
-### Futuro
-- métricas avanzadas,
-- exportaciones avanzadas,
-- BI,
-- observabilidad avanzada,
-- escalabilidad cloud.
-
----
-
-# Configuración Timezone
+# Configuración Regional
 
 | Configuración | Valor |
 |---|---|
@@ -277,7 +379,7 @@ docs/
 
 ---
 
-# Convenciones
+# Convenciones Proyecto
 
 ## Git Flow
 
@@ -290,20 +392,40 @@ hotfix/*
 
 ---
 
-# CI/CD
+## Convenciones Backend
 
-GitHub Actions implementará:
-- build automático,
-- tests,
-- validación código,
-- dockerización,
-- despliegue automatizado.
+- Arquitectura modular
+- DTO Pattern
+- Repository Pattern
+- Service Layer
+- Exception Handling Centralizado
+- APIs REST versionadas
+
+---
+
+## Convenciones Frontend
+
+- Arquitectura modular
+- Redux Toolkit
+- Componentización reutilizable
+- Manejo centralizado APIs
+
+---
+
+## Convenciones Base Datos
+
+- Migraciones Flyway
+- Auditoría operacional
+- Soft delete
+- Optimistic locking
+- Constraints relacionales
 
 ---
 
 # Observabilidad
 
 La plataforma implementará:
+
 - logs backend,
 - logs auditoría,
 - healthchecks,
@@ -312,21 +434,136 @@ La plataforma implementará:
 
 ---
 
+# CI/CD
+
+GitHub Actions implementará:
+
+- build automático,
+- validación código,
+- dockerización,
+- despliegue automatizado,
+- validación ramas,
+- integración continua.
+
+---
+
+# MVP Inicial
+
+## Alcance MVP
+
+- autenticación,
+- usuarios,
+- campañas,
+- equipos,
+- PSR / OSR,
+- averías,
+- evidencias,
+- dashboard básico.
+
+---
+
 # Roadmap Futuro
 
-- Kubernetes
+## Evolución Plataforma
+
 - Redis
+- Kubernetes
 - BI avanzado
 - Observabilidad avanzada
-- Multiempresa
-- Escalabilidad cloud
 - Dashboards avanzados
+- Escalabilidad cloud
+- Multiempresa
+
+---
+
+# Estructura Repositorio
+
+```text
+rep_control_equipos_apilamiento/
+│
+├── backend/
+│
+├── frontend-mobile/
+│
+├── frontend-web/
+│
+├── docker/
+│
+├── docs/
+│   └── sdd/
+│       ├── 01_SPECIFICATION.md
+│       ├── 02_PLAN.md
+│       ├── 03_TASKS.md
+│       ├── 04_IMPLEMENTATION.md
+│       ├── 05_TECHNICAL_ARCHITECTURE.md
+│       ├── 06_DATABASE_DESIGN.md
+│       └── 07_API_CONTRACTS.md
+│
+├── .github/
+│
+├── docker-compose.yml
+│
+└── README.md
+```
+
+---
+
+# Documentación Técnica
+
+Toda la documentación funcional y técnica se encuentra en:
+
+```text
+docs/sdd/
+```
+
+## Documentos Principales
+
+| Documento | Descripción |
+|---|---|
+| 01_SPECIFICATION.md | Especificación funcional |
+| 02_PLAN.md | Plan proyecto |
+| 03_TASKS.md | Gestión tareas |
+| 04_IMPLEMENTATION.md | Estrategia implementación |
+| 05_TECHNICAL_ARCHITECTURE.md | Arquitectura técnica |
+| 06_DATABASE_DESIGN.md | Diseño base datos |
+| 07_API_CONTRACTS.md | Contratos APIs |
+
+---
+
+# Estrategia Desarrollo
+
+## Fases Desarrollo
+
+### Fase 1
+- Arquitectura técnica
+- Diseño BD
+- Contratos APIs
+
+### Fase 2
+- Setup infraestructura
+- Setup backend
+- Setup frontend
+
+### Fase 3
+- Desarrollo MVP
+- Integraciones
+- Seguridad
+
+### Fase 4
+- Testing
+- Hardening
+- Optimización
+
+### Fase 5
+- Despliegue
+- Validación campo
+- Producción
 
 ---
 
 # Autor
 
-Proyecto desarrollado para control operacional agrícola empresarial.
+Proyecto orientado a operación agrícola empresarial.
 
 ---
 
