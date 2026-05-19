@@ -460,6 +460,165 @@ Esto ocasiona riesgos operativos, pagos indebidos por sobre-uso, dificultades de
 | RF-241 | Averías | Evidencia obligatoria de avería | El sistema deberá validar el registro de evidencias fotográficas para averías críticas | Sistema | Alta |
 | RF-242 | Averías | Trazabilidad de cambios de estado | El sistema deberá registrar cambios de estado realizados durante el ciclo de vida de la avería | Sistema | Alta |
 
+# MOD-10 — EVIDENCIAS FOTOGRÁFICAS
+
+| Código | Módulo | Nombre | Descripción | Actor | Prioridad |
+|---|---|---|---|---|---|
+| RF-243 | Evidencias | Captura de fotografías | El sistema deberá permitir capturar fotografías desde dispositivo móvil | Usuario, Administrador | Alta |
+| RF-244 | Evidencias | Carga de fotografías | El sistema deberá permitir cargar fotografías desde galería del dispositivo | Usuario, Administrador | Media |
+| RF-245 | Evidencias | Asociación documental | El sistema deberá asociar fotografías a equipos, averías y devoluciones | Usuario, Administrador | Alta |
+| RF-246 | Evidencias | Visualización multimedia | El sistema deberá permitir visualizar evidencias fotográficas registradas | Usuario, Administrador | Alta |
+| RF-247 | Evidencias | Descarga de fotografías | El sistema deberá permitir descargar fotografías registradas | Usuario, Administrador | Media |
+| RF-248 | Evidencias | Validación de formatos | El sistema deberá validar formatos permitidos de imágenes | Sistema | Alta |
+| RF-249 | Evidencias | Compresión automática | El sistema deberá optimizar imágenes antes del almacenamiento | Sistema | Media |
+| RF-250 | Evidencias | Almacenamiento seguro | El sistema deberá almacenar fotografías de manera segura y organizada | Sistema | Alta |
+| RF-251 | Evidencias | Restricción de eliminación | El sistema no deberá permitir eliminación física de evidencias históricas | Administrador | Alta |
+| RF-252 | Evidencias | Auditoría multimedia | El sistema deberá registrar eventos relacionados a evidencias | Administrador | Alta |
+| RF-253 | Evidencias | Validación de tamaño de archivo | El sistema deberá validar tamaños máximos permitidos para archivos multimedia | Sistema | Alta |
+| RF-254 | Evidencias | Asociación automática de usuario | El sistema deberá registrar automáticamente el usuario responsable de la evidencia cargada | Sistema | Alta |
+| RF-255 | Evidencias | Registro automático de fecha | El sistema deberá registrar automáticamente fecha y hora de carga de evidencias | Sistema | Alta |
+| RF-256 | Evidencias | Evidencias obligatorias por operación | El sistema deberá validar evidencias obligatorias según la operación realizada | Sistema | Alta |
+| RF-257 | Evidencias | Validación de integridad de archivos | El sistema deberá validar integridad de archivos antes de almacenarlos | Sistema | Alta |
+| RF-258 | Evidencias | Restricción de formatos inválidos | El sistema no deberá permitir cargar formatos multimedia no autorizados | Sistema | Alta |
+| RF-259 | Evidencias | Visualización por entidad asociada | El sistema deberá permitir visualizar evidencias agrupadas por equipo, avería o devolución | Usuario, Administrador | Alta |
+| RF-260 | Evidencias | Asociación múltiple de evidencias | El sistema deberá permitir asociar múltiples evidencias a un mismo registro operativo | Usuario, Administrador | Alta |
+| RF-261 | Evidencias | Validación de existencia de entidad | El sistema deberá validar existencia del registro operativo antes de asociar evidencias | Sistema | Alta |
+| RF-262 | Evidencias | Restricción de modificación histórica | El sistema no deberá permitir modificar evidencias asociadas a operaciones cerradas | Sistema | Alta |
+| RF-263 | Evidencias | Trazabilidad de evidencias | El sistema deberá mantener trazabilidad completa de carga y consulta de evidencias | Sistema | Alta |
+| RF-264 | Evidencias | Recuperación segura de archivos | El sistema deberá permitir recuperar evidencias almacenadas de forma segura | Sistema | Alta |
+
+# MOD-11 — DASHBOARD KPI
+
+| Código | Módulo | Nombre | Descripción | Actor | Prioridad |
+|---|---|---|---|---|---|
+| RF-265 | Dashboard KPI | Visualización de indicadores | El sistema deberá visualizar indicadores operativos consolidados | Usuario, Administrador | Alta |
+| RF-266 | Dashboard KPI | KPI de equipos activos | El sistema deberá mostrar cantidad de equipos operativos activos | Usuario, Administrador | Alta |
+| RF-267 | Dashboard KPI | KPI de equipos averiados | El sistema deberá mostrar cantidad de equipos averiados | Usuario, Administrador | Alta |
+| RF-268 | Dashboard KPI | KPI de tiempos inactivos | El sistema deberá visualizar tiempos acumulados de inactividad | Usuario, Administrador | Alta |
+| RF-269 | Dashboard KPI | KPI por proveedor | El sistema deberá visualizar indicadores operativos por proveedor | Usuario, Administrador | Alta |
+| RF-270 | Dashboard KPI | KPI por campaña | El sistema deberá visualizar indicadores operativos por campaña | Usuario, Administrador | Alta |
+| RF-271 | Dashboard KPI | Filtros dinámicos | El sistema deberá permitir filtros dinámicos sobre indicadores | Usuario, Administrador | Alta |
+| RF-272 | Dashboard KPI | Gráficos estadísticos | El sistema deberá visualizar gráficos estadísticos operativos | Usuario, Administrador | Media |
+| RF-273 | Dashboard KPI | Exportación de dashboard | El sistema deberá permitir exportar indicadores operativos | Usuario, Administrador | Baja |
+| RF-274 | Dashboard KPI | Actualización en tiempo real | El sistema deberá actualizar indicadores al registrar operaciones | Sistema | Media |
+| RF-275 | Dashboard KPI | KPI de equipos disponibles | El sistema deberá visualizar cantidad de equipos disponibles para operación | Usuario, Administrador | Alta |
+| RF-276 | Dashboard KPI | KPI de equipos en mantenimiento | El sistema deberá visualizar cantidad de equipos en mantenimiento | Usuario, Administrador | Alta |
+| RF-277 | Dashboard KPI | KPI de averías abiertas | El sistema deberá visualizar cantidad de averías activas pendientes de cierre | Usuario, Administrador | Alta |
+| RF-278 | Dashboard KPI | KPI de tiempo promedio de atención | El sistema deberá calcular y visualizar tiempos promedio de atención de averías | Usuario, Administrador | Alta |
+| RF-279 | Dashboard KPI | KPI de disponibilidad operativa | El sistema deberá calcular indicadores de disponibilidad operativa de equipos | Usuario, Administrador | Alta |
+| RF-280 | Dashboard KPI | KPI de utilización de equipos | El sistema deberá visualizar indicadores de utilización operacional de equipos | Usuario, Administrador | Alta |
+| RF-281 | Dashboard KPI | KPI por sede | El sistema deberá visualizar indicadores operativos agrupados por sede | Usuario, Administrador | Alta |
+| RF-282 | Dashboard KPI | KPI por tipo de equipo | El sistema deberá visualizar indicadores agrupados por tipo de equipo | Usuario, Administrador | Alta |
+| RF-283 | Dashboard KPI | Visualización de tendencias | El sistema deberá visualizar tendencias operativas mediante gráficos históricos | Usuario, Administrador | Media |
+| RF-284 | Dashboard KPI | Validación de actualización automática | El sistema deberá recalcular indicadores automáticamente ante cambios operativos | Sistema | Alta |
+| RF-285 | Dashboard KPI | Dashboard resumido gerencial | El sistema deberá visualizar resumen ejecutivo de indicadores críticos | Usuario, Administrador | Alta |
+| RF-286 | Dashboard KPI | Indicadores de devoluciones | El sistema deberá visualizar indicadores asociados a devoluciones operativas | Usuario, Administrador | Media |
+| RF-287 | Dashboard KPI | Indicadores de proveedores críticos | El sistema deberá identificar proveedores con mayor cantidad de incidencias | Usuario, Administrador | Alta |
+| RF-288 | Dashboard KPI | Validación de integridad estadística | El sistema deberá validar consistencia de información estadística mostrada | Sistema | Alta |
+| RF-289 | Dashboard KPI | Restricción por permisos | El sistema deberá mostrar indicadores según permisos y roles del usuario | Sistema | Alta |
+
+# MOD-12 — REPORTES PDF
+
+| Código | Módulo | Nombre | Descripción | Actor | Prioridad |
+|---|---|---|---|---|---|
+| RF-290 | Reportes PDF | Generación de reporte de equipo | El sistema deberá generar reportes PDF de equipos registrados | Usuario, Administrador | Alta |
+| RF-291 | Reportes PDF | Generación de reporte de averías | El sistema deberá generar reportes PDF de averías registradas | Usuario, Administrador | Alta |
+| RF-292 | Reportes PDF | Inclusión de fotografías | El sistema deberá incluir evidencias fotográficas en reportes PDF | Usuario, Administrador | Alta |
+| RF-293 | Reportes PDF | Descarga de reportes | El sistema deberá permitir descargar reportes generados | Usuario, Administrador | Alta |
+| RF-294 | Reportes PDF | Generación por filtros | El sistema deberá permitir generar reportes mediante filtros operativos | Usuario, Administrador | Media |
+| RF-295 | Reportes PDF | Generación histórica | El sistema deberá permitir generar reportes históricos | Usuario, Administrador | Media |
+| RF-296 | Reportes PDF | Inclusión de auditoría | El sistema deberá incluir información de trazabilidad en reportes | Usuario, Administrador | Media |
+| RF-297 | Reportes PDF | Validación de generación | El sistema deberá validar consistencia documental antes de generar PDF | Sistema | Media |
+| RF-298 | Reportes PDF | Reporte consolidado operativo | El sistema deberá generar reportes consolidados de operaciones | Usuario, Administrador | Alta |
+| RF-299 | Reportes PDF | Reporte por proveedor | El sistema deberá generar reportes operativos agrupados por proveedor | Usuario, Administrador | Alta |
+| RF-300 | Reportes PDF | Reporte por campaña | El sistema deberá generar reportes operativos agrupados por campaña | Usuario, Administrador | Alta |
+| RF-301 | Reportes PDF | Reporte de historial de equipos | El sistema deberá generar historial completo de operaciones por equipo | Usuario, Administrador | Alta |
+| RF-302 | Reportes PDF | Reporte de tiempos de inactividad | El sistema deberá generar reportes de tiempos acumulados de inactividad | Usuario, Administrador | Alta |
+| RF-303 | Reportes PDF | Inclusión de indicadores KPI | El sistema deberá incluir indicadores operativos dentro de reportes PDF | Usuario, Administrador | Alta |
+| RF-304 | Reportes PDF | Inclusión de fecha de generación | El sistema deberá registrar fecha y hora de generación del reporte | Sistema | Alta |
+| RF-305 | Reportes PDF | Inclusión de usuario generador | El sistema deberá registrar el usuario responsable de la generación del reporte | Sistema | Alta |
+| RF-306 | Reportes PDF | Validación de información obligatoria | El sistema deberá validar existencia de información mínima antes de generar reportes | Sistema | Alta |
+| RF-307 | Reportes PDF | Generación de reportes por rango de fechas | El sistema deberá permitir generar reportes utilizando rangos de fechas operativas | Usuario, Administrador | Alta |
+| RF-308 | Reportes PDF | Generación de reportes de averías activas | El sistema deberá permitir generar reportes de averías pendientes de atención | Usuario, Administrador | Alta |
+| RF-309 | Reportes PDF | Generación de reportes de auditoría | El sistema deberá generar reportes asociados a trazabilidad y auditoría del sistema | Administrador | Alta |
+| RF-310 | Reportes PDF | Restricción por permisos | El sistema deberá restringir generación de reportes según roles y permisos | Sistema | Alta |
+| RF-311 | Reportes PDF | Inclusión de estado operativo | El sistema deberá incluir estados operativos de equipos y averías en reportes | Usuario, Administrador | Alta |
+| RF-312 | Reportes PDF | Validación de integridad documental | El sistema deberá validar integridad de información antes de exportar documentos PDF | Sistema | Alta |
+
+# MOD-13 — AUDITORÍA
+
+| Código | Módulo | Nombre | Descripción | Actor | Prioridad |
+|---|---|---|---|---|---|
+| RF-313 | Auditoría | Registro de eventos | El sistema deberá registrar eventos operativos relevantes | Sistema | Alta |
+| RF-314 | Auditoría | Registro de autenticación | El sistema deberá registrar eventos de acceso y cierre de sesión | Sistema | Alta |
+| RF-315 | Auditoría | Registro de operaciones CRUD | El sistema deberá registrar creación, actualización y desactivación de registros | Sistema | Alta |
+| RF-316 | Auditoría | Registro de usuario responsable | El sistema deberá almacenar el usuario responsable de cada operación | Sistema | Alta |
+| RF-317 | Auditoría | Registro de fecha y hora | El sistema deberá almacenar fecha y hora exacta de eventos | Sistema | Alta |
+| RF-318 | Auditoría | Consulta de auditoría | El sistema deberá permitir consultar eventos registrados | Administrador | Alta |
+| RF-319 | Auditoría | Filtrado de eventos | El sistema deberá permitir filtrar eventos mediante múltiples criterios | Administrador | Media |
+| RF-320 | Auditoría | Exportación de auditoría | El sistema deberá permitir exportar registros de auditoría | Administrador | Baja |
+| RF-321 | Auditoría | Restricción de modificación | El sistema no deberá permitir modificar registros de auditoría | Sistema | Alta |
+| RF-322 | Auditoría | Retención histórica | El sistema deberá mantener historial completo de eventos operativos | Sistema | Alta |
+| RF-323 | Auditoría | Registro de módulo afectado | El sistema deberá registrar el módulo funcional asociado a cada evento | Sistema | Alta |
+| RF-324 | Auditoría | Registro de dirección IP | El sistema deberá almacenar dirección IP asociada a eventos críticos | Sistema | Alta |
+| RF-325 | Auditoría | Registro de cambios de estado | El sistema deberá registrar cambios de estado realizados sobre entidades operativas | Sistema | Alta |
+| RF-326 | Auditoría | Registro de errores operativos | El sistema deberá registrar errores generados durante operaciones críticas | Sistema | Alta |
+| RF-327 | Auditoría | Registro de operaciones de seguridad | El sistema deberá registrar eventos relacionados a seguridad y autenticación JWT | Sistema | Alta |
+| RF-328 | Auditoría | Consulta por usuario | El sistema deberá permitir consultar auditoría por usuario responsable | Administrador | Alta |
+| RF-329 | Auditoría | Consulta por rango de fechas | El sistema deberá permitir consultar auditoría mediante rango de fechas | Administrador | Alta |
+| RF-330 | Auditoría | Restricción de acceso a auditoría | El sistema deberá restringir acceso a información de auditoría según permisos | Sistema | Alta |
+| RF-331 | Auditoría | Trazabilidad de evidencias | El sistema deberá registrar operaciones realizadas sobre evidencias fotográficas | Sistema | Alta |
+| RF-332 | Auditoría | Registro de generación de reportes | El sistema deberá registrar generación y descarga de reportes PDF | Sistema | Alta |
+| RF-333 | Auditoría | Validación de integridad de auditoría | El sistema deberá garantizar integridad y consistencia de registros de auditoría | Sistema | Alta |
+
+# MOD-14 — CATÁLOGOS
+
+| Código | Módulo | Nombre | Descripción | Actor | Prioridad |
+|---|---|---|---|---|---|
+| RF-334 | Catálogos | Gestión de marcas | El sistema deberá permitir administrar marcas de equipos | Administrador | Alta |
+| RF-335 | Catálogos | Gestión de motivos PSR | El sistema deberá permitir administrar motivos de solicitudes PSR | Administrador | Alta |
+| RF-336 | Catálogos | Gestión de estados | El sistema deberá permitir administrar estados operativos | Administrador | Media |
+| RF-337 | Catálogos | Gestión de configuraciones auxiliares | El sistema deberá administrar tablas maestras auxiliares | Administrador | Media |
+| RF-338 | Catálogos | Validación de duplicidad | El sistema deberá validar registros duplicados en catálogos | Sistema | Alta |
+| RF-339 | Catálogos | Estado de registros | El sistema deberá permitir activar y desactivar registros maestros | Administrador | Media |
+| RF-340 | Catálogos | Restricción de eliminación | El sistema no deberá permitir eliminar registros asociados a operaciones | Administrador | Alta |
+| RF-341 | Catálogos | Auditoría de catálogos | El sistema deberá registrar cambios sobre datos maestros | Sistema | Alta |
+| RF-342 | Catálogos | Gestión de tipos de avería | El sistema deberá permitir administrar tipos de averías operativas | Administrador | Alta |
+| RF-343 | Catálogos | Gestión de tipos de equipos | El sistema deberá permitir administrar categorías de equipos operativos | Administrador | Alta |
+| RF-344 | Catálogos | Gestión de accesorios | El sistema deberá permitir administrar accesorios operativos de equipos | Administrador | Alta |
+| RF-345 | Catálogos | Gestión de estados de avería | El sistema deberá permitir administrar estados operativos de averías | Administrador | Alta |
+| RF-346 | Catálogos | Gestión de campañas | El sistema deberá permitir administrar parámetros base de campañas | Administrador | Alta |
+| RF-347 | Catálogos | Validación de códigos únicos | El sistema deberá validar unicidad de códigos maestros | Sistema | Alta |
+| RF-348 | Catálogos | Restricción de uso de registros inactivos | El sistema no deberá permitir utilizar registros maestros inactivos en operaciones | Sistema | Alta |
+| RF-349 | Catálogos | Visualización de catálogos | El sistema deberá permitir visualizar registros maestros configurados | Usuario, Administrador | Alta |
+| RF-350 | Catálogos | Búsqueda en catálogos | El sistema deberá permitir realizar búsquedas sobre registros maestros | Usuario, Administrador | Media |
+| RF-351 | Catálogos | Asociación de catálogos | El sistema deberá permitir relacionar registros maestros entre módulos operativos | Administrador | Media |
+| RF-352 | Catálogos | Validación de integridad referencial | El sistema deberá validar integridad referencial entre catálogos y operaciones | Sistema | Alta |
+
+# MOD-15 — CONFIGURACIÓN
+
+| Código | Módulo | Nombre | Descripción | Actor | Prioridad |
+|---|---|---|---|---|---|
+| RF-353 | Configuración | Configuración general | El sistema deberá permitir administrar parámetros generales | Administrador | Alta |
+| RF-354 | Configuración | Configuración de tiempos de sesión | El sistema deberá permitir configurar expiración de sesiones | Administrador | Media |
+| RF-355 | Configuración | Configuración de almacenamiento | El sistema deberá permitir configurar políticas de almacenamiento multimedia | Administrador | Media |
+| RF-356 | Configuración | Configuración de tamaños multimedia | El sistema deberá permitir configurar límites de tamaño de archivos | Administrador | Media |
+| RF-357 | Configuración | Configuración de auditoría | El sistema deberá permitir configurar niveles de trazabilidad | Administrador | Baja |
+| RF-358 | Configuración | Configuración de campañas | El sistema deberá permitir parametrizar campañas operativas | Administrador | Media |
+| RF-359 | Configuración | Configuración de seguridad | El sistema deberá permitir administrar parámetros de seguridad JWT | Administrador | Alta |
+| RF-360 | Configuración | Historial de configuraciones | El sistema deberá registrar cambios realizados en configuraciones | Sistema | Alta |
+| RF-361 | Configuración | Configuración de parámetros operativos | El sistema deberá permitir administrar parámetros operativos globales | Administrador | Alta |
+| RF-362 | Configuración | Configuración de políticas de evidencias | El sistema deberá permitir configurar reglas obligatorias de evidencias fotográficas | Administrador | Alta |
+| RF-363 | Configuración | Configuración de políticas de averías | El sistema deberá permitir configurar parámetros operativos de gestión de averías | Administrador | Alta |
+| RF-364 | Configuración | Configuración de expiración JWT | El sistema deberá permitir parametrizar tiempos de expiración de tokens JWT | Administrador | Alta |
+| RF-365 | Configuración | Configuración de roles y permisos | El sistema deberá permitir administrar configuraciones de permisos del sistema | Administrador | Alta |
+| RF-366 | Configuración | Restricción de acceso a configuraciones | El sistema deberá restringir acceso a configuraciones según roles administrativos | Sistema | Alta |
+| RF-367 | Configuración | Validación de parámetros críticos | El sistema deberá validar integridad de configuraciones críticas antes de aplicarlas | Sistema | Alta |
+| RF-368 | Configuración | Registro de cambios de configuración | El sistema deberá registrar auditoría de cambios realizados sobre configuraciones | Sistema | Alta |
+| RF-369 | Configuración | Configuración de estados operativos | El sistema deberá permitir configurar estados operativos utilizados en el sistema | Administrador | Media |
+| RF-370 | Configuración | Configuración de límites operativos | El sistema deberá permitir configurar límites y validaciones operativas globales | Administrador | Media |
+| RF-371 | Configuración | Restauración de configuraciones | El sistema deberá permitir restaurar configuraciones previamente registradas | Administrador | Media |
+
 # 9. REGLAS DE NEGOCIO
 
 [PENDIENTE]
