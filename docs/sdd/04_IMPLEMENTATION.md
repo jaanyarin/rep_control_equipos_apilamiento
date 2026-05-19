@@ -95,6 +95,7 @@ No contempla:
 | VPS | Virtual Private Server |
 | DTO | Data Transfer Object |
 | Audit Log | Registro de trazabilidad operacional |
+| Timezone Oficial | America/Lima (UTC -5) |
 
 ---
 
@@ -372,6 +373,21 @@ fecha_baja
 - Relaciones explícitas.
 - Restricciones obligatorias.
 
+Las migraciones de base de datos deberán gestionarse mediante Flyway.
+
+## Convención Identificadores Funcionales
+
+| Entidad | Ejemplo |
+|---|---|
+| Campaña Uva | UVA-2025 |
+| Campaña Arándano | ARA-2025 |
+| Equipo | EQ-00001 |
+| Avería | AV-00001 |
+| PSR | PSR-2025-0001 |
+| OSR | OSR-2025-0001 |
+
+Las campañas podrán extenderse operativamente entre distintos años calendario sin afectar su identificador funcional.
+
 ---
 
 # 12. Estrategia APIs REST
@@ -388,6 +404,9 @@ Garantizar APIs mantenibles, escalables y seguras.
 | Formato | JSON |
 | Autenticación | JWT |
 | Versionamiento | Obligatorio |
+
+Las APIs deberán mantener compatibilidad backward compatible dentro de la misma versión principal.
+La plataforma deberá soportar exportación de información en formato Excel para módulos operativos y dashboards.
 
 ## Métodos HTTP
 
@@ -464,7 +483,8 @@ Gestionar fotografías operativas de manera controlada.
 | Tamaño Máximo | 5 MB |
 | Formatos | JPG / PNG |
 | Múltiples Fotos | Sí |
-| Compresión | Sí |
+| Compresión | Obligatoria |
+| Resolución Máxima | 1080x720 |
 | Almacenamiento | Filesystem |
 
 ## Lineamientos Fotografías
@@ -474,6 +494,10 @@ Gestionar fotografías operativas de manera controlada.
 - Asociación obligatoria.
 - Rutas controladas.
 - Prevención duplicados.
+- Solo usuarios Administrador podrán eliminar fotografías.
+- Toda eliminación de fotografías deberá quedar registrada en auditoría.
+- Las fotografías podrán eliminarse históricamente para control de almacenamiento.
+- El sistema deberá aplicar compresión automática server-side.
 
 ---
 
@@ -504,6 +528,8 @@ Garantizar trazabilidad operacional completa.
 | Módulo | Sí |
 | Acción | Sí |
 
+La auditoría funcional deberá conservarse históricamente mientras exista el sistema.
+
 ---
 
 # 16. Estrategia Logging
@@ -528,6 +554,8 @@ Garantizar monitoreo técnico y soporte operativo.
 | Retención | 6 meses |
 | Rotación | Automática |
 
+La auditoría funcional y trazabilidad operacional serán independientes de la política de rotación de logs técnicos.
+
 ---
 
 # 17. Estrategia Manejo Errores
@@ -543,6 +571,13 @@ Centralizar y controlar errores técnicos y funcionales.
 - Logs automáticos.
 - Errores estandarizados.
 - No exposición información sensible.
+
+La aplicación móvil deberá manejar:
+- expiración automática de sesión,
+- reintentos controlados,
+- mensajes amigables al usuario,
+- redirección automática al login en caso de token inválido,
+- manejo controlado de pérdida de conectividad.
 
 ---
 
@@ -625,6 +660,9 @@ Garantizar estabilidad operacional productiva.
 | QA | Validaciones |
 | Producción | Operación real |
 
+La infraestructura deberá operar bajo timezone oficial:
+- America/Lima
+- UTC -5
 ---
 
 # 21. Estrategia Backups
@@ -647,6 +685,8 @@ Garantizar recuperación operacional.
 - Validación restauración.
 - Persistencia externa recomendada.
 - Control histórico backups.
+
+Las fotografías eliminadas manualmente por administradores no deberán recuperarse automáticamente mediante restauraciones parciales.
 
 ---
 
@@ -698,6 +738,8 @@ Mantener uniformidad técnica y mantenibilidad.
 - DTOs obligatorios.
 - Separación responsabilidades.
 - Evitar lógica duplicada.
+
+La plataforma deberá implementar optimistic locking para evitar conflictos de concurrencia en actualizaciones simultáneas.
 
 ---
 
