@@ -3159,9 +3159,422 @@ El sistema deberá implementar monitoreo técnico básico.
 
 # 15. PENDIENTES FUNCIONALES
 
-[PENDIENTE]
+## 15.1 Objetivo
 
+El presente apartado documenta las funcionalidades, restricciones y capacidades no contempladas dentro de la fase actual del sistema, pero que podrían formar parte de futuras evoluciones funcionales o técnicas del proyecto.
 
+El objetivo es establecer claramente el alcance funcional actual del sistema y mantener trazabilidad sobre posibles mejoras futuras, evitando ambigüedades durante el desarrollo, implementación y mantenimiento de la solución.
+
+## 15.2 Consideraciones Generales
+
+- Los pendientes funcionales documentados no forman parte del alcance obligatorio de la versión actual.
+- Las funcionalidades pendientes no deberán afectar la estabilidad operacional del sistema actual.
+- Las funcionalidades futuras deberán respetar la arquitectura tecnológica definida.
+- Toda evolución funcional deberá mantener compatibilidad con la seguridad JWT y validaciones backend.
+- Los pendientes funcionales no deberán comprometer la integridad operacional existente.
+- Las funcionalidades futuras deberán evaluarse según prioridad operacional y complejidad técnica.
+- La arquitectura actual deberá permitir escalabilidad controlada para futuras implementaciones.
+
+# 15.3 Pendientes Funcionales Identificados
+
+## 15.3.1 Gestión Avanzada de Permisos
+
+### Descripción
+
+Actualmente el sistema contempla manejo de roles y permisos básicos mediante JWT y validaciones backend.
+
+No se contempla una administración granular avanzada de permisos por acción específica, módulo dinámico o configuración personalizada por usuario.
+
+### Estado Actual
+
+No contemplado en la fase actual.
+
+### Impacto Operacional
+
+El modelo actual cubre correctamente las necesidades operacionales iniciales.
+
+### Consideración Técnica
+
+La arquitectura backend deberá permitir futura ampliación de políticas RBAC avanzadas.
+
+### Prioridad
+
+Media.
+
+### Observaciones
+
+La implementación futura podría requerir:
+
+- matrices dinámicas de permisos,
+- permisos parametrizables,
+- políticas avanzadas de autorización.
+
+## 15.3.2 Notificaciones Automáticas
+
+### Descripción
+
+No se contempla implementación de notificaciones automáticas push, correos electrónicos o alertas operacionales automáticas.
+
+### Estado Actual
+
+No contemplado en la fase actual.
+
+### Impacto Operacional
+
+Las operaciones deberán gestionarse manualmente desde el sistema.
+
+### Consideración Técnica
+
+La arquitectura deberá permitir futuras integraciones de servicios de mensajería y notificaciones.
+
+### Prioridad
+
+Media.
+
+### Observaciones
+
+En futuras versiones podrían contemplarse:
+
+- alertas de averías,
+- alertas de campañas,
+- recordatorios operacionales,
+- notificaciones administrativas.
+
+## 15.3.3 Dashboard KPI Avanzado
+
+### Descripción
+
+El sistema contemplará indicadores KPI operacionales básicos, pero no incluirá analítica avanzada ni herramientas BI empresariales.
+
+### Estado Actual
+
+Parcialmente contemplado.
+
+### Impacto Operacional
+
+La operación contará con indicadores suficientes para control operacional inicial.
+
+### Consideración Técnica
+
+La arquitectura deberá permitir futura integración con herramientas analíticas.
+
+### Prioridad
+
+Media.
+
+### Observaciones
+
+No se contempla actualmente:
+
+- BI avanzado,
+- análisis predictivo,
+- analytics complejos,
+- consolidación histórica avanzada.
+
+## 15.3.4 Exportaciones Adicionales
+
+### Descripción
+
+La generación de reportes se limitará inicialmente a exportación PDF.
+
+### Estado Actual
+
+Limitado a PDF.
+
+### Impacto Operacional
+
+La exportación PDF cubre las necesidades documentales actuales.
+
+### Consideración Técnica
+
+La arquitectura podrá ampliarse posteriormente para soportar otros formatos.
+
+### Prioridad
+
+Baja.
+
+### Observaciones
+
+No se contemplan actualmente:
+
+- Excel,
+- CSV,
+- Power BI,
+- integraciones analíticas externas.
+
+## 15.3.5 Operación Offline APK
+
+### Descripción
+
+La aplicación móvil React Native operará exclusivamente mediante conexión online.
+
+### Estado Actual
+
+No contemplado funcionamiento offline.
+
+### Impacto Operacional
+
+La APK requerirá conectividad permanente para operar correctamente.
+
+### Consideración Técnica
+
+No se implementarán mecanismos de sincronización local ni almacenamiento offline.
+
+### Prioridad
+
+Baja.
+
+### Observaciones
+
+No se contemplan actualmente:
+
+- SQLite local,
+- sincronización diferida,
+- colas offline,
+- resolución de conflictos.
+
+## 15.3.6 Integración Cloud Storage
+
+### Descripción
+
+El almacenamiento multimedia utilizará Docker Volumes Persistentes dentro del servidor VPS.
+
+### Estado Actual
+
+Implementación local persistente.
+
+### Impacto Operacional
+
+La solución actual cubre adecuadamente el alcance operacional definido.
+
+### Consideración Técnica
+
+La arquitectura podrá evolucionar hacia almacenamiento cloud si el crecimiento operacional lo requiere.
+
+### Prioridad
+
+Media.
+
+### Observaciones
+
+No se contemplan actualmente integraciones con:
+
+- Amazon S3,
+- Azure Blob Storage,
+- MinIO,
+- almacenamiento distribuido.
+
+## 15.3.7 Alta Disponibilidad Infraestructura
+
+### Descripción
+
+La solución será desplegada inicialmente sobre infraestructura VPS/Servidor único.
+
+### Estado Actual
+
+No contemplada arquitectura HA.
+
+### Impacto Operacional
+
+La solución dependerá inicialmente de una única infraestructura principal.
+
+### Consideración Técnica
+
+La arquitectura Docker permitirá futura escalabilidad horizontal controlada.
+
+### Prioridad
+
+Media.
+
+### Observaciones
+
+No se contemplan actualmente:
+
+- clustering,
+- balanceadores HA,
+- replicas activas,
+- redundancia multi-servidor.
+
+## 15.3.8 Monitoreo Avanzado
+
+### Descripción
+
+El sistema implementará únicamente monitoreo básico mediante health checks y logs backend.
+
+### Estado Actual
+
+Monitoreo básico contemplado.
+
+### Impacto Operacional
+
+El monitoreo básico será suficiente para soporte inicial.
+
+### Consideración Técnica
+
+La arquitectura podrá integrarse posteriormente con plataformas de observabilidad enterprise.
+
+### Prioridad
+
+Media.
+
+### Observaciones
+
+No se contemplan actualmente:
+
+- Prometheus,
+- Grafana,
+- ELK Stack,
+- observabilidad distribuida.
+
+## 15.3.9 Integraciones Externas
+
+### Descripción
+
+El sistema operará inicialmente de manera independiente sin integraciones externas empresariales.
+
+### Estado Actual
+
+No contempladas integraciones externas.
+
+### Impacto Operacional
+
+La operación será administrada completamente desde el sistema principal.
+
+### Consideración Técnica
+
+La arquitectura REST permitirá futuras integraciones.
+
+### Prioridad
+
+Media.
+
+### Observaciones
+
+No se contemplan actualmente integraciones con:
+
+- ERP,
+- SAP,
+- sistemas logísticos externos,
+- plataformas corporativas adicionales.
+
+## 15.3.10 Versionado Histórico de Evidencias
+
+### Descripción
+
+Las evidencias multimedia serán persistentes, pero no contarán con control de versiones históricas.
+
+### Estado Actual
+
+Persistencia simple contemplada.
+
+### Impacto Operacional
+
+La operación mantendrá trazabilidad básica de evidencias.
+
+### Consideración Técnica
+
+La arquitectura podrá evolucionar posteriormente hacia control histórico multimedia.
+
+### Prioridad
+
+Baja.
+
+### Observaciones
+
+No se contempla actualmente:
+
+- versionado archivos,
+- historial reemplazos,
+- control versiones multimedia.
+
+## 15.3.11 Firma Digital Operacional
+
+### Descripción
+
+El sistema no contemplará firma digital para validaciones operacionales.
+
+### Estado Actual
+
+No contemplado en fase actual.
+
+### Impacto Operacional
+
+Las validaciones operacionales se realizarán mediante autenticación y auditoría estándar.
+
+### Consideración Técnica
+
+La arquitectura podrá integrar mecanismos de firma digital posteriormente.
+
+### Prioridad
+
+Baja.
+
+### Observaciones
+
+No se contemplan actualmente:
+
+- firmas manuscritas digitales,
+- conformidad biométrica,
+- certificados digitales.
+
+## 15.3.12 Arquitectura Multiempresa
+
+### Descripción
+
+La solución operará inicialmente bajo un esquema single-tenant.
+
+### Estado Actual
+
+No contemplado entorno multiempresa.
+
+### Impacto Operacional
+
+La solución será utilizada para una única organización operacional.
+
+### Consideración Técnica
+
+La arquitectura actual no contempla segregación multiempresa.
+
+### Prioridad
+
+Baja.
+
+### Observaciones
+
+No se contemplan actualmente:
+
+- multicliente,
+- multiempresa,
+- segregación tenant,
+- administración corporativa distribuida.
+
+# 15.4 Restricciones Funcionales Actuales
+
+## 15.4.1 Restricciones Operacionales
+
+- La APK requerirá conexión permanente a internet.
+- No existirá funcionamiento offline.
+- El sistema utilizará autenticación Microsoft corporativa obligatoria.
+- El almacenamiento multimedia será local mediante Docker Volumes Persistentes.
+- El sistema utilizará exportación PDF como único formato documental inicial.
+- La infraestructura inicial será desplegada sobre VPS/Servidor on-premise.
+
+## 15.4.2 Restricciones Técnicas
+
+- No se contemplarán microservicios en la fase actual.
+- No se contemplará infraestructura Kubernetes.
+- No se implementarán colas distribuidas.
+- No se implementarán integraciones cloud avanzadas.
+- No se contemplará inteligencia artificial ni analítica predictiva.
+- No se implementará sincronización offline.
+
+# 15.5 Consideraciones Finales
+
+- Los pendientes funcionales deberán evaluarse según crecimiento operacional.
+- Toda ampliación funcional deberá respetar la arquitectura definida.
+- Las futuras implementaciones deberán mantener compatibilidad con reglas de negocio existentes.
+- Las ampliaciones futuras deberán priorizar mantenibilidad y estabilidad operacional.
+- El alcance funcional actual cubre las necesidades críticas identificadas para la operación inicial del sistema.
 
 # 16. ANEXOS
 
