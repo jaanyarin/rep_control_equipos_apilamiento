@@ -703,8 +703,142 @@ Las validaciones críticas no deberán depender exclusivamente del frontend Reac
 
 # 10. REQUERIMIENTOS NO FUNCIONALES
 
-[PENDIENTE]
+## 10.1 Rendimiento
 
+| Código | Requerimiento No Funcional | Descripción | Prioridad |
+|---|---|---|---|
+| RNF-001 | Tiempo de respuesta API | El sistema deberá responder solicitudes API en un tiempo menor o igual a 3 segundos bajo condiciones normales | Alta |
+| RNF-002 | Tiempo de carga frontend | Las pantallas principales deberán cargar en menos de 5 segundos | Alta |
+| RNF-003 | Procesamiento concurrente | El sistema deberá soportar múltiples usuarios concurrentes sin degradación crítica | Alta |
+| RNF-004 | Optimización multimedia | El sistema deberá comprimir imágenes antes de almacenarlas | Media |
+| RNF-005 | Procesamiento transaccional | Las operaciones críticas deberán ejecutarse mediante transacciones atómicas | Alta |
+
+---
+
+## 10.2 Seguridad
+
+| Código | Requerimiento No Funcional | Descripción | Prioridad |
+|---|---|---|---|
+| RNF-006 | Autenticación corporativa | El sistema deberá autenticarse mediante Microsoft OAuth2/OpenID Connect | Alta |
+| RNF-007 | Seguridad JWT | Todas las APIs protegidas deberán validar JWT en cada solicitud | Alta |
+| RNF-008 | Autorización basada en roles | El sistema deberá controlar acceso mediante roles y permisos | Alta |
+| RNF-009 | Protección de endpoints | Los endpoints protegidos no deberán permitir acceso anónimo | Alta |
+| RNF-010 | Cifrado de comunicaciones | Toda comunicación deberá realizarse mediante HTTPS/TLS | Alta |
+| RNF-011 | Protección de credenciales | Las credenciales y secretos no deberán almacenarse en frontend | Alta |
+| RNF-012 | Seguridad server-side | Las validaciones críticas deberán ejecutarse en backend | Alta |
+| RNF-013 | Restricción de acceso administrativo | Solo usuarios autorizados podrán acceder a configuraciones críticas | Alta |
+| RNF-014 | Protección multimedia | Las evidencias deberán almacenarse de forma segura y controlada | Alta |
+| RNF-015 | Expiración de sesión | El sistema deberá invalidar sesiones expiradas automáticamente | Media |
+
+---
+
+## 10.3 Disponibilidad
+
+| Código | Requerimiento No Funcional | Descripción | Prioridad |
+|---|---|---|---|
+| RNF-016 | Disponibilidad del sistema | El sistema deberá mantener disponibilidad mínima del 99% | Alta |
+| RNF-017 | Persistencia de información | La información operacional deberá mantenerse persistente ante fallos | Alta |
+| RNF-018 | Recuperación ante fallos | El sistema deberá permitir recuperación controlada ante errores críticos | Alta |
+| RNF-019 | Respaldos de información | El sistema deberá permitir respaldos periódicos de base de datos | Alta |
+| RNF-020 | Tolerancia a fallos | El sistema deberá manejar errores sin afectar integridad transaccional | Alta |
+
+---
+
+## 10.4 Escalabilidad
+
+| Código | Requerimiento No Funcional | Descripción | Prioridad |
+|---|---|---|---|
+| RNF-021 | Arquitectura desacoplada | El sistema deberá implementar arquitectura desacoplada frontend/backend | Alta |
+| RNF-022 | Contenerización | Los servicios deberán desplegarse mediante Docker | Alta |
+| RNF-023 | Escalabilidad horizontal | La arquitectura deberá permitir escalabilidad horizontal futura | Media |
+| RNF-024 | Separación de responsabilidades | El backend deberá centralizar reglas de negocio y validaciones | Alta |
+| RNF-025 | Modularidad | El sistema deberá mantener estructura modular por dominios funcionales | Alta |
+
+---
+
+## 10.5 Base de Datos
+
+| Código | Requerimiento No Funcional | Descripción | Prioridad |
+|---|---|---|---|
+| RNF-026 | Integridad referencial | La base de datos deberá garantizar integridad referencial | Alta |
+| RNF-027 | Restricciones de unicidad | La base de datos deberá validar unicidad de registros críticos | Alta |
+| RNF-028 | Auditoría persistente | La información de auditoría deberá mantenerse históricamente | Alta |
+| RNF-029 | Transacciones seguras | Las operaciones críticas deberán ejecutarse mediante transacciones ACID | Alta |
+| RNF-030 | Optimización de consultas | Las consultas críticas deberán encontrarse indexadas | Media |
+
+---
+
+## 10.6 Compatibilidad
+
+| Código | Requerimiento No Funcional | Descripción | Prioridad |
+|---|---|---|---|
+| RNF-031 | Compatibilidad Web | El frontend web deberá ser compatible con navegadores modernos | Alta |
+| RNF-032 | Compatibilidad Android | La APK deberá ejecutarse en dispositivos Android compatibles | Alta |
+| RNF-033 | Responsive Design | El frontend web deberá adaptarse a diferentes resoluciones | Media |
+| RNF-034 | Compatibilidad API REST | El backend deberá exponer servicios RESTful estándar | Alta |
+| RNF-035 | Compatibilidad multimedia | El sistema deberá soportar formatos estándar de imágenes | Media |
+
+---
+
+## 10.7 Usabilidad
+
+| Código | Requerimiento No Funcional | Descripción | Prioridad |
+|---|---|---|---|
+| RNF-036 | Interfaz intuitiva | El sistema deberá presentar interfaces simples e intuitivas | Alta |
+| RNF-037 | Retroalimentación visual | El sistema deberá mostrar mensajes visuales de confirmación y error | Alta |
+| RNF-038 | Navegación consistente | El sistema deberá mantener navegación uniforme entre módulos | Media |
+| RNF-039 | Validaciones visuales | El sistema deberá mostrar validaciones antes de procesar operaciones | Alta |
+| RNF-040 | Accesibilidad operativa | El sistema deberá facilitar operaciones rápidas en campo | Alta |
+
+---
+
+## 10.8 Mantenibilidad
+
+| Código | Requerimiento No Funcional | Descripción | Prioridad |
+|---|---|---|---|
+| RNF-041 | Arquitectura mantenible | El sistema deberá mantener separación clara de capas y responsabilidades | Alta |
+| RNF-042 | Código modular | El código deberá organizarse por módulos funcionales | Alta |
+| RNF-043 | Trazabilidad de errores | El sistema deberá registrar errores críticos para soporte técnico | Alta |
+| RNF-044 | Configuración centralizada | Las configuraciones críticas deberán administrarse centralizadamente | Media |
+| RNF-045 | Auditoría técnica | El sistema deberá registrar eventos técnicos y operacionales | Alta |
+
+---
+
+## 10.9 Infraestructura
+
+| Código | Requerimiento No Funcional | Descripción | Prioridad |
+|---|---|---|---|
+| RNF-046 | Despliegue contenerizado | Los componentes deberán ejecutarse mediante contenedores Docker | Alta |
+| RNF-047 | Variables de entorno | Las configuraciones sensibles deberán manejarse mediante variables de entorno | Alta |
+| RNF-048 | Separación de ambientes | El sistema deberá manejar ambientes DEV, QA y PROD | Alta |
+| RNF-049 | Persistencia multimedia | Las evidencias deberán almacenarse en almacenamiento persistente | Alta |
+| RNF-050 | Monitoreo operativo | La solución deberá permitir monitoreo básico de servicios y errores | Media |
+
+---
+
+## 10.10 Auditoría y Trazabilidad
+
+| Código | Requerimiento No Funcional | Descripción | Prioridad |
+|---|---|---|---|
+| RNF-051 | Trazabilidad operacional | Toda operación crítica deberá generar trazabilidad | Alta |
+| RNF-052 | Auditoría de autenticación | El sistema deberá registrar eventos de autenticación | Alta |
+| RNF-053 | Auditoría de cambios | El sistema deberá registrar modificaciones de información crítica | Alta |
+| RNF-054 | Trazabilidad documental | El sistema deberá mantener relación entre operaciones y evidencias | Alta |
+| RNF-055 | Integridad histórica | Los registros históricos no deberán alterarse físicamente | Alta |
+
+---
+
+# Restricciones Técnicas Obligatorias
+
+- El backend deberá desarrollarse utilizando Quarkus.
+- El frontend web deberá desarrollarse utilizando React.
+- La aplicación móvil deberá desarrollarse utilizando React Native.
+- La base de datos relacional deberá implementarse sobre MySQL.
+- La infraestructura deberá desplegarse mediante Docker.
+- La autenticación deberá implementarse mediante JWT y Microsoft OAuth2/OpenID Connect.
+- Las reglas de negocio deberán validarse principalmente en backend.
+- Las operaciones críticas deberán ejecutarse mediante transacciones seguras.
+- Las validaciones críticas no deberán depender exclusivamente del frontend React o React Native.
 
 
 # 11. ENTIDADES PRINCIPALES
