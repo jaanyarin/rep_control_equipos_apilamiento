@@ -1,5 +1,6 @@
 package pe.com.repcontrol.auth;
 
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.HeaderParam;
 import jakarta.ws.rs.POST;
@@ -7,7 +8,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import pe.com.repcontrol.auth.dto.ApiResponse;
+import pe.com.repcontrol.common.dto.ApiResponse;
 import pe.com.repcontrol.auth.dto.AuthLoginRequest;
 import pe.com.repcontrol.auth.dto.AuthRefreshRequest;
 
@@ -24,13 +25,13 @@ public class AuthResource {
 
   @POST
   @Path("/login")
-  public Response login(AuthLoginRequest request) {
+  public Response login(@Valid AuthLoginRequest request) {
     return Response.ok(ApiResponse.ok("Login exitoso", authService.login(request))).build();
   }
 
   @POST
   @Path("/refresh")
-  public Response refresh(AuthRefreshRequest request) {
+  public Response refresh(@Valid AuthRefreshRequest request) {
     return Response.ok(ApiResponse.ok("Token renovado", authService.refresh(request))).build();
   }
 

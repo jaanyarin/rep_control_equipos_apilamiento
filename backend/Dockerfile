@@ -1,15 +1,15 @@
 # Multi-stage Dockerfile for building and running the Quarkus application
 # Builder: use Maven with a JDK 21 base to compile and package
-FROM maven:3.9.15-eclipse-temurin-25 AS builder
+FROM maven:3.9.15-eclipse-temurin-21 AS builder
 WORKDIR /workspace
 COPY backend/pom.xml ./
 COPY backend/src ./src
 
-RUN mvn -B -DskipTests=true package -Dquarkus.package.jar.type=uber-jar
+RUN mvn -B -DskipTests=true compile quarkus:build
 
 # Runtime image: use a slim Temurin JRE 21
-FROM eclipse-temurin:25-jre
+FROM eclipse-temurin:21-jre
 WORKDIR /app
-COPY --from=builder /workspace/target/*-runner.jar ./app.jar
+COPY --from=builder /workspace/target/quarkus-app ./quarkus-app
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/quarkus-app/quarkus-run.jar"]
