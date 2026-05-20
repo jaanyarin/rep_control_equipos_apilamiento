@@ -70,3 +70,14 @@ Este documento es un registro inalterable de los hitos y validaciones de funcion
   * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
   * Verificación del nuevo endpoint OSR y su compatibilidad con la arquitectura REST del backend.
 * **Estado**: ✅ COMPLETADO
+
+## [2026-05-20] Hito 7: Módulo Equipos
+* **Descripción**: Se implementó el módulo de Equipos con CRUD completo en el backend Quarkus y referencias a campaña, OSR, proveedor, tipo de equipo y marca.
+* **Cambios realizados**:
+  * Creación de `EquipoService` y `EquipoResource` en `backend/src/main/java/pe/com/repcontrol/equipo`.
+  * Creación de DTOs `EquipoRequest` y `EquipoResponse` en `backend/src/main/java/pe/com/repcontrol/dto/equipo`.
+  * Validaciones de código único, referencias a entidades relacionadas y estado activo en proveedores/tipos de equipos.
+* **Validaciones**:
+  * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
+  * Confirmación de endpoints REST para gestión de equipos.
+* **Estado**: ✅ COMPLETADO

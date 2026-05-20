@@ -10,6 +10,8 @@ C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\c
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\campana\CampanaRequest.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\campana\CampanaResponse.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\common\PageResponse.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\equipo\EquipoRequest.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\equipo\EquipoResponse.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\osr\OsrRequest.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\osr\OsrResponse.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\proveedor\ProveedorRequest.java
@@ -41,6 +43,8 @@ C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\c
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\entity\TipoAveria.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\entity\TipoEquipo.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\entity\Usuario.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\equipo\EquipoResource.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\equipo\EquipoService.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\exception\GlobalExceptionHandler.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\health\HealthResource.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\osr\OsrResource.java

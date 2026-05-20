@@ -163,6 +163,11 @@ El backend quedará accesible en `http://localhost:8080`.
 - `POST /api/v1/osr`
 - `PUT /api/v1/osr/{id}`
 - `DELETE /api/v1/osr/{id}`
+- `GET /api/v1/equipos`
+- `GET /api/v1/equipos/{id}`
+- `POST /api/v1/equipos`
+- `PUT /api/v1/equipos/{id}`
+- `DELETE /api/v1/equipos/{id}`
 
 ---
 
