@@ -307,9 +307,9 @@ El backend quedará accesible en `http://localhost:8080`.
 | Script SQL BD | ✅ Completado |
 | API Contracts | ✅ Completado |
 | Fase 2: Infraestructura | 🔄 En Proceso |
-| Backend | ⏳ Pendiente |
-| Frontend Mobile | ⏳ Pendiente |
-| Frontend Web | ⏳ Pendiente |
+| Backend | 🔄 En Progreso |
+| Frontend Mobile | ⏳ Pendiente de implementación |
+| Frontend Web | ⏳ Pendiente de implementación |
 | DevOps | ⏳ Pendiente |
 
 ---
@@ -611,14 +611,16 @@ docs/sdd/
 - Configuración Docker
 - Ramas GitHub
 
-### Fase 3
-- Setup backend
-- Setup frontend
+### Fase 3 🔄 En Progreso
+- Backend Quarkus compilando correctamente
+- Módulos implementados: autenticación, usuarios, sedes, campañas, tipos de equipos, proveedores, PSR, OSR, equipos y averías
+- Swagger/OpenAPI habilitado en desarrollo
+- Siguiente bloque recomendado: evidencias fotográficas para habilitar flujo móvil operativo
 
-### Fase 4
-- Desarrollo MVP
-- Integraciones
-- Seguridad
+### Fase 4 ⏳ Pendiente
+- Implementación frontend mobile
+- Implementación frontend web
+- Integraciones adicionales de seguridad
 
 ### Fase 5
 - Testing

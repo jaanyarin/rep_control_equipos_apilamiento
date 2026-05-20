@@ -5,8 +5,13 @@ C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\c
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\auth\dto\AuthRefreshRequest.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\auth\dto\AuthTokenResponse.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\auth\dto\AuthUserResponse.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\averia\AveriaResource.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\averia\AveriaService.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\campana\CampanaResource.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\campana\CampanaService.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\averia\AveriaCloseRequest.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\averia\AveriaRequest.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\averia\AveriaResponse.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\campana\CampanaRequest.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\campana\CampanaResponse.java
 C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\dto\common\PageResponse.java

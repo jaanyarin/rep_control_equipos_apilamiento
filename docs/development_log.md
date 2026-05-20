@@ -81,3 +81,16 @@ Este documento es un registro inalterable de los hitos y validaciones de funcion
   * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
   * Confirmación de endpoints REST para gestión de equipos.
 * **Estado**: ✅ COMPLETADO
+
+## [2026-05-20] Hito 8: Módulo Averías
+* **Descripción**: Se implementó el módulo de averías en el backend Quarkus con registro, consulta, actualización y cierre operativo.
+* **Cambios realizados**:
+  * Creación de `AveriaService` y `AveriaResource` en `backend/src/main/java/pe/com/repcontrol/averia`.
+  * Creación de DTOs `AveriaRequest`, `AveriaCloseRequest` y `AveriaResponse` en `backend/src/main/java/pe/com/repcontrol/dto/averia`.
+  * Implementación del endpoint `PUT /api/v1/damages/{id}/close` con cálculo de horas inactivas.
+  * Sincronización del estado del equipo a `AVERIADO` al registrar/atender una avería y a `DISPONIBLE` al cerrarla.
+  * Implementación de filtros por equipo, tipo de avería, estado, proveedor y rango de fechas.
+* **Validaciones**:
+  * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
+  * Confirmación del endpoint `/api/v1/damages` como siguiente bloque funcional posterior al módulo de equipos según el SDD.
+* **Estado**: ✅ COMPLETADO
