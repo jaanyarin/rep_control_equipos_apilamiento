@@ -13,3 +13,15 @@ Este documento es un registro inalterable de los hitos y validaciones de funcion
   * Ejecución exitosa de `mvn clean compile` localmente en el backend utilizando Java 21.
   * Verificación de conectividad al puerto MySQL local 3306 (estado: Escuchando/Activo).
 * **Estado**: ✅ COMPLETADO
+
+## [2026-05-20] Hito 2: Módulo Usuarios y Catálogos Base
+* **Descripción**: Se implementó el módulo de usuarios, roles y sitios en el backend Quarkus, con endpoints REST para gestión de usuarios, listas de roles y sedes.
+* **Cambios realizados**:
+  * Creación de `UsuarioResource` y `UsuarioService` en `backend/src/main/java/pe/com/repcontrol/usuario`.
+  * Creación de `RolResource` y `SitioResource` para catálogos básicos.
+  * Ajuste de migraciones SQL para permitir `usuario_creacion` nulo y sembrar un usuario administrador inicial.
+  * Se agregó `RolResponse` y se aprovechó el DTO `SitioResponse` existente.
+* **Validaciones**:
+  * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
+  * Verificación de tipos de Panache y normalización de consultas para evitar errores de raw types.
+* **Estado**: ✅ COMPLETADO

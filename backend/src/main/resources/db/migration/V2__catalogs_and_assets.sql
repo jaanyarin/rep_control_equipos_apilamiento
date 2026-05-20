@@ -41,7 +41,7 @@ CREATE TABLE proveedores (
     fecha_creacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     fecha_actualizacion DATETIME NULL,
     fecha_baja DATETIME NULL,
-    usuario_creacion BIGINT NOT NULL,
+    usuario_creacion BIGINT NULL,
     version INT NOT NULL DEFAULT 0,
     PRIMARY KEY (id),
     UNIQUE INDEX idx_proveedor_ruc (ruc),

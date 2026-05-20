@@ -38,6 +38,9 @@ INSERT INTO roles (nombre, descripcion, estado_activo) VALUES
 ('ADMIN', 'Administrador del sistema - Acceso total', 1),
 ('USER', 'Usuario operativo - Acceso limitado', 1);
 
+INSERT INTO usuarios (id_microsoft, correo, nombre, rol_id, estado_activo, fecha_creacion, usuario_creacion) VALUES
+('admin@dominioempresa.com', 'admin@dominioempresa.com', 'Administrador Inicial', 1, 1, CURRENT_TIMESTAMP, NULL);
+
 INSERT INTO estados_averias (codigo, nombre, descripcion) VALUES
 ('PENDIENTE', 'Pendiente', 'Averia reportada sin atencion'),
 ('EN_ATENCION', 'En Atencion', 'Averia en proceso de solucion'),
