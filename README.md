@@ -168,6 +168,15 @@ El backend quedará accesible en `http://localhost:8080`.
 - `POST /api/v1/equipos`
 - `PUT /api/v1/equipos/{id}`
 - `DELETE /api/v1/equipos/{id}`
+- `GET /api/v1/evidences`
+- `GET /api/v1/evidences/{id}`
+- `POST /api/v1/evidences/upload`
+- `DELETE /api/v1/evidences/{id}`
+- `GET /api/v1/dashboard/kpis`
+- `GET /api/v1/dashboard/metrics`
+- `GET /api/v1/reports/pdf/equipment/{id}`
+- `GET /api/v1/reports/pdf/psr/{id}`
+- `GET /api/v1/reports/pdf/damages`
 
 ---
 
@@ -613,9 +622,9 @@ docs/sdd/
 
 ### Fase 3 🔄 En Progreso
 - Backend Quarkus compilando correctamente
-- Módulos implementados: autenticación, usuarios, sedes, campañas, tipos de equipos, proveedores, PSR, OSR, equipos y averías
+- Módulos backend implementados: autenticación, usuarios, sedes, campañas, tipos de equipos, proveedores, PSR, OSR, equipos, averías, evidencias fotográficas, dashboard KPI y reportes PDF
 - Swagger/OpenAPI habilitado en desarrollo
-- Siguiente bloque recomendado: evidencias fotográficas para habilitar flujo móvil operativo
+- Siguiente bloque recomendado: Frontend Mobile (APK) según prioridad del usuario
 
 ### Fase 4 ⏳ Pendiente
 - Implementación frontend mobile

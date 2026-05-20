@@ -94,3 +94,51 @@ Este documento es un registro inalterable de los hitos y validaciones de funcion
   * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
   * Confirmación del endpoint `/api/v1/damages` como siguiente bloque funcional posterior al módulo de equipos según el SDD.
 * **Estado**: ✅ COMPLETADO
+
+## [2026-05-20] Hito 9: Módulo Evidencias Fotográficas
+* **Descripción**: Se implementó el módulo de evidencias fotográficas en el backend Quarkus con upload, consulta, listado y eliminación lógica.
+* **Cambios realizados**:
+  * Creación de `EvidenciaService` y `EvidenciaResource` en `backend/src/main/java/pe/com/repcontrol/evidencia`.
+  * Creación de DTOs `EvidenciaRequest` y `EvidenciaResponse` en `backend/src/main/java/pe/com/repcontrol/dto/evidencia`.
+  * Implementación del endpoint `POST /api/v1/evidences/upload` para carga multipart de imágenes.
+  * Validaciones de tamaño máximo (5MB), formatos permitidos (JPG, PNG) y dimensiones máximas (1080x720).
+  * Implementación de filtros por equipo, avería, OSR y tipo de evidencia.
+  * Soft delete con registro de fecha de baja para auditoría.
+  * Estructura de rutas organizada por año/mes para almacenamiento.
+* **Validaciones**:
+  * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
+  * Verificación de endpoints REST compatibles con el contrato API del SDD.
+  * Confirmación del módulo de evidencias como bloque funcional necesario para el frontend móvil (APK).
+* **Estado**: ✅ COMPLETADO
+
+## [2026-05-20] Hito 10: Módulo Dashboard KPI
+* **Descripción**: Se implementó el módulo de Dashboard KPI en el backend Quarkus con endpoints para obtener KPIs operativos y métricas generales.
+* **Cambios realizados**:
+  * Creación de `DashboardService` y `DashboardResource` en `backend/src/main/java/pe/com/repcontrol/dashboard`.
+  * Creación de DTOs: `DashboardKpiResponse`, `DashboardMetricsResponse`, `KpiProveedorResponse`, `KpiTipoResponse`, `EquiposPorEstadoResponse`, `AveriasPorTipoResponse`, `EvolucionMensualResponse`.
+  * Implementación del endpoint `GET /api/v1/dashboard/kpis` con filtros por campaña, sitio, proveedor y rango de fechas.
+  * Implementación del endpoint `GET /api/v1/dashboard/metrics` para métricas generales del sistema.
+  * Cálculo de KPIs: equipos por estado, averías por estado, tiempo promedio de atención, disponibilidad, utilización.
+  * Desglose de KPIs por proveedor y tipo de equipo.
+  * Evolución mensual de equipos y averías (últimos 6 meses).
+* **Validaciones**:
+  * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
+  * Verificación de endpoints REST compatibles con el contrato API del SDD.
+  * Confirmación del módulo de Dashboard KPI como bloque funcional necesario para el frontend web.
+* **Estado**: ✅ COMPLETADO
+
+## [2026-05-20] Hito 11: Módulo Reportes PDF
+* **Descripción**: Se implementó el módulo de Reportes PDF en el backend Quarkus con generación de documentos PDF para equipos, PSR y averías.
+* **Cambios realizados**:
+  * Creación de `ReporteService` y `ReporteResource` en `backend/src/main/java/pe/com/repcontrol/reporte`.
+  * Implementación del endpoint `GET /api/v1/reports/pdf/equipment/{id}` para generar PDF de equipo.
+  * Implementación del endpoint `GET /api/v1/reports/pdf/psr/{id}` para generar PDF de PSR.
+  * Implementación del endpoint `GET /api/v1/reports/pdf/damages` para generar reporte de averías con filtros.
+  * Uso de iText PDF para generación de documentos con tablas y formato profesional.
+  * Inclusión de filtros por proveedor, estado de avería y rango de fechas en reporte de averías.
+  * Configuración de headers Content-Disposition para descarga automática de PDFs.
+* **Validaciones**:
+  * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
+  * Verificación de endpoints REST compatibles con el contrato API del SDD.
+  * Confirmación del módulo de Reportes PDF como bloque funcional para exportación de documentos.
+* **Estado**: ✅ COMPLETADO
