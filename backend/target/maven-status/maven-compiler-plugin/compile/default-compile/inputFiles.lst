@@ -1,0 +1,8 @@
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\auth\AuthResource.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\auth\AuthService.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\auth\dto\ApiResponse.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\auth\dto\AuthLoginRequest.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\auth\dto\AuthRefreshRequest.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\auth\dto\AuthTokenResponse.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\auth\dto\AuthUserResponse.java
+C:\Users\jose.anyarin\rep_control_equipos_apilamiento\backend\src\main\java\pe\com\repcontrol\health\HealthResource.java
