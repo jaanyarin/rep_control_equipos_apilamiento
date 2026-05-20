@@ -9,17 +9,19 @@ import pe.com.repcontrol.auth.dto.ApiResponse;
 import pe.com.repcontrol.dto.rol.RolResponse;
 import pe.com.repcontrol.entity.Rol;
 
+import java.util.List;
+
 @Path("/api/v1/roles")
 @Produces(MediaType.APPLICATION_JSON)
 public class RolResource {
 
     @GET
     public Response list() {
-        var roles = Rol.find("estadoActivo", true)
-                .list()
-                .stream()
+        @SuppressWarnings({"unchecked", "rawtypes"})
+        List<Rol> roles = (List<Rol>) (List) Rol.find("estadoActivo", true).list();
+        var response = roles.stream()
                 .map(rol -> new RolResponse(rol.id, rol.nombre, rol.descripcion))
                 .toList();
-        return Response.ok(ApiResponse.ok("Roles recuperados", roles)).build();
+        return Response.ok(ApiResponse.ok("Roles recuperados", response)).build();
     }
 }

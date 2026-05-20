@@ -25,3 +25,48 @@ Este documento es un registro inalterable de los hitos y validaciones de funcion
   * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
   * Verificación de tipos de Panache y normalización de consultas para evitar errores de raw types.
 * **Estado**: ✅ COMPLETADO
+
+## [2026-05-20] Hito 3: Implementación de Campañas y Tipos de Equipos
+* **Descripción**: Se completó el desarrollo de los servicios REST de campañas y tipos de equipos en el backend Quarkus.
+* **Cambios realizados**:
+  * Creación de `CampanaService` y `CampanaResource` en `backend/src/main/java/pe/com/repcontrol/campana`.
+  * Creación de `TipoEquipoService` y `TipoEquipoResource` en `backend/src/main/java/pe/com/repcontrol/tipoequipo`.
+  * Se mantuvo la persistencia activa para campañas y tipos de equipos con filtros `estadoActivo`.
+  * Documentación de endpoints y ejecución backend actualizada en `README.md`.
+* **Validaciones**:
+  * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
+  * Creación de endpoints REST compatibles con la secuencia de módulos del SDD.
+* **Estado**: ✅ COMPLETADO
+
+## [2026-05-20] Hito 4: Módulo Proveedores
+* **Descripción**: Se implementó el módulo de proveedores con CRUD completo en el backend Quarkus.
+* **Cambios realizados**:
+  * Creación de `ProveedorService` y `ProveedorResource` en `backend/src/main/java/pe/com/repcontrol/proveedor`.
+  * Definición de validación de RUC único, campos requeridos y búsqueda por estado activo.
+  * Adición de endpoints REST para listar, consultar, crear, actualizar y desactivar proveedores.
+* **Validaciones**:
+  * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
+  * Verificación de la correcta integración de proveedores con el modelo de usuarios.
+* **Estado**: ✅ COMPLETADO
+
+## [2026-05-20] Hito 5: Módulo PSR
+* **Descripción**: Se implementó el módulo PSR con CRUD y validaciones de referencia a campaña, sitio, motivo PSR y usuario creador.
+* **Cambios realizados**:
+  * Creación de `PsrService` y `PsrResource` en `backend/src/main/java/pe/com/repcontrol/psr`.
+  * Nuevos DTOs `PsrRequest` y `PsrResponse` en `backend/src/main/java/pe/com/repcontrol/dto/psr`.
+  * Validación de número PSR único, existencia de campaña/sitio/motivo y estado activo del usuario creador.
+* **Validaciones**:
+  * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
+  * Confirmación de endpoints REST para gestión de PSR.
+* **Estado**: ✅ COMPLETADO
+
+## [2026-05-20] Hito 6: Módulo OSR
+* **Descripción**: Se implementó el módulo OSR en el backend con CRUD completo y validaciones de referencia a PSR, equipo y usuario creador.
+* **Cambios realizados**:
+  * Creación de `OsrService` y `OsrResource` en `backend/src/main/java/pe/com/repcontrol/osr`.
+  * Creación de DTOs `OsrRequest` y `OsrResponse` en `backend/src/main/java/pe/com/repcontrol/dto/osr`.
+  * Definición de validaciones de número único, estado activo y referencias a entidades relacionadas.
+* **Validaciones**:
+  * Compilación exitosa de `mvn -f backend/pom.xml -DskipTests compile`.
+  * Verificación del nuevo endpoint OSR y su compatibilidad con la arquitectura REST del backend.
+* **Estado**: ✅ COMPLETADO

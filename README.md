@@ -114,6 +114,58 @@ Servicios REST empresariales.
 
 ---
 
+## Ejecución del Backend
+
+Para compilar y ejecutar el backend localmente:
+
+```bash
+cd backend
+mvn -DskipTests compile
+mvn -DskipTests quarkus:dev
+```
+
+El backend quedará accesible en `http://localhost:8080`.
+
+## Endpoints REST principales
+
+- `GET /api/v1/auth/login`
+- `POST /api/v1/auth/refresh`
+- `POST /api/v1/auth/logout`
+- `GET /api/v1/usuarios`
+- `GET /api/v1/usuarios/{id}`
+- `POST /api/v1/usuarios`
+- `PUT /api/v1/usuarios/{id}`
+- `DELETE /api/v1/usuarios/{id}`
+- `GET /api/v1/sitios`
+- `GET /api/v1/roles`
+- `GET /api/v1/campanas`
+- `GET /api/v1/campanas/{id}`
+- `POST /api/v1/campanas`
+- `PUT /api/v1/campanas/{id}`
+- `DELETE /api/v1/campanas/{id}`
+- `GET /api/v1/tipos-equipos`
+- `GET /api/v1/tipos-equipos/{id}`
+- `POST /api/v1/tipos-equipos`
+- `PUT /api/v1/tipos-equipos/{id}`
+- `DELETE /api/v1/tipos-equipos/{id}`
+- `GET /api/v1/proveedores`
+- `GET /api/v1/proveedores/{id}`
+- `POST /api/v1/proveedores`
+- `PUT /api/v1/proveedores/{id}`
+- `DELETE /api/v1/proveedores/{id}`
+- `GET /api/v1/psr`
+- `GET /api/v1/psr/{id}`
+- `POST /api/v1/psr`
+- `PUT /api/v1/psr/{id}`
+- `DELETE /api/v1/psr/{id}`
+- `GET /api/v1/osr`
+- `GET /api/v1/osr/{id}`
+- `POST /api/v1/osr`
+- `PUT /api/v1/osr/{id}`
+- `DELETE /api/v1/osr/{id}`
+
+---
+
 ## Base de Datos
 
 ### Tecnología

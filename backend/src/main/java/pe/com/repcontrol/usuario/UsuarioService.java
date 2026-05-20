@@ -18,9 +18,9 @@ public class UsuarioService {
 
     @Transactional
     public List<UsuarioResponse> listActive() {
-        return Usuario.find("estadoActivo", true)
-                .list()
-                .stream()
+        @SuppressWarnings({"unchecked", "rawtypes"})
+        List<Usuario> usuarios = (List<Usuario>) (List) Usuario.find("estadoActivo", true).list();
+        return usuarios.stream()
                 .map(this::toResponse)
                 .toList();
     }
