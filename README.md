@@ -114,6 +114,72 @@ Servicios REST empresariales.
 
 ---
 
+## Ejecución del Backend
+
+Para compilar y ejecutar el backend localmente:
+
+```bash
+cd backend
+mvn -DskipTests compile
+mvn -DskipTests quarkus:dev
+```
+
+El backend quedará accesible en `http://localhost:8080`.
+
+## Endpoints REST principales
+
+- `GET /api/v1/auth/login`
+- `POST /api/v1/auth/refresh`
+- `POST /api/v1/auth/logout`
+- `GET /api/v1/usuarios`
+- `GET /api/v1/usuarios/{id}`
+- `POST /api/v1/usuarios`
+- `PUT /api/v1/usuarios/{id}`
+- `DELETE /api/v1/usuarios/{id}`
+- `GET /api/v1/sitios`
+- `GET /api/v1/roles`
+- `GET /api/v1/campanas`
+- `GET /api/v1/campanas/{id}`
+- `POST /api/v1/campanas`
+- `PUT /api/v1/campanas/{id}`
+- `DELETE /api/v1/campanas/{id}`
+- `GET /api/v1/tipos-equipos`
+- `GET /api/v1/tipos-equipos/{id}`
+- `POST /api/v1/tipos-equipos`
+- `PUT /api/v1/tipos-equipos/{id}`
+- `DELETE /api/v1/tipos-equipos/{id}`
+- `GET /api/v1/proveedores`
+- `GET /api/v1/proveedores/{id}`
+- `POST /api/v1/proveedores`
+- `PUT /api/v1/proveedores/{id}`
+- `DELETE /api/v1/proveedores/{id}`
+- `GET /api/v1/psr`
+- `GET /api/v1/psr/{id}`
+- `POST /api/v1/psr`
+- `PUT /api/v1/psr/{id}`
+- `DELETE /api/v1/psr/{id}`
+- `GET /api/v1/osr`
+- `GET /api/v1/osr/{id}`
+- `POST /api/v1/osr`
+- `PUT /api/v1/osr/{id}`
+- `DELETE /api/v1/osr/{id}`
+- `GET /api/v1/equipos`
+- `GET /api/v1/equipos/{id}`
+- `POST /api/v1/equipos`
+- `PUT /api/v1/equipos/{id}`
+- `DELETE /api/v1/equipos/{id}`
+- `GET /api/v1/evidences`
+- `GET /api/v1/evidences/{id}`
+- `POST /api/v1/evidences/upload`
+- `DELETE /api/v1/evidences/{id}`
+- `GET /api/v1/dashboard/kpis`
+- `GET /api/v1/dashboard/metrics`
+- `GET /api/v1/reports/pdf/equipment/{id}`
+- `GET /api/v1/reports/pdf/psr/{id}`
+- `GET /api/v1/reports/pdf/damages`
+
+---
+
 ## Base de Datos
 
 ### Tecnología
@@ -250,9 +316,9 @@ Servicios REST empresariales.
 | Script SQL BD | ✅ Completado |
 | API Contracts | ✅ Completado |
 | Fase 2: Infraestructura | 🔄 En Proceso |
-| Backend | ⏳ Pendiente |
-| Frontend Mobile | ⏳ Pendiente |
-| Frontend Web | ⏳ Pendiente |
+| Backend | 🔄 En Progreso |
+| Frontend Mobile | ⏳ Pendiente de implementación |
+| Frontend Web | ⏳ Pendiente de implementación |
 | DevOps | ⏳ Pendiente |
 
 ---
@@ -554,14 +620,16 @@ docs/sdd/
 - Configuración Docker
 - Ramas GitHub
 
-### Fase 3
-- Setup backend
-- Setup frontend
+### Fase 3 🔄 En Progreso
+- Backend Quarkus compilando correctamente
+- Módulos backend implementados: autenticación, usuarios, sedes, campañas, tipos de equipos, proveedores, PSR, OSR, equipos, averías, evidencias fotográficas, dashboard KPI y reportes PDF
+- Swagger/OpenAPI habilitado en desarrollo
+- Siguiente bloque recomendado: Frontend Mobile (APK) según prioridad del usuario
 
-### Fase 4
-- Desarrollo MVP
-- Integraciones
-- Seguridad
+### Fase 4 ⏳ Pendiente
+- Implementación frontend mobile
+- Implementación frontend web
+- Integraciones adicionales de seguridad
 
 ### Fase 5
 - Testing
