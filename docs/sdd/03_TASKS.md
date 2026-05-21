@@ -226,24 +226,24 @@ Desarrollar la aplicación móvil operativa.
 
 ## Tareas
 
-| ID | Tarea | Prioridad |
-|---|---|---|
-| AND-001 | Inicializar proyecto React Native | Crítica |
-| AND-002 | Configurar navegación principal | Alta |
-| AND-003 | Implementar login Microsoft | Crítica |
-| AND-004 | Implementar control sesión | Alta |
-| AND-005 | Implementar gestión usuarios | Media |
-| AND-006 | Implementar gestión campañas | Alta |
-| AND-007 | Implementar gestión PSR / OSR | Crítica |
-| AND-008 | Implementar gestión equipos | Crítica |
-| AND-009 | Implementar gestión averías | Alta |
-| AND-010 | Implementar captura fotografías | Alta |
-| AND-011 | Implementar consumo APIs REST | Crítica |
-| AND-012 | Implementar manejo errores UI | Alta |
-| AND-013 | Implementar validaciones formularios | Alta |
-| AND-014 | Implementar visualización PDFs | Media |
-| AND-015 | Implementar notificaciones visuales | Alta |
-| AND-016 | Configurar manejo global errores | Alta |
+| ID | Tarea | Prioridad | Estado |
+|---|---|---|---|---|
+| AND-001 | Inicializar proyecto React Native | Crítica | ✅ |
+| AND-002 | Configurar navegación principal | Alta | ✅ |
+| AND-003 | Implementar login Microsoft (Entra ID con validación JWT real) | Crítica | ✅ |
+| AND-004 | Implementar control sesión (refresh token, interceptor 401) | Alta | ✅ |
+| AND-005 | Implementar gestión usuarios | Media | ⏳ |
+| AND-006 | Implementar gestión campañas (lista + detalle + activar/cerrar) | Alta | ✅ |
+| AND-007 | Implementar gestión PSR / OSR (lista + detalle + aprobar/rechazar/cerrar) | Crítica | ✅ |
+| AND-008 | Implementar gestión equipos (lista + detalle + paginación) | Crítica | ✅ |
+| AND-009 | Implementar gestión averías (lista + detalle + cerrar) | Alta | ✅ |
+| AND-010 | Implementar captura fotografías (vision-camera + upload) | Alta | ✅ |
+| AND-011 | Implementar consumo APIs REST (10 servicios conectados a backend real) | Crítica | ✅ |
+| AND-012 | Implementar manejo errores UI (try/catch + toast) | Alta | ✅ |
+| AND-013 | Implementar validaciones formularios | Alta | ⏳ |
+| AND-014 | Implementar visualización PDFs (react-native-pdf + blob-util) | Media | ✅ |
+| AND-015 | Implementar notificaciones visuales (Toast con Animated API) | Alta | ✅ |
+| AND-016 | Configurar manejo global errores (ErrorBoundary) | Alta | ✅ |
 
 ---
 
@@ -257,22 +257,22 @@ Desarrollar la plataforma web analítica y administrativa.
 
 ## Tareas
 
-| ID | Tarea | Prioridad |
-|---|---|---|
-| WEB-001 | Inicializar proyecto React | Crítica |
-| WEB-002 | Configurar estructura modular | Alta |
-| WEB-003 | Implementar login Microsoft | Alta |
-| WEB-004 | Implementar dashboard KPI | Crítica |
-| WEB-005 | Implementar filtros globales | Alta |
-| WEB-006 | Implementar tablas operativas | Alta |
-| WEB-007 | Implementar gestión usuarios | Media |
-| WEB-008 | Implementar visualización equipos | Alta |
-| WEB-009 | Implementar visualización averías | Alta |
-| WEB-010 | Implementar exportación PDF | Media |
-| WEB-011 | Implementar consumo APIs REST | Crítica |
-| WEB-012 | Implementar control permisos | Alta |
-| WEB-013 | Implementar manejo errores UI | Alta |
-| WEB-014 | Configurar manejo global errores | Alta |
+| ID | Tarea | Prioridad | Estado |
+|---|---|---|---|---|
+| WEB-001 | Inicializar proyecto React (Vite + React 19 + MUI 6) | Crítica | ✅ |
+| WEB-002 | Configurar estructura modular (6 páginas, layouts, routing) | Alta | ✅ |
+| WEB-003 | Implementar login Microsoft (AuthContext + interceptor) | Alta | ✅ |
+| WEB-004 | Implementar dashboard KPI (Recharts: Bar, Pie, Line) | Crítica | ✅ |
+| WEB-005 | Implementar filtros globales (sidebar con AppLayout) | Alta | ✅ |
+| WEB-006 | Implementar tablas operativas (Equipos, Campañas, PSR, Averías) | Alta | ✅ |
+| WEB-007 | Implementar gestión usuarios | Media | ⏳ |
+| WEB-008 | Implementar visualización equipos | Alta | ✅ |
+| WEB-009 | Implementar visualización averías | Alta | ✅ |
+| WEB-010 | Implementar exportación PDF | Media | ⏳ |
+| WEB-011 | Implementar consumo APIs REST (axios + refresh token) | Crítica | ✅ |
+| WEB-012 | Implementar control permisos (PrivateRoute) | Alta | ✅ |
+| WEB-013 | Implementar manejo errores UI | Alta | ✅ |
+| WEB-014 | Configurar manejo global errores | Alta | ✅ |
 
 ---
 

@@ -39,6 +39,6 @@ public class AuthResource {
   @Path("/logout")
   public Response logout(@HeaderParam("Authorization") String authorization) {
     authService.logout();
-    return Response.ok(ApiResponse.ok("Sesion cerrada correctamente", null)).build();
+    return Response.ok(ApiResponse.ok("Sesión cerrada correctamente", null)).build();
   }
 }

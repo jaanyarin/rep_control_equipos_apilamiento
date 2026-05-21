@@ -1,16 +1,31 @@
 package pe.com.repcontrol.campanas.service;
 
+import io.quarkus.panache.common.Page;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import pe.com.repcontrol.campanas.entity.Campana;
+import pe.com.repcontrol.common.dto.PagedResponse;
 import pe.com.repcontrol.common.exception.ResourceNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @ApplicationScoped
 public class CampanaService {
 
-    public List<Campana> listAll() {
-        return Campana.listAll();
+    public PagedResponse<Campana> listAll(Long sitioId, String estado, Boolean esActiva, int page, int pageSize) {
+        var clauses = new ArrayList<String>();
+        var params = new HashMap<String, Object>();
+        clauses.add("estadoActivo = true");
+        if (sitioId != null) { clauses.add("sitio_id = :sitioId"); params.put("sitioId", sitioId); }
+        if (estado != null) { clauses.add("estado = :estado"); params.put("estado", estado); }
+        if (esActiva != null) { clauses.add("esActiva = :esActiva"); params.put("esActiva", esActiva); }
+        var queryStr = String.join(" AND ", clauses);
+    var panacheQuery = Campana.find(queryStr, params);
+    var total = panacheQuery.count();
+    @SuppressWarnings("unchecked")
+    List<Campana> items = (List<Campana>) (List<?>) panacheQuery.page(Page.of(page, pageSize)).list();
+    return PagedResponse.of(items, total, page, pageSize);
     }
 
     public Campana findById(Long id) {

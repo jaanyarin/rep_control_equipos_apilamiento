@@ -35,4 +35,11 @@ public class TipoEquipoResource {
             .entity(ApiResponse.ok("Tipo de equipo creado correctamente", tipoEquipo))
             .build();
     }
+
+    @PUT
+    @Path("/{id}")
+    public Response update(@PathParam("id") Long id, pe.com.repcontrol.equipos.entity.TipoEquipo tipoEquipo) {
+        return Response.ok(ApiResponse.ok("Tipo de equipo actualizado correctamente", tipoEquipoService.update(id, tipoEquipo)))
+            .build();
+    }
 }

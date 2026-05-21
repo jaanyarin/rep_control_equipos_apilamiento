@@ -38,12 +38,12 @@ Centralizar y digitalizar el control operativo de equipos alquilados utilizados 
 | Arquitectura Técnica | ✅ Completado |
 | Diseño Base Datos | ✅ Completado |
 | Script SQL BD | ✅ Completado |
-| API Contracts | ✅ Completado |
-| Fase 2: Infraestructura | 🔄 En Proceso |
-| Backend | ⏳ Pendiente |
-| Frontend Mobile | ⏳ Pendiente |
-| Frontend Web | ⏳ Pendiente |
-| DevOps | ⏳ Pendiente |
+| API Contracts | ✅ Completado (v1.1 — auth, PSR, evidencias actualizados) |
+| Fase 2: Infraestructura | ✅ Completado (Docker, Nginx, CI/CD) |
+| Backend | ✅ Completado (62+ fuentes, 55+ endpoints, 24 tests) |
+| Frontend Mobile | ✅ Completado (12 pantallas, 10 servicios, Azure AD real) |
+| Frontend Web | ✅ Completado (Vite + React 19 + MUI 6 + Recharts, 6 páginas) |
+| DevOps | ✅ Completado (Docker Compose, GitHub Actions, SSL, healthchecks) |
 
 ---
 
@@ -51,13 +51,20 @@ Centralizar y digitalizar el control operativo de equipos alquilados utilizados 
 
 ## Frontend Mobile
 
-Aplicación móvil para operación en campo.
+Aplicación móvil para operación en campo (Android 9+, API 28).
 
 ### Stack
-- React Native
-- Redux Toolkit
-- Axios
-- Material Design 3
+- React Native 0.85.3
+- Redux Toolkit (authSlice)
+- React Navigation 7 (12 rutas)
+- Axios (interceptor refresh token)
+- TypeScript 5.8
+- react-native-app-auth (login Microsoft Entra ID)
+- react-native-vision-camera (captura fotos)
+- react-native-pdf (visor PDF)
+- react-native-blob-util (descarga PDF)
+- Toast nativo con Animated API
+- ErrorBoundary global
 
 ---
 
@@ -66,11 +73,12 @@ Aplicación móvil para operación en campo.
 Plataforma web administrativa y analítica.
 
 ### Stack
-- React
-- Redux Toolkit
-- Recharts
-- Material UI
-- Axios
+- React 19 + Vite 6
+- MUI 6 (Material Design 3)
+- Recharts 2 (Bar, Pie, Line charts)
+- React Router 7 (6 rutas)
+- Axios (interceptor auth + refresh)
+- TypeScript 5.8
 
 ---
 
@@ -79,26 +87,30 @@ Plataforma web administrativa y analítica.
 Servicios REST empresariales.
 
 ### Stack
-- Quarkus Java
-- JWT Authentication
-- Microsoft Identity
-- Flyway
-- OpenAPI
-- Swagger UI
+- Quarkus 3.15.1 + Java 21 (Temurin)
+- Hibernate ORM + Panache
+- MySQL 8 + Flyway (migraciones)
+- JWT (smallrye-jwt, HMAC-SHA256)
+- Microsoft Entra ID (validación JWT vía jose4j + JWKS)
+- OpenAPI + Swagger UI
+- OpenPDF 2.0.3 (reportes PDF)
+- 24 tests (unit + integración)
 
 ---
 
 ## Base de Datos
 
-- MySQL
+- MySQL 8 + Flyway (V1__security_and_org.sql)
+- H2 in-memory para tests
 
 ---
 
 ## Infraestructura
 
-- Docker
-- Docker Compose
-- GitHub Actions CI/CD
+- Docker (backend, dashboard web, MySQL 8)
+- Docker Compose (volúmenes persistentes, app-network)
+- Nginx (reverse proxy, SSL, 10MB upload)
+- GitHub Actions CI/CD (build, test, docker push)
 - VPS Linux
 
 ---
@@ -127,56 +139,66 @@ Servicios REST empresariales.
 
 # Funcionalidades Principales
 
-## Autenticación Empresarial
-- Login corporativo Microsoft
-- JWT Authentication
-- Control de sesiones
-- Gestión de roles
+## Autenticación Empresarial (MOD-01)
+- Login Microsoft Entra ID con validación real de JWT vía JWKS + jose4j
+- JWT propio de sesión (15 min expiración, 24h refresh)
+- Control de sesiones con refresh token automático
+- Roles ADMIN / USER con @RolesAllowed en endpoints
 
 ---
 
-## Gestión Operativa
-- Registro equipos
-- Gestión campañas
-- Control PSR/OSR
-- Gestión averías
-- Control proveedores
+## Gestión Operativa (MOD-02 a MOD-09)
+- 55+ endpoints REST con filtros, paginación y ordenamiento
+- Equipos (CRUD, historial averías, estado: DISPONIBLE/OPERATIVO/AVERIADO/MANTENIMIENTO/DEVUELTO)
+- Campañas (CRUD, activar/cerrar, validación única activa)
+- PSR/OSR (CRUD + flujo: PENDIENTE → APROBAR/RECHAZAR → CERRAR)
+- Averías (CRUD + cierre con cálculo horas inactivo)
+- Sedes, Tipos Equipo, Proveedores (CRUD completo)
 
 ---
 
-## Evidencias
-- Captura fotografías
-- Compresión automática
-- Resolución máxima 1080x720
-- Eliminación controlada con auditoría
+## Evidencias Fotográficas (MOD-10)
+- Captura desde cámara (react-native-vision-camera)
+- Upload multipart con validación: 5MB máx, solo JPG/PNG/GIF/WEBP (detección por magic bytes)
+- Compresión automática server-side: reescala a 1080x720 máx, mantiene aspect ratio
+- Almacenamiento filesystem en UUID con ruta configurable (EVIDENCE_UPLOAD_PATH)
+- Soft-delete solo ADMIN, con registro en auditoría
 
 ---
 
-## Dashboard KPI
-- Indicadores operativos
-- Métricas por campaña
-- Filtros dinámicos
-- Visualización web
+## Dashboard KPI (MOD-11)
+- Web: Vite + React 19 + MUI 6 + Recharts (Bar, Pie, Line)
+- KPIs: equipos activos/disponibles/averiados, averías abiertas/cerradas, tiempo promedio atención, disponibilidad, utilización
+- Métricas: distribución por estado/tipo, evolución mensual 12 meses
+- Backend: NativeQuery vía EntityManager para agregaciones SQL
 
 ---
 
-## Auditoría
-- Logs operacionales
-- Historial cambios
-- Historial accesos
-- Trazabilidad completa
+## Reportes PDF (MOD-12)
+- Generación con OpenPDF (iText fork LGPL)
+- Reportes: equipo (código, marca, modelo, serie, tipo, proveedor, estado), PSR, averías
+- Consultas nativas SQL con JOINs
 
 ---
 
-# Seguridad
+## Auditoría (MOD-13)
+- Logs de login/logout, CRUD, cambios de estado, errores críticos
+- Filtros por usuario, módulo, acción, entidad, fechas
+- Paginación y orden descendente por fecha
 
-La plataforma implementará:
-- Microsoft Identity Authentication,
-- JWT,
-- control de roles,
-- auditoría completa,
-- expiración de sesión,
-- validación centralizada.
+---
+
+## Seguridad
+
+La plataforma implementa:
+- Microsoft Entra ID — validación real de JWT (firma RSA, issuer, audience, exp)
+- jose4j con JWKS caching (24h) desde `/discovery/v2.0/keys`
+- JWT propio HMAC-SHA256 para sesiones internas
+- Control de roles ADMIN/USER con @RolesAllowed
+- CORS restringido por entorno, rate limiting, max body 5MB
+- SQL injection prevenido (PanacheQL parametrizado)
+- DTO desacoplados de entidades JPA
+- Auditoría completa de todas las operaciones críticas
 
 ---
 

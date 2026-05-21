@@ -9,7 +9,6 @@ import pe.com.repcontrol.common.dto.ApiResponse;
 
 @Path("/api/v1/campaigns")
 @Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class CampanaResource {
 
     private final CampanaService campanaService;
@@ -19,11 +18,14 @@ public class CampanaResource {
     }
 
     @GET
-    public Response listAll(@QueryParam("es_activa") Boolean esActiva) {
-        if (esActiva != null) {
-            return Response.ok(ApiResponse.ok("Campañas obtenidas", campanaService.findByActiva(esActiva))).build();
-        }
-        return Response.ok(ApiResponse.ok("Campañas obtenidas", campanaService.listAll())).build();
+    public Response listAll(
+            @QueryParam("es_activa") Boolean esActiva,
+            @QueryParam("sitioId") Long sitioId,
+            @QueryParam("estado") String estado,
+            @DefaultValue("0") @QueryParam("page") int page,
+            @DefaultValue("20") @QueryParam("pageSize") int pageSize) {
+        var result = campanaService.listAll(sitioId, estado, esActiva, page, pageSize);
+        return Response.ok(ApiResponse.ok("Campañas obtenidas", result)).build();
     }
 
     @GET
@@ -33,6 +35,7 @@ public class CampanaResource {
     }
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response create(Campana campana) {
         return Response.status(Response.Status.CREATED)
             .entity(ApiResponse.ok("Campaña creada correctamente", campanaService.create(campana)))
@@ -41,6 +44,7 @@ public class CampanaResource {
 
     @PUT
     @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response update(@PathParam("id") Long id, Campana campana) {
         return Response.ok(ApiResponse.ok("Campaña actualizada correctamente", campanaService.update(id, campana))).build();
     }

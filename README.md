@@ -251,7 +251,7 @@ Servicios REST empresariales.
 | API Contracts | ✅ Completado |
 | Fase 2: Infraestructura | ✅ Completado |
 | Backend | ✅ Completado |
-| Frontend Mobile | 🔄 En Proceso (AND-001 al AND-004, AND-006 al AND-009, AND-011, AND-012, AND-016 completados) |
+| Frontend Mobile | 🔄 En Proceso (AND-001 al AND-004, AND-006 al AND-009, AND-011, AND-012, AND-016; backend 13 módulos completados) |
 | Frontend Web | ⏳ Pendiente |
 | DevOps | ⏳ Pendiente |
 

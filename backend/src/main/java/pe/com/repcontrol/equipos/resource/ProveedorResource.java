@@ -18,13 +18,30 @@ public class ProveedorResource {
     }
 
     @GET
-    public Response listAll() {
-        return Response.ok(ApiResponse.ok("Proveedores obtenidos", proveedorService.listAll())).build();
+    public Response listAll(
+            @QueryParam("filtro") String filtro,
+            @DefaultValue("0") @QueryParam("page") int page,
+            @DefaultValue("20") @QueryParam("pageSize") int pageSize) {
+        return Response.ok(ApiResponse.ok("Proveedores obtenidos", proveedorService.listAll(filtro, page, pageSize))).build();
     }
 
     @GET
     @Path("/{id}")
     public Response getById(@PathParam("id") Long id) {
         return Response.ok(ApiResponse.ok("Proveedor obtenido", proveedorService.findById(id))).build();
+    }
+
+    @POST
+    public Response create(pe.com.repcontrol.equipos.entity.Proveedor proveedor) {
+        return Response.status(Response.Status.CREATED)
+            .entity(ApiResponse.ok("Proveedor creado correctamente", proveedorService.create(proveedor)))
+            .build();
+    }
+
+    @PUT
+    @Path("/{id}")
+    public Response update(@PathParam("id") Long id, pe.com.repcontrol.equipos.entity.Proveedor proveedor) {
+        return Response.ok(ApiResponse.ok("Proveedor actualizado correctamente", proveedorService.update(id, proveedor)))
+            .build();
     }
 }

@@ -1,18 +1,37 @@
 package pe.com.repcontrol.equipos.service;
 
+import io.quarkus.panache.common.Page;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+import pe.com.repcontrol.averias.entity.Averia;
+import pe.com.repcontrol.common.dto.PagedResponse;
 import pe.com.repcontrol.common.exception.ResourceNotFoundException;
 import pe.com.repcontrol.equipos.entity.Equipo;
 import pe.com.repcontrol.equipos.entity.Proveedor;
 import pe.com.repcontrol.equipos.entity.TipoEquipo;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @ApplicationScoped
 public class EquipoService {
 
-    public List<Equipo> listAll() {
-        return Equipo.listAll();
+    public PagedResponse<Equipo> listAll(String estado, Long campanaId, Long proveedorId, String filter, Long tipoEquipoId, int page, int pageSize) {
+        var clauses = new ArrayList<String>();
+        var params = new HashMap<String, Object>();
+        clauses.add("estadoActivo = true");
+        if (estado != null) { clauses.add("estado = :estado"); params.put("estado", estado); }
+        if (campanaId != null) { clauses.add("campana_id = :campanaId"); params.put("campanaId", campanaId); }
+        if (proveedorId != null) { clauses.add("proveedor_id = :proveedorId"); params.put("proveedorId", proveedorId); }
+        if (tipoEquipoId != null) { clauses.add("tipoEquipo_id = :tipoEquipoId"); params.put("tipoEquipoId", tipoEquipoId); }
+        if (filter != null) { clauses.add("(codigo LIKE :filter OR numeroSerie LIKE :filter)"); params.put("filter", "%" + filter + "%"); }
+        var queryStr = String.join(" AND ", clauses);
+        var panacheQuery = Equipo.find(queryStr, params);
+        var total = panacheQuery.count();
+        @SuppressWarnings("unchecked")
+        List<Equipo> items = (List<Equipo>) (List<?>) panacheQuery.page(Page.of(page, pageSize)).list();
+        return PagedResponse.of(items, total, page, pageSize);
     }
 
     public Equipo findById(Long id) {
@@ -20,16 +39,11 @@ public class EquipoService {
             .orElseThrow(() -> new ResourceNotFoundException("Equipo", id));
     }
 
-    public List<Equipo> findByEstado(String estado) {
-        return Equipo.list("estado = ?1 AND estado_activo = 1", estado);
-    }
-
-    public List<Equipo> findByCampana(Long campanaId) {
-        return Equipo.list("campana_id = ?1 AND estado_activo = 1", campanaId);
-    }
-
-    public List<Equipo> findByProveedor(Long proveedorId) {
-        return Equipo.list("proveedor_id = ?1 AND estado_activo = 1", proveedorId);
+    public Map<String, Object> findByIdWithHistory(Long id) {
+        Equipo equipo = findById(id);
+        List<Averia> historico = Averia.find("equipo = ?1 AND estadoActivo = true ORDER BY fechaCreacion DESC", equipo)
+            .page(Page.of(0, 10)).list();
+        return Map.of("equipo", equipo, "historico", historico);
     }
 
     @Transactional

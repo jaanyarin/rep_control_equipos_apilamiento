@@ -1,23 +1,33 @@
 package pe.com.repcontrol.evidencias.service;
 
+import io.quarkus.panache.common.Page;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+import pe.com.repcontrol.common.dto.PagedResponse;
 import pe.com.repcontrol.common.exception.ResourceNotFoundException;
 import pe.com.repcontrol.evidencias.entity.Evidencia;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @ApplicationScoped
 public class EvidenciaService {
 
-  public List<Evidencia> listAll(Long equipoId, Long averiaId, Long osrId, String tipo) {
-    var query = new StringBuilder("1=1");
-    if (equipoId != null) query.append(" AND equipoId = ").append(equipoId);
-    if (averiaId != null) query.append(" AND averiaId = ").append(averiaId);
-    if (osrId != null) query.append(" AND osrId = ").append(osrId);
-    if (tipo != null) query.append(" AND tipo = '").append(tipo).append("'");
-    query.append(" ORDER BY fechaCarga DESC");
-    return Evidencia.list(query.toString());
+  public PagedResponse<Evidencia> listAll(Long equipoId, Long averiaId, Long osrId, String tipo, int page, int pageSize) {
+    var clauses = new ArrayList<String>();
+    var params = new HashMap<String, Object>();
+    clauses.add("estadoActivo = true");
+    if (equipoId != null) { clauses.add("equipoId = :equipoId"); params.put("equipoId", equipoId); }
+    if (averiaId != null) { clauses.add("averiaId = :averiaId"); params.put("averiaId", averiaId); }
+    if (osrId != null) { clauses.add("osrId = :osrId"); params.put("osrId", osrId); }
+    if (tipo != null) { clauses.add("tipo = :tipo"); params.put("tipo", tipo); }
+    var queryStr = String.join(" AND ", clauses) + " ORDER BY fechaCarga DESC";
+    var panacheQuery = Evidencia.find(queryStr, params);
+    var total = panacheQuery.count();
+    @SuppressWarnings("unchecked")
+    List<Evidencia> items = (List<Evidencia>) (List<?>) panacheQuery.page(Page.of(page, pageSize)).list();
+    return PagedResponse.of(items, total, page, pageSize);
   }
 
   public Evidencia findById(Long id) {

@@ -19,8 +19,11 @@ public class ConfiguracionResource {
   }
 
   @GET
-  public Response listAll(@QueryParam("categoria") String categoria) {
-    var configs = configuracionService.listAll(categoria);
+  public Response listAll(
+      @QueryParam("categoria") String categoria,
+      @DefaultValue("0") @QueryParam("page") int page,
+      @DefaultValue("20") @QueryParam("pageSize") int pageSize) {
+    var configs = configuracionService.listAll(categoria, page, pageSize);
     return Response.ok(ApiResponse.ok("Configuraciones obtenidas", configs)).build();
   }
 

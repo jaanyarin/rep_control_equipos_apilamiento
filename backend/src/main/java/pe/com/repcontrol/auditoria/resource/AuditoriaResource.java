@@ -26,8 +26,10 @@ public class AuditoriaResource {
       @QueryParam("tipoEntidad") String tipoEntidad,
       @QueryParam("idEntidad") Long idEntidad,
       @QueryParam("fechaDesde") String fechaDesde,
-      @QueryParam("fechaHasta") String fechaHasta) {
-    var logs = auditoriaService.listAll(usuarioId, modulo, accion, tipoEntidad, idEntidad, fechaDesde, fechaHasta);
+      @QueryParam("fechaHasta") String fechaHasta,
+      @DefaultValue("0") @QueryParam("page") int page,
+      @DefaultValue("20") @QueryParam("pageSize") int pageSize) {
+    var logs = auditoriaService.listAll(usuarioId, modulo, accion, tipoEntidad, idEntidad, fechaDesde, fechaHasta, page, pageSize);
     return Response.ok(ApiResponse.ok("Registros de auditoria obtenidos", logs)).build();
   }
 }

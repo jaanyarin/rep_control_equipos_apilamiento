@@ -1,18 +1,37 @@
 package pe.com.repcontrol.averias.service;
 
+import io.quarkus.panache.common.Page;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import pe.com.repcontrol.averias.entity.Averia;
 import pe.com.repcontrol.averias.entity.EstadoAveria;
+import pe.com.repcontrol.common.dto.PagedResponse;
 import pe.com.repcontrol.common.exception.BusinessException;
 import pe.com.repcontrol.common.exception.ResourceNotFoundException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @ApplicationScoped
 public class AveriaService {
 
-    public List<Averia> listAll() {
-        return Averia.listAll();
+    public PagedResponse<Averia> listAll(Long equipoId, Long estadoAveriaId, Long proveedorId, Long tipoAveriaId, String fechaDesde, String fechaHasta, int page, int pageSize) {
+        var clauses = new ArrayList<String>();
+        var params = new HashMap<String, Object>();
+        clauses.add("estadoActivo = true");
+        if (equipoId != null) { clauses.add("equipo.id = :equipoId"); params.put("equipoId", equipoId); }
+        if (estadoAveriaId != null) { clauses.add("estadoAveria.id = :estadoAveriaId"); params.put("estadoAveriaId", estadoAveriaId); }
+        if (proveedorId != null) { clauses.add("proveedor.id = :proveedorId"); params.put("proveedorId", proveedorId); }
+        if (tipoAveriaId != null) { clauses.add("tipoAveria.id = :tipoAveriaId"); params.put("tipoAveriaId", tipoAveriaId); }
+        if (fechaDesde != null) { clauses.add("fechaCreacion >= :fechaDesde"); params.put("fechaDesde", LocalDateTime.parse(fechaDesde)); }
+        if (fechaHasta != null) { clauses.add("fechaCreacion <= :fechaHasta"); params.put("fechaHasta", LocalDateTime.parse(fechaHasta)); }
+        var queryStr = String.join(" AND ", clauses);
+    var panacheQuery = Averia.find(queryStr, params);
+    var total = panacheQuery.count();
+    @SuppressWarnings("unchecked")
+    List<Averia> items = (List<Averia>) (List<?>) panacheQuery.page(Page.of(page, pageSize)).list();
+    return PagedResponse.of(items, total, page, pageSize);
     }
 
     public Averia findById(Long id) {
@@ -60,11 +79,15 @@ public class AveriaService {
     }
 
     @Transactional
-    public Averia close(Long id, String descripcionAtencion, String accionCorrectiva) {
+    public Averia close(Long id, String descripcionAtencion, String accionCorrectiva, String fechaCierreStr) {
         Averia averia = findById(id);
         averia.descripcionAtencion = descripcionAtencion;
         averia.accionCorrectiva = accionCorrectiva;
-        averia.fechaCierre = java.time.LocalDateTime.now();
+        if (fechaCierreStr != null && !fechaCierreStr.isBlank()) {
+            averia.fechaCierre = LocalDateTime.parse(fechaCierreStr);
+        } else {
+            averia.fechaCierre = LocalDateTime.now();
+        }
         EstadoAveria cerrada = EstadoAveria.find("codigo", "CERRADA").firstResult();
         if (cerrada != null) {
             averia.estadoAveria = cerrada;

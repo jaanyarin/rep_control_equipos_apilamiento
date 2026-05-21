@@ -20,14 +20,12 @@ public class OSRResource {
     @GET
     public Response listAll(
             @QueryParam("psr_id") Long psrId,
-            @QueryParam("equipo_id") Long equipoId) {
-        if (psrId != null) {
-            return Response.ok(ApiResponse.ok("OSR obtenidos", osrService.findByPSR(psrId))).build();
-        }
-        if (equipoId != null) {
-            return Response.ok(ApiResponse.ok("OSR obtenidos", osrService.findByEquipo(equipoId))).build();
-        }
-        return Response.ok(ApiResponse.ok("OSR obtenidos", osrService.listAll())).build();
+            @QueryParam("equipo_id") Long equipoId,
+            @QueryParam("estado") String estado,
+            @DefaultValue("0") @QueryParam("page") int page,
+            @DefaultValue("20") @QueryParam("pageSize") int pageSize) {
+        var result = osrService.listAll(psrId, equipoId, estado, page, pageSize);
+        return Response.ok(ApiResponse.ok("OSR obtenidos", result)).build();
     }
 
     @GET

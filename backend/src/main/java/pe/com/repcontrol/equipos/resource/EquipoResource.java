@@ -22,24 +22,19 @@ public class EquipoResource {
             @QueryParam("estado") String estado,
             @QueryParam("campana_id") Long campanaId,
             @QueryParam("proveedor_id") Long proveedorId,
-            @QueryParam("filter") String filter) {
-        if (estado != null) {
-            return Response.ok(ApiResponse.ok("Equipos obtenidos", equipoService.findByEstado(estado))).build();
-        }
-        if (campanaId != null) {
-            return Response.ok(ApiResponse.ok("Equipos obtenidos", equipoService.findByCampana(campanaId))).build();
-        }
-        if (proveedorId != null) {
-            return Response.ok(ApiResponse.ok("Equipos obtenidos", equipoService.findByProveedor(proveedorId))).build();
-        }
-        return Response.ok(ApiResponse.ok("Equipos obtenidos", equipoService.listAll())).build();
+            @QueryParam("filter") String filter,
+            @QueryParam("tipoEquipoId") Long tipoEquipoId,
+            @DefaultValue("0") @QueryParam("page") int page,
+            @DefaultValue("20") @QueryParam("pageSize") int pageSize) {
+        var result = equipoService.listAll(estado, campanaId, proveedorId, filter, tipoEquipoId, page, pageSize);
+        return Response.ok(ApiResponse.ok("Equipos obtenidos", result)).build();
     }
 
     @GET
     @Path("/{id}")
     public Response getById(@PathParam("id") Long id) {
-        var equipo = equipoService.findById(id);
-        return Response.ok(ApiResponse.ok("Equipo obtenido", equipo)).build();
+        var result = equipoService.findByIdWithHistory(id);
+        return Response.ok(ApiResponse.ok("Equipo obtenido", result)).build();
     }
 
     @POST

@@ -22,17 +22,14 @@ public class AveriaResource {
     public Response listAll(
             @QueryParam("equipo_id") Long equipoId,
             @QueryParam("estado_averia_id") Long estadoAveriaId,
-            @QueryParam("proveedor_id") Long proveedorId) {
-        if (equipoId != null) {
-            return Response.ok(ApiResponse.ok("Averías obtenidas", averiaService.findByEquipo(equipoId))).build();
-        }
-        if (estadoAveriaId != null) {
-            return Response.ok(ApiResponse.ok("Averías obtenidas", averiaService.findByEstado(estadoAveriaId))).build();
-        }
-        if (proveedorId != null) {
-            return Response.ok(ApiResponse.ok("Averías obtenidas", averiaService.findByProveedor(proveedorId))).build();
-        }
-        return Response.ok(ApiResponse.ok("Averías obtenidas", averiaService.listAll())).build();
+            @QueryParam("proveedor_id") Long proveedorId,
+            @QueryParam("tipoAveriaId") Long tipoAveriaId,
+            @QueryParam("fechaDesde") String fechaDesde,
+            @QueryParam("fechaHasta") String fechaHasta,
+            @DefaultValue("0") @QueryParam("page") int page,
+            @DefaultValue("20") @QueryParam("pageSize") int pageSize) {
+        var result = averiaService.listAll(equipoId, estadoAveriaId, proveedorId, tipoAveriaId, fechaDesde, fechaHasta, page, pageSize);
+        return Response.ok(ApiResponse.ok("Averías obtenidas", result)).build();
     }
 
     @GET
@@ -59,7 +56,8 @@ public class AveriaResource {
     public Response close(@PathParam("id") Long id, Map<String, String> body) {
         var result = averiaService.close(id,
             body.getOrDefault("descripcionAtencion", ""),
-            body.getOrDefault("accionCorrectiva", ""));
+            body.getOrDefault("accionCorrectiva", ""),
+            body.get("fechaCierre"));
         return Response.ok(ApiResponse.ok("Avería cerrada correctamente", result)).build();
     }
 }

@@ -3,15 +3,22 @@ services:
     image: mysql:8
     container_name: repcontrol-mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
       MYSQL_DATABASE: rep_equipos_apilamiento
+      MYSQL_USER: ${DB_USERNAME:-repuser}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-reppass}
     ports:
       - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-root}"]
       interval: 10s
       timeout: 5s
       retries: 10
+    networks:
+      - repcontrol-net
+    restart: unless-stopped
 
   backend:
     build:
@@ -20,10 +27,42 @@ services:
     container_name: repcontrol-backend
     environment:
       DB_JDBC_URL: jdbc:mysql://mysql:3306/rep_equipos_apilamiento
-      DB_USERNAME: root
-      DB_PASSWORD: root
+      DB_USERNAME: ${DB_USERNAME:-repuser}
+      DB_PASSWORD: ${DB_PASSWORD:-reppass}
+      JWT_SECRET: ${JWT_SECRET:-OXY8p2u8JcvWsGy7Gp5TYzdp7tEFfHXSzaqPU6J3t3M=}
+      JWT_ISSUER: ${JWT_ISSUER:-https://repcontrol.pe}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://localhost:8081}
+      EVIDENCE_UPLOAD_PATH: ${EVIDENCE_UPLOAD_PATH:-/app/uploads/evidences}
     ports:
       - "8080:8080"
+    volumes:
+      - evidence_data:/app/uploads
     depends_on:
       mysql:
         condition: service_healthy
+    networks:
+      - repcontrol-net
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    container_name: repcontrol-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./infrastructure/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./infrastructure/nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - backend
+    networks:
+      - repcontrol-net
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+  evidence_data:
+
+networks:
+  repcontrol-net:
+    driver: bridge

@@ -1,16 +1,32 @@
 package pe.com.repcontrol.psr.service;
 
+import io.quarkus.panache.common.Page;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+import pe.com.repcontrol.common.dto.PagedResponse;
 import pe.com.repcontrol.common.exception.ResourceNotFoundException;
 import pe.com.repcontrol.psr.entity.PSR;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @ApplicationScoped
 public class PSRService {
 
-    public List<PSR> listAll() {
-        return PSR.listAll();
+    public PagedResponse<PSR> listAll(Long campanaId, String estado, Long sitioId, String filtro, int page, int pageSize) {
+        var clauses = new ArrayList<String>();
+        var params = new HashMap<String, Object>();
+        clauses.add("estadoActivo = true");
+        if (campanaId != null) { clauses.add("campana.id = :campanaId"); params.put("campanaId", campanaId); }
+        if (estado != null) { clauses.add("estado = :estado"); params.put("estado", estado); }
+        if (sitioId != null) { clauses.add("sitio.id = :sitioId"); params.put("sitioId", sitioId); }
+        if (filtro != null) { clauses.add("(motivo LIKE :filtro OR descripcion LIKE :filtro)"); params.put("filtro", "%" + filtro + "%"); }
+        var queryStr = String.join(" AND ", clauses);
+        var panacheQuery = PSR.find(queryStr, params);
+        var total = panacheQuery.count();
+        @SuppressWarnings("unchecked")
+        List<PSR> items = (List<PSR>) (List<?>) panacheQuery.page(Page.of(page, pageSize)).list();
+        return PagedResponse.of(items, total, page, pageSize);
     }
 
     public PSR findById(Long id) {
@@ -43,6 +59,30 @@ public class PSRService {
         psr.fechaSolicitud = updated.fechaSolicitud;
         psr.estado = updated.estado;
         psr.observaciones = updated.observaciones;
+        psr.persist();
+        return psr;
+    }
+
+    @Transactional
+    public PSR approve(Long id) {
+        PSR psr = findById(id);
+        psr.estado = "APROBADO";
+        psr.persist();
+        return psr;
+    }
+
+    @Transactional
+    public PSR reject(Long id) {
+        PSR psr = findById(id);
+        psr.estado = "RECHAZADO";
+        psr.persist();
+        return psr;
+    }
+
+    @Transactional
+    public PSR close(Long id) {
+        PSR psr = findById(id);
+        psr.estado = "CERRADO";
         psr.persist();
         return psr;
     }

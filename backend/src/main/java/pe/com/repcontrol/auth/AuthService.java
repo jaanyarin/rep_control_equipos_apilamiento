@@ -7,6 +7,7 @@ import pe.com.repcontrol.auth.dto.AuthRefreshRequest;
 import pe.com.repcontrol.auth.dto.AuthTokenResponse;
 import pe.com.repcontrol.auth.dto.AuthUserResponse;
 import pe.com.repcontrol.common.exception.BusinessException;
+import pe.com.repcontrol.usuarios.entity.Usuario;
 import pe.com.repcontrol.usuarios.service.UserService;
 
 @ApplicationScoped
@@ -18,10 +19,19 @@ public class AuthService {
   @Inject
   UserService userService;
 
+  @Inject
+  MicrosoftTokenService microsoftTokenService;
+
   public AuthTokenResponse login(AuthLoginRequest request) {
-    var usuario = userService.findByCorreo(request.authorizationCode())
-        .orElseGet(() -> userService.findByIdMicrosoft(request.authorizationCode())
-            .orElseThrow(() -> new BusinessException("CREDENTIALS_INVALID", "Credenciales invalidas")));
+    MicrosoftTokenService.MicrosoftUser msUser =
+        microsoftTokenService.validateIdToken(request.idToken());
+
+    Usuario usuario = userService.findByIdMicrosoft(msUser.microsoftId())
+        .orElseGet(() -> userService.findByCorreo(msUser.email())
+            .orElseThrow(() -> new BusinessException("UNAUTHORIZED",
+                "El usuario no está registrado en el sistema. Contacte al administrador.")));
+
+    updateUserFromMicrosoft(usuario, msUser);
 
     var userResponse = new AuthUserResponse(
         usuario.id,
@@ -38,6 +48,19 @@ public class AuthService {
     var refreshToken = tokenService.generateRefreshToken(usuario.id, usuario.correo);
 
     return new AuthTokenResponse(accessToken, refreshToken, 900, userResponse);
+  }
+
+  private void updateUserFromMicrosoft(Usuario usuario, MicrosoftTokenService.MicrosoftUser msUser) {
+    if (msUser.nombre() != null && !msUser.nombre().equals(usuario.nombre)) {
+      usuario.nombre = msUser.nombre();
+    }
+    if (msUser.microsoftId() != null && !msUser.microsoftId().equals(usuario.idMicrosoft)) {
+      usuario.idMicrosoft = msUser.microsoftId();
+    }
+    if (msUser.email() != null && !msUser.email().equals(usuario.correo)) {
+      usuario.correo = msUser.email();
+    }
+    usuario.persist();
   }
 
   public AuthTokenResponse refresh(AuthRefreshRequest request) {

@@ -19,8 +19,12 @@ public class SitioResource {
     }
 
     @GET
-    public Response listAll() {
-        return Response.ok(ApiResponse.ok("Sitios obtenidos", sitioService.listAll())).build();
+    public Response listAll(
+            @QueryParam("filtro") String filtro,
+            @QueryParam("estado") String estado,
+            @DefaultValue("0") @QueryParam("page") int page,
+            @DefaultValue("20") @QueryParam("pageSize") int pageSize) {
+        return Response.ok(ApiResponse.ok("Sitios obtenidos", sitioService.listAll(filtro, estado, page, pageSize))).build();
     }
 
     @GET
@@ -34,5 +38,19 @@ public class SitioResource {
         return Response.status(Response.Status.CREATED)
             .entity(ApiResponse.ok("Sitio creado correctamente", sitioService.create(sitio)))
             .build();
+    }
+
+    @PUT
+    @Path("/{id}")
+    public Response update(@PathParam("id") Long id, Sitio sitio) {
+        return Response.ok(ApiResponse.ok("Sitio actualizado correctamente", sitioService.update(id, sitio)))
+            .build();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public Response delete(@PathParam("id") Long id) {
+        sitioService.delete(id);
+        return Response.ok(ApiResponse.ok("Sitio eliminado correctamente", null)).build();
     }
 }

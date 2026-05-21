@@ -11,11 +11,19 @@
 | Proyecto | Sistema de Control Operativo de Equipos de Apilamiento |
 | Tipo Documento | Software Development Document - Contratos de API |
 | Estado | Completado |
-| Versión | 1.0 |
-| Fecha | 2026-05-19 |
+| Versión | 1.1 |
+| Fecha | 2026-05-21 |
 | Responsable | Jose Anyarin |
 | Repositorio | GitHub |
 | Clasificación | Interno |
+
+## Historial de Cambios
+
+| Versión | Fecha | Descripción |
+|---------|-------|-------------|
+| 1.0 | 2026-05-19 | Versión inicial |
+| 1.1 | 2026-05-21 | Implementación completa de endpoints de Usuarios, paginación global, endpoints faltantes de Sedes/TiposEquipo/Proveedores, upload de evidencias funcional, PDF con contenido real, parámetros de filtro adicionales |
+| 1.2 | 2026-05-21 | Auth login ahora recibe `idToken` (JWT de Microsoft) en vez de `authorizationCode`. Agregados endpoints PSR approve/reject/close. Evidencias: compresión server-side 1080x720, max 5MB |
 
 ---
 
@@ -123,11 +131,10 @@ Ejemplo: `GET /api/v1/equipos?page=0&size=20&sort=fecha_creacion,desc`
 POST /api/v1/auth/login
 ```
 
-**Request:**
+**Request (v1.2):**
 ```json
 {
-  "authorizationCode": "0.AQABAAAAA...",
-  "redirectUri": "com.repcontrol://auth/callback"
+  "idToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ii1L..."
 }
 ```
 
@@ -151,6 +158,23 @@ POST /api/v1/auth/login
   "timestamp": "2026-05-19T10:30:00-05:00"
 }
 ```
+
+**Error (400):**
+```json
+{
+  "success": false,
+  "message": "Token de Microsoft inválido: unable to process JWT...",
+  "errorCode": "MICROSOFT_TOKEN_INVALID",
+  "timestamp": "2026-05-21T10:30:00"
+}
+```
+
+**Notas de Implementación (v1.2):**
+- El `idToken` es el JWT que Microsoft devuelve tras el login OAuth2 en el mobile (campo `idToken` de `react-native-app-auth`)
+- El backend valida: firma RSA contra JWKS de Azure AD (`/discovery/v2.0/keys`), issuer (`https://login.microsoftonline.com/{tenant}/v2.0`), audience (`clientId`), y expiración
+- Claves JWKS cacheadas por 24h
+- Extrae claims: `email` (o `preferred_username`), `name`, `oid` (Microsoft user ID)
+- Busca usuario por `oid` (idMicrosoft) o `email` en BD local
 
 ---
 
@@ -762,6 +786,30 @@ GET /api/v1/psr/{id}
 PUT /api/v1/psr/{id}
 ```
 
+## 12.5 Aprobar PSR (v1.2)
+
+```
+PUT /api/v1/psr/{id}/approve
+```
+
+Cambia estado a `APROBADO`.
+
+## 12.6 Rechazar PSR (v1.2)
+
+```
+PUT /api/v1/psr/{id}/reject
+```
+
+Cambia estado a `RECHAZADO`.
+
+## 12.7 Cerrar PSR (v1.2)
+
+```
+PUT /api/v1/psr/{id}/close
+```
+
+Cambia estado a `CERRADO`.
+
 ---
 
 # 13. Endpoints de OSR
@@ -1006,6 +1054,12 @@ DELETE /api/v1/evidences/{id}
 ```
 
 **Nota:** Solo administradores pueden eliminar evidencias de forma logica (`estado_activo = 0`, `fecha_baja`), sin borrado fisico del archivo ni del registro historico.
+
+**Nota de Implementación (v1.2):**
+- Server-side: al subir la imagen se aplica compresión automática (reescala a 1080×720 máx, manteniendo aspect ratio)
+- Formatos comprimidos: JPG (calidad estándar ImageIO) y PNG. WEBP/GIF se almacenan sin compresión
+- El tamaño en `tamano` del response refleja el tamaño final comprimido
+- Tamaño máximo de archivo: 5MB (validado antes de compresión, configurable via `MAX_BODY_SIZE` env var)
 
 ---
 
