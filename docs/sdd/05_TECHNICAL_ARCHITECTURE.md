@@ -774,12 +774,14 @@ GET /equipment?page=0&size=20&sort=fecha_creacion,desc
 1. Usuario abre app → Redirige a Microsoft Login
 2. Usuario ingresa credenciales corporativas
 3. Microsoft retorna authorization code
-4. App intercambia code por tokens (access + refresh)
-5. App guarda tokens (secure storage)
-6. Cada request incluye Authorization: Bearer {token}
-7. Backend valida token y extrae claims
-8. Si expira → refresh token → nuevo access token
-9. Si refresh expira → logout →重新login
+4. App obtiene el `idToken` de Microsoft y lo envía al backend
+5. Backend valida el `idToken` con Azure AD JWKS y genera JWT interno
+6. App guarda el JWT interno y lo usa en cada request
+7. App guarda tokens (secure storage)
+8. Cada request incluye Authorization: Bearer {token}
+9. Backend valida token y extrae claims
+10. Si expira → refresh token → nuevo access token
+11. Si refresh expira → logout →重新login
 ```
 
 ## 12.3 Roles y Permisos

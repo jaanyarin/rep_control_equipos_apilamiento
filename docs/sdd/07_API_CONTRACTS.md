@@ -171,6 +171,7 @@ POST /api/v1/auth/login
 
 **Notas de Implementación (v1.2):**
 - El `idToken` es el JWT que Microsoft devuelve tras el login OAuth2 en el mobile (campo `idToken` de `react-native-app-auth`)
+ - En el dashboard web, el login usa MSAL para obtener el `idToken` de Microsoft y enviarlo al backend.
 - El backend valida: firma RSA contra JWKS de Azure AD (`/discovery/v2.0/keys`), issuer (`https://login.microsoftonline.com/{tenant}/v2.0`), audience (`clientId`), y expiración
 - Claves JWKS cacheadas por 24h
 - Extrae claims: `email` (o `preferred_username`), `name`, `oid` (Microsoft user ID)

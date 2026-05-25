@@ -9,7 +9,7 @@ interface AuthState {
 }
 
 interface AuthContextType extends AuthState {
-  login: (authorizationCode: string) => Promise<void>;
+  login: (idToken: string) => Promise<void>;
   logout: () => void;
 }
 
@@ -35,10 +35,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     isLoading: false,
   });
 
-  const login = useCallback(async (authorizationCode: string) => {
+  const login = useCallback(async (idToken: string) => {
     setState((s) => ({ ...s, isLoading: true }));
     try {
-      const response = await authApi.login(authorizationCode);
+      const response = await authApi.login(idToken);
       const { token, refreshToken, user } = response.data.data;
       localStorage.setItem(AUTH_TOKEN_KEY, token);
       localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);

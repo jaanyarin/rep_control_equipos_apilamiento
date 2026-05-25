@@ -4,8 +4,8 @@ import type { ApiResponse, KPI, Metrics, Equipo, PagedContent, Campana, PSR, Ave
 const extractData = <T>(response: { data: ApiResponse<T> }): T => response.data.data;
 
 export const authApi = {
-  login: (authorizationCode: string) =>
-    api.post('/auth/login', { authorizationCode, redirectUri: window.location.origin }),
+  login: (idToken: string) =>
+    api.post('/auth/login', { idToken }),
 
   refresh: (refreshToken: string) =>
     api.post('/auth/refresh', { refreshToken }),

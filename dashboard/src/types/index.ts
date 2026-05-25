@@ -30,7 +30,7 @@ export interface AuthTokenResponse {
 }
 
 export interface LoginRequest {
-  authorizationCode: string;
+  idToken: string;
   redirectUri: string;
 }
 
